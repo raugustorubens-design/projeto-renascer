@@ -34,23 +34,23 @@ html, body {
   border-radius: 50%;
   position: absolute;
   animation: spin 40s linear infinite;
-  filter: blur(0.3px);
+  filter: blur(0.4px);
 }
 
 /* BORDAS ESFUMAÇADAS */
 .portal::before {
   content: "";
   position: absolute;
-  inset: -18%;
+  inset: -22%;
   border-radius: 50%;
   background: radial-gradient(
     circle at center,
-    rgba(90, 70, 200, 0.55) 0%,
-    rgba(60, 50, 150, 0.45) 30%,
-    rgba(30, 25, 90, 0.35) 55%,
-    transparent 75%
+    rgba(120,100,255,0.55) 0%,
+    rgba(80,70,200,0.45) 25%,
+    rgba(40,30,120,0.35) 45%,
+    transparent 70%
   );
-  animation: fog 18s ease-in-out infinite;
+  animation: edgeFlow 10s linear infinite;
   mix-blend-mode: screen;
 }
 
@@ -58,22 +58,22 @@ html, body {
 .portal::after {
   content: "";
   position: absolute;
-  inset: 34%;
+  inset: 30%;
   border-radius: 50%;
   background:
     radial-gradient(
       circle at center,
-      rgba(220, 200, 255, 0.95) 0%,
-      rgba(160, 140, 255, 0.75) 35%,
-      rgba(90, 80, 220, 0.45) 55%,
+      rgba(230,220,255,1) 0%,
+      rgba(170,150,255,0.8) 35%,
+      rgba(120,100,255,0.5) 55%,
       transparent 75%
     ),
     repeating-conic-gradient(
       from 0deg,
-      rgba(255,255,255,0.3) 0deg 10deg,
-      transparent 10deg 26deg
+      rgba(255,255,255,0.35) 0deg 12deg,
+      transparent 12deg 28deg
     );
-  animation: core 6s linear infinite;
+  animation: coreSpin 6s linear infinite;
 }
 
 /* TEXTO */
@@ -81,7 +81,7 @@ html, body {
   position: relative;
   z-index: 2;
   text-align: center;
-  color: #eae6ff;
+  color: #EDE9FF;
   margin-top: -6vh;
 }
 
@@ -89,32 +89,30 @@ html, body {
   font-size: 3rem;
   font-weight: 500;
   letter-spacing: 1px;
+  text-shadow:
+    0 0 8px rgba(160,140,255,0.6),
+    0 0 18px rgba(90,70,200,0.4);
 }
 
 .overlay p {
   margin-top: 14px;
   font-size: 1.15rem;
-  opacity: 0.85;
+  opacity: 0.9;
+  text-shadow:
+    0 0 6px rgba(140,120,255,0.5);
 }
 
 /* ANIMAÇÕES */
-@keyframes spin {
+@keyframes edgeFlow {
+  from {
+    transform: rotate(0deg) scale(1.15);
+  }
+  to {
+    transform: rotate(-360deg) scale(0.85);
+  }
+}
+
+@keyframes coreSpin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
-
-@keyframes fog {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.85;
-  }
-  50% {
-    transform: scale(1.08);
-    opacity: 1;
-  }
-}
-
-@keyframes core {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(-360deg); }
 }
