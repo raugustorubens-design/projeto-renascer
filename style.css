@@ -1,151 +1,50 @@
-/* =========================
-   RESET
-========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-/* =========================
-   FUNDO (FUNDE COM O VÓRTICE)
-========================= */
-.app {
+body {
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(
-    circle at center,
-    #0b1020 0%,
-    #060914 55%,
-    #02030a 100%
-  );
+  overflow: hidden;
+  background-color: black;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
 
-/* =========================
-   PORTAL – VÓRTICE REAL
-========================= */
-.portal {
-  width: 120vmin;                 /* portal reduzido */
-  height: 120vmin;
-  position: absolute;
-  border-radius: 50%;
-  background-image: url("assets/cosmic-vortex.png");
+/* Fundo com o vórtice */
+.vortex {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 120vw;
+  height: 120vw;
+  background-image: url("assets/imagens/cosmic-vortice.png");
   background-size: cover;
   background-position: center;
-  animation: vortexRotate 42s linear infinite; /* HORÁRIO */
-  overflow: hidden;
+  transform: translate(-50%, -50%);
+  animation: giroHorario 30s linear infinite;
+  z-index: -1;
 }
 
-/* =========================
-   FLUXO DAS BORDAS (SUCÇÃO)
-========================= */
-.portal::before {
-  content: "";
-  position: absolute;
-  inset: -22%;
-  border-radius: 50%;
-  background:
-    repeating-conic-gradient(
-      from 0deg,
-      rgba(255,180,180,0.25) 0deg 10deg,
-      rgba(120,160,255,0.18) 10deg 24deg,
-      transparent 24deg 36deg
-    ),
-    radial-gradient(
-      circle at center,
-      rgba(255,255,255,0.18) 0%,
-      rgba(200,180,255,0.25) 35%,
-      rgba(120,100,200,0.15) 55%,
-      transparent 72%
-    );
-  animation: edgeInflow 9s linear infinite;   /* HORÁRIO */
-  filter: blur(1.4px);
-  mix-blend-mode: screen;
-}
-
-/* =========================
-   NÚCLEO CENTRAL ATIVO
-========================= */
-.portal::after {
-  content: "";
-  position: absolute;
-  inset: 36%;
-  border-radius: 50%;
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(240,235,255,1) 0%,
-      rgba(200,190,255,0.9) 35%,
-      rgba(140,130,255,0.6) 55%,
-      transparent 75%
-    );
-  animation: coreSpin 5s linear infinite;   /* HORÁRIO */
-  box-shadow:
-    0 0 45px rgba(200,190,255,0.9),
-    0 0 120px rgba(140,130,255,0.6);
-}
-
-/* =========================
-   TEXTO (COR MANTIDA)
-========================= */
-.overlay {
+/* Conteúdo por cima */
+.conteudo {
   position: relative;
-  z-index: 3;
+  z-index: 1;
+  color: white;
+  font-size: 2rem;
   text-align: center;
-  color: #EDE9FF;
-  margin-top: -6vh;
+  font-family: Arial, sans-serif;
 }
 
-.overlay h1 {
-  font-size: 3rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-shadow:
-    0 0 8px rgba(160,150,255,0.7),
-    0 0 20px rgba(120,110,255,0.4);
-}
-
-.overlay p {
-  margin-top: 14px;
-  font-size: 1.15rem;
-  opacity: 0.9;
-  text-shadow:
-    0 0 6px rgba(140,130,255,0.5);
-}
-
-/* =========================
-   ANIMAÇÕES – TODAS HORÁRIAS
-========================= */
-
-/* rotação base do vórtice */
-@keyframes vortexRotate {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-/* bordas escorrendo para dentro */
-@keyframes edgeInflow {
+/* ANIMAÇÃO HORÁRIA */
+@keyframes giroHorario {
   from {
-    transform: rotate(0deg) scale(1.22);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   to {
-    transform: rotate(360deg) scale(0.85);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
-}
-
-/* núcleo energético */
-@keyframes coreSpin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
 }
