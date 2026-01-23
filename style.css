@@ -28,7 +28,7 @@ html, body {
   width: 140vw;
   height: 140vw;
   transform: translate(-50%, -50%);
-  background-image: url("vortex.png"); /* ajuste o nome se necessário */
+  background-image: url("ativos/vórtice-cósmico.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
