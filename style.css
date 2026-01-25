@@ -118,3 +118,58 @@ html, body {
     font-size: 1rem;
   }
 }
+/* ===============================
+   TRANSIÇÃO PARA O CASTELO
+================================ */
+.castelo {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #555 0%, #111 70%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+  transition: opacity 2s ease;
+}
+
+/* Parede de pedra (efeito simples) */
+.castelo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.03) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  opacity: 0.3;
+}
+
+/* Pergaminho */
+.pergaminho {
+  background: #f4e8c1;
+  color: #3b2f1e;
+  padding: 32px;
+  width: min(90%, 500px);
+  border: 6px solid #c2a76b;
+  box-shadow: 0 0 40px rgba(0,0,0,0.8);
+  font-family: "Georgia", serif;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 1.5s ease;
+}
+
+.castelo.ativo {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.castelo.ativo .pergaminho {
+  transform: scale(1);
+  opacity: 1;
+}
+
