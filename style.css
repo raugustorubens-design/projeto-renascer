@@ -147,22 +147,34 @@ html, body {
     transparent 6px
   );
   opacity: 0.3;
+  z-index: 1; /* 👈 parede atrás */
 }
 
-/* Pergaminho */
+/* ===============================
+   PERGAMINHO REAL (FORÇAR IMAGEM)
+================================ */
 .pergaminho {
-  background: #f4e8c1;
+  position: relative;
+  z-index: 3;
+
+  background-image: url("assets/pergaminho.png") !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: transparent;
+
+  width: min(90%, 520px);
+  aspect-ratio: 3 / 4;
+  padding: 80px 48px;
+
   color: #3b2f1e;
-  padding: 32px;
-  width: min(90%, 500px);
-  border: 6px solid #c2a76b;
-  box-shadow: 0 0 40px rgba(0,0,0,0.8);
   font-family: "Georgia", serif;
-  transform: scale(0.8);
-  opacity: 0;
-  transition: all 1.5s ease;
+  box-shadow: 0 0 40px rgba(0,0,0,0.9);
+
+  opacity: 1;
 }
 
+}
 .castelo.ativo {
   opacity: 1;
   pointer-events: all;
