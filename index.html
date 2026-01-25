@@ -5,7 +5,6 @@
   <title>Projeto Renascer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Estilo principal -->
   <style>
     * {
       margin: 0;
@@ -13,25 +12,25 @@
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
       width: 100%;
-      height: 100vh;
+      height: 100%;
       overflow: hidden;
       background-color: #000;
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    /* Imagem de fundo com rotação lenta */
+    /* COSMOS GIRANDO */
     .portal {
       position: fixed;
       top: 50%;
       left: 50%;
-      width: 120vmax;
-      height: 120vmax;
-      background: url("ativos/cosmos-visão.png") no-repeat center;
+      width: 140vmax;
+      height: 140vmax;
+      background: url("ativos/cosmos-vision.png") no-repeat center;
       background-size: cover;
       transform: translate(-50%, -50%);
-      animation: rotacao-lenta 90s linear infinite;
+      animation: rotacao-lenta 120s linear infinite;
       z-index: 1;
     }
 
@@ -44,19 +43,8 @@
       }
     }
 
-    /* Camada escura para leitura */
+    /* OVERLAY ESCURO */
     .overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.55);
-      z-index: 2;
-    }
-
-    /* Conteúdo central */
-    .conteudo {
-      position: relative;
-      z-index: 3;
-      height: 100
+      inset: 0;
+      background
