@@ -19,7 +19,7 @@ html, body {
 }
 
 /* ===============================
-   VÓRTICE (PLANO DE FUNDO)
+   COSMOS (PLANO DE FUNDO)
 ================================ */
 .vortex {
   position: fixed;
@@ -28,17 +28,17 @@ html, body {
   width: 160vw;
   height: 160vw;
   transform: translate(-50%, -50%);
-  background-image: url("./ativos/cosmic-vortice.png");
+  background-image: url("ativos/cosmos-vision.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  animation: vortex-spin 40s linear infinite;
+  animation: cosmos-spin 120s linear infinite; /* 🔥 rotação MAIS lenta */
   opacity: 0.85;
   z-index: 1;
 }
 
-/* Rotação HORÁRIA */
-@keyframes vortex-spin {
+/* Rotação HORÁRIA e SUAVE */
+@keyframes cosmos-spin {
   from {
     transform: translate(-50%, -50%) rotate(0deg);
   }
