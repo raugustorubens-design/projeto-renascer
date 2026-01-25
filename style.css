@@ -28,7 +28,7 @@ html, body {
   width: 160vw;
   height: 160vw;
   transform: translate(-50%, -50%);
-  background: url("assets/cosmos-vision.png") no-repeat center;
+  background: url("./assets/cosmos-vision.png") no-repeat center;
   background-size: cover;
   animation: cosmos-spin 120s linear infinite;
   opacity: 0.85;
@@ -71,6 +71,11 @@ html, body {
   transition: opacity 1s ease;
 }
 
+.vortex-content.oculto {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .vortex-content h1 {
   font-size: 3rem;
   margin-bottom: 16px;
@@ -91,6 +96,7 @@ html, body {
   background: transparent;
   color: #ffffff;
   cursor: pointer;
+  letter-spacing: 1px;
   transition: all 0.3s ease;
 }
 
@@ -100,10 +106,60 @@ html, body {
 }
 
 /* ===============================
-   CASTELO
+   CASTELO (CENA INTERNA)
 ================================ */
 .castelo {
   position: fixed;
   inset: 0;
   background: radial-gradient(circle at center, #555 0%, #111 70%);
-  dis
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+  transition: opacity 2s ease;
+}
+
+/* Parede de pedra */
+.castelo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.03) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  opacity: 0.3;
+  z-index: 1;
+}
+
+/* ===============================
+   PERGAMINHO (IMAGEM REAL)
+================================ */
+.pergaminho {
+  position: relative;
+  z-index: 3;
+
+  background-image: url("./assets/pergaminho.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  width: min(90%, 520px);
+  aspect-ratio: 3 / 4;
+  padding: 80px 48px;
+
+  color: #3b2f1e;
+  font-family: "Georgia", serif;
+  box-shadow: 0 0 40px rgba(0,0,0,0.9);
+
+  transform: scale(0.85);
+  opacity: 0;
+  transition: transform 1.5s ease, opacity 1.5s ease;
+}
+
+/* =*
