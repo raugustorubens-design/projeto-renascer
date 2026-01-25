@@ -5,46 +5,24 @@
   <title>Projeto Renascer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="estilo.css">
+</head>
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background-color: #000;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+<body>
 
-    /* COSMOS GIRANDO */
-    .portal {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 140vmax;
-      height: 140vmax;
-      background: url("ativos/cosmos-vision.png") no-repeat center;
-      background-size: cover;
-      transform: translate(-50%, -50%);
-      animation: rotacao-lenta 120s linear infinite;
-      z-index: 1;
-    }
+  <!-- COSMOS GIRANDO (PLANO DE FUNDO) -->
+  <div class="vortex"></div>
 
-    @keyframes rotacao-lenta {
-      from {
-        transform: translate(-50%, -50%) rotate(0deg);
-      }
-      to {
-        transform: translate(-50%, -50%) rotate(360deg);
-      }
-    }
+  <!-- OVERLAY PARA ESCURECER -->
+  <div class="overlay"></div>
 
-    /* OVERLAY ESCURO */
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background
+  <!-- CONTEÚDO CENTRAL -->
+  <div class="vortex-content">
+    <h1>Projeto Renascer</h1>
+    <p>Portal educacional em formato RPG</p>
+    <a href="#" class="btn-entrar">Iniciar Jornada</a>
+  </div>
+
+</body>
+</html>
