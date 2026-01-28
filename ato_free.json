@@ -14,26 +14,22 @@
         {
           "type": "content",
           "title": "O que é um dado",
-          "text": "Um dado é um valor bruto, sem interpretação. Ele descreve algo observado ou medido."
+          "text": "Um dado é um valor bruto, sem interpretação.",
+          "example": "Temperatura registrada: 28"
         },
         {
           "type": "quiz",
+          "example": "150\n42\n300",
           "question": "Qual alternativa representa apenas um dado?",
           "options": [
             { "text": "As vendas aumentaram", "correct": false },
-            { "text": "150", "correct": true },
-            { "text": "Bom resultado", "correct": false }
+            { "text": "150", "correct": true }
           ]
-        },
-        {
-          "type": "content",
-          "title": "De dado à decisão",
-          "text": "Dados sozinhos não decidem nada. Eles precisam ser organizados e analisados."
         },
         {
           "type": "spell",
           "title": "Feitiço do Olhar",
-          "prompt": "Explique com suas palavras por que um dado sozinho não é suficiente para tomar uma decisão."
+          "prompt": "Explique por que um dado isolado não é suficiente para tomar uma decisão."
         }
       ]
     },
@@ -43,32 +39,24 @@
       "title": "Análise de Dados",
       "steps": [
         {
-          "type": "narrative",
-          "title": "A Arte da Análise",
-          "text": "Analisar é procurar padrões, diferenças e relações."
-        },
-        {
           "type": "content",
-          "title": "O que é análise",
-          "text": "Análise de dados é o processo de transformar dados em informação para apoiar decisões."
+          "title": "Analisar dados",
+          "text": "Analisar é comparar, organizar e interpretar dados.",
+          "example": "Janeiro: 120 vendas\nFevereiro: 150 vendas"
         },
         {
           "type": "quiz",
-          "question": "Qual situação representa análise de dados?",
+          "example": "120 → 150",
+          "question": "O que o exemplo representa?",
           "options": [
-            { "text": "Guardar números em uma planilha", "correct": false },
-            { "text": "Comparar vendas de dois meses", "correct": true }
+            { "text": "Um dado isolado", "correct": false },
+            { "text": "Uma análise simples", "correct": true }
           ]
-        },
-        {
-          "type": "content",
-          "title": "Cuidado com interpretações",
-          "text": "Nem toda relação entre dados indica causa. Às vezes é apenas coincidência."
         },
         {
           "type": "spell",
           "title": "Feitiço da Análise",
-          "prompt": "Explique por que confundir correlação com causalidade pode gerar decisões erradas."
+          "prompt": "Explique como comparar dados ajuda na tomada de decisão."
         }
       ]
     },
@@ -78,17 +66,14 @@
       "title": "Python Básico",
       "steps": [
         {
-          "type": "narrative",
-          "title": "A Linguagem das Máquinas",
-          "text": "Programar é escrever instruções claras para a máquina executar."
-        },
-        {
           "type": "content",
           "title": "Variáveis",
-          "text": "Variáveis guardam valores. Elas permitem que o programa lembre informações."
+          "text": "Variáveis armazenam valores.",
+          "example": "idade = 30"
         },
         {
           "type": "quiz",
+          "example": "idade = 30",
           "question": "Qual linha cria corretamente uma variável em Python?",
           "options": [
             { "text": "idade == 30", "correct": false },
@@ -98,11 +83,13 @@
         {
           "type": "content",
           "title": "Decisões",
-          "text": "Estruturas condicionais permitem que o programa escolha caminhos diferentes."
+          "text": "Programas podem tomar decisões usando condições.",
+          "example": "if idade >= 18:\n    print(\"Maior de idade\")"
         },
         {
           "type": "quiz",
-          "question": "Qual palavra é usada para iniciar uma decisão em Python?",
+          "example": "if idade >= 18:",
+          "question": "Qual palavra inicia uma decisão em Python?",
           "options": [
             { "text": "when", "correct": false },
             { "text": "if", "correct": true }
@@ -111,12 +98,12 @@
         {
           "type": "spell",
           "title": "Feitiço da Linguagem",
-          "prompt": "Explique por que a sintaxe correta é essencial para que o programa funcione."
+          "prompt": "Explique por que a sintaxe correta é importante para o Python funcionar."
         },
         {
           "type": "portal",
           "title": "Portal do Conhecimento Profundo",
-          "text": "Você concluiu a base gratuita. A partir daqui, o conhecimento se aprofunda."
+          "text": "Você concluiu a base gratuita."
         }
       ]
     }
