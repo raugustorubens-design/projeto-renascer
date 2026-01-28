@@ -1,0 +1,151 @@
+{
+  "project": "Projeto Renascer",
+  "access": "FREE",
+  "acts": [
+    {
+      "act": 0,
+      "title": "Fundamentos de Dados",
+      "description": "Base conceitual sem código",
+      "steps": [
+        {
+          "type": "narrative",
+          "title": "O Despertar do Olhar",
+          "text": "Antes de qualquer linguagem, o mundo já deixava rastros. Aqui começa o despertar do olhar."
+        },
+        {
+          "type": "content",
+          "title": "O que é um Dado",
+          "text": "Um dado é um registro bruto de algo observado ou medido. Sozinho, não gera decisão."
+        },
+        {
+          "type": "quiz",
+          "question": "Qual alternativa representa apenas um dado?",
+          "options": [
+            { "text": "As vendas cresceram", "correct": false },
+            { "text": "150", "correct": true },
+            { "text": "Bom desempenho", "correct": false }
+          ]
+        },
+        {
+          "type": "association",
+          "pairs": [
+            { "left": "Dado", "right": "Valor bruto" },
+            { "left": "Informação", "right": "Dado com contexto" },
+            { "left": "Conhecimento", "right": "Base para decisão" }
+          ]
+        },
+        {
+          "type": "spell",
+          "prompt": "Explique por que um dado isolado não é suficiente para tomar decisões."
+        }
+      ]
+    },
+    {
+      "act": 1,
+      "title": "Análise de Dados",
+      "description": "Investigação conceitual sem Python",
+      "steps": [
+        {
+          "type": "narrative",
+          "title": "A Arte da Análise",
+          "text": "Analisar é procurar sentido no que se repete e no que muda."
+        },
+        {
+          "type": "content",
+          "title": "O que é Análise de Dados",
+          "text": "Processo de investigar dados para apoiar decisões."
+        },
+        {
+          "type": "quiz",
+          "question": "O que melhor define análise de dados?",
+          "options": [
+            { "text": "Automação de decisões", "correct": false },
+            { "text": "Investigação para apoiar decisões", "correct": true },
+            { "text": "Uso exclusivo de algoritmos", "correct": false }
+          ]
+        },
+        {
+          "type": "ordering",
+          "items": [
+            "Coletar dados",
+            "Explorar dados",
+            "Identificar padrões",
+            "Tomar decisão"
+          ],
+          "correctOrder": [0, 1, 2, 3]
+        },
+        {
+          "type": "spell",
+          "prompt": "Explique por que correlação não é o mesmo que causalidade."
+        }
+      ]
+    },
+    {
+      "act": 2,
+      "title": "Python Básico",
+      "description": "Ferramenta para transformar análise em ação",
+      "steps": [
+        {
+          "type": "narrative",
+          "title": "A Linguagem das Máquinas",
+          "text": "Python traduz raciocínio humano em ação computacional."
+        },
+        {
+          "type": "content",
+          "title": "O que é Python",
+          "text": "Linguagem de programação simples e poderosa."
+        },
+        {
+          "type": "quiz",
+          "question": "Qual sintaxe correta de atribuição em Python?",
+          "options": [
+            { "text": "idade = 32", "correct": true },
+            { "text": "32 = idade", "correct": false },
+            { "text": "idade == 32", "correct": false }
+          ]
+        },
+        {
+          "type": "association",
+          "pairs": [
+            { "left": "+", "right": "Soma" },
+            { "left": "*", "right": "Multiplicação" },
+            { "left": "/", "right": "Divisão" }
+          ]
+        },
+        {
+          "type": "quiz",
+          "question": "Para que servem estruturas condicionais?",
+          "options": [
+            { "text": "Tomar decisões", "correct": true },
+            { "text": "Repetir código", "correct": false }
+          ]
+        },
+        {
+          "type": "ordering",
+          "items": [
+            "Verificar condição",
+            "Executar ação",
+            "Encerrar laço"
+          ],
+          "correctOrder": [0, 1, 2]
+        },
+        {
+          "type": "content",
+          "title": "Funções",
+          "text": "Blocos reutilizáveis que organizam o código."
+        },
+        {
+          "type": "spell",
+          "prompt": "Explique como Python ajuda a transformar análise em ação prática."
+        },
+        {
+          "type": "portal",
+          "locked": true,
+          "title": "Portal do Conhecimento Profundo",
+          "text": "A partir daqui, o conteúdo é premium.",
+          "requires": "premium"
+        }
+      ]
+    }
+  ]
+}
