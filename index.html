@@ -3,191 +3,261 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projeto Renascer – Primeiro Feitiço</title>
+  <title>Projeto Renascer – Protótipo Completo</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=MedievalSharp&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --azul: #1bbcff;
-      --azul-escuro: #020617;
-      --azul-medio: #0b1c3d;
-      --roxo: #6d5dfc;
-      --texto: #e5e7eb;
-      --pergaminho: #f3e9d2;
-      --tinta: #2a1e12;
+      --bg-dark: #05070c;
+      --portal-blue: #3aa6ff;
+      --text-light: #eaeaea;
+      --accent: #7dd3ff;
+      --danger: #ff6b6b;
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: 'Cinzel', serif;
-      background: radial-gradient(circle at center, #0b1c3d 0%, #08142c 45%, #020617 100%);
-      color: var(--texto);
+      background: radial-gradient(circle at center, #0b1220, var(--bg-dark));
+      color: var(--text-light);
+      font-family: 'MedievalSharp', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       min-height: 100vh;
     }
 
-    header {
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-
-    header h1 {
-      margin: 0;
-      color: var(--azul);
-      letter-spacing: 0.15em;
-      text-shadow: 0 0 15px rgba(27,188,255,0.6);
-    }
-
-    .fase {
-      max-width: 960px;
-      margin: auto;
-      padding: 2rem;
-    }
-
-    .missao {
-      margin-bottom: 3rem;
-      padding: 2rem;
-      background: rgba(2,6,23,0.85);
-      border-radius: 18px;
-      border: 1px solid rgba(109,93,252,0.4);
-      box-shadow: 0 0 30px rgba(109,93,252,0.25);
-    }
-
-    .missao h3 { color: var(--azul); }
-
-    .bloco {
-      margin: 1rem 0;
-      padding: 1rem 1.2rem;
-      background: rgba(27,188,255,0.08);
-      border-left: 4px solid var(--azul);
-      border-radius: 6px;
-    }
-
-    /* PERGAMINHO IDE */
-    .pergaminho {
-      margin-top: 1.5rem;
-      padding: 1.5rem;
-      background: linear-gradient(#f7f0df, #efe3c6);
-      color: var(--tinta);
-      border-radius: 12px;
-      font-family: 'Courier New', monospace;
-      box-shadow: inset 0 0 12px rgba(0,0,0,0.25), 0 0 20px rgba(0,0,0,0.4);
-    }
-
-    .pergaminho textarea {
+    .app {
       width: 100%;
-      height: 120px;
-      background: transparent;
-      border: none;
-      resize: none;
-      font-family: 'Courier New', monospace;
-      font-size: 0.95rem;
-      color: var(--tinta);
-      outline: none;
+      max-width: 420px;
+      min-height: 760px;
+      background: rgba(10, 15, 30, 0.9);
+      border-radius: 18px;
+      box-shadow: 0 0 50px rgba(58,166,255,0.35);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .pergaminho small {
+    h1, h2 {
+      font-family: 'Uncial Antiqua', serif;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    p {
+      line-height: 1.5;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    .button {
       display: block;
-      margin-top: 0.5rem;
-      font-style: italic;
-    }
-
-    button {
-      margin-top: 1rem;
-      padding: 0.6rem 1.4rem;
-      font-family: 'Cinzel', serif;
-      border-radius: 12px;
+      margin: 22px auto 0;
+      padding: 12px 20px;
+      border-radius: 24px;
       border: none;
-      background: linear-gradient(135deg, var(--azul), var(--roxo));
-      color: #020617;
+      background: linear-gradient(135deg, var(--portal-blue), var(--accent));
+      color: #000;
+      font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 0 15px rgba(27,188,255,0.6);
+      width: 100%;
     }
 
-    .resultado {
-      margin-top: 1rem;
+    .button.danger {
+      background: linear-gradient(135deg, var(--danger), #ffa07a);
+    }
+
+    .options label {
+      display: block;
+      background: rgba(255,255,255,0.06);
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      border-radius: 8px;
+      border: none;
+      padding: 10px;
+      font-family: inherit;
+    }
+
+    .portal {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      background: radial-gradient(circle, #8fd3ff, #1b4fff, #020414);
+      box-shadow: 0 0 30px #3aa6ff;
+      animation: pulse 2.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.06); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.85; }
+    }
+
+    .badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #ffcc00;
+      color: #000;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 8px;
       font-weight: bold;
     }
 
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.75rem;
-      opacity: 0.55;
+    .progress {
+      height: 6px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--portal-blue), var(--accent));
+      transition: width 0.4s ease;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>PROJETO RENASCER</h1>
-  <p>Primeiro Feitiço — Ritual do Entendimento</p>
-</header>
+  <div class="app">
+    <div class="badge">PROTÓTIPO</div>
+    <div class="progress"><div class="progress-bar" id="progress"></div></div>
 
-<section class="fase">
-
-  <div class="missao">
-    <h3>Missão — O Primeiro Feitiço</h3>
-
-    <div class="bloco">
-      <strong>Contexto Narrativo</strong><br>
-      O portal exige mais do que palavras. Ele exige intenção organizada.
-      Grave no pergaminho o ritual que transforma caos em sentido.
+    <!-- TELA 1: ABERTURA -->
+    <div class="screen active" id="s1">
+      <div class="portal"></div>
+      <h1>Projeto Renascer</h1>
+      <p>Antes do código, o olhar.<br>Antes do poder, o entendimento.</p>
+      <button class="button" onclick="next()">Iniciar Jornada</button>
     </div>
 
-    <div class="bloco">
-      <strong>Explicação</strong><br>
-      Um processo analítico básico sempre segue três etapas:
-      <ol>
-        <li>Receber dados</li>
-        <li>Organizar os dados</li>
-        <li>Gerar entendimento</li>
-      </ol>
-      Você não escreverá código ainda. Apenas a lógica do pensamento.
+    <!-- TELA 2: CONCEITO DADO -->
+    <div class="screen" id="s2">
+      <h2>O que é um Dado?</h2>
+      <p>Um dado é um valor bruto que representa algo do mundo real.</p>
+      <button class="button" onclick="next()">Compreendi</button>
     </div>
 
-    <div class="bloco">
-      <strong>Execução Assistida — Pergaminho do Feitiço</strong>
-
-      <div class="pergaminho">
-        <textarea id="feitiço" placeholder="Exemplo:
-1. Receber os dados
-2. Organizar os dados
-3. Analisar para gerar conhecimento"></textarea>
-        <small>Escreva as três etapas do feitiço, uma por linha.</small>
+    <!-- TELA 3: QUESTÃO 2 -->
+    <div class="screen" id="s3">
+      <h2>Desafio do Olhar</h2>
+      <p>Qual item abaixo é um dado?</p>
+      <div class="options">
+        <label><input type="radio" name="q1"> Uma decisão estratégica</label>
+        <label><input type="radio" name="q1"> Um relatório analisado</label>
+        <label><input type="radio" name="q1" id="q1c"> Número de acessos</label>
+        <label><input type="radio" name="q1"> Uma conclusão</label>
       </div>
-
-      <button onclick="validarFeitico()">Conjurar Feitiço</button>
-      <div class="resultado" id="resultado"></div>
+      <button class="button" onclick="check('q1c')">Confirmar</button>
     </div>
 
+    <!-- TELA 4: FEITIÇO -->
+    <div class="screen" id="s4">
+      <h2>Feitiço da Compreensão</h2>
+      <p>Explique por que um dado isolado não gera conhecimento.</p>
+      <textarea placeholder="Digite seu feitiço..."></textarea>
+      <button class="button" onclick="next()">Lançar Feitiço</button>
+    </div>
+
+    <!-- TELA 5: DADOS ESTRUTURADOS -->
+    <div class="screen" id="s5">
+      <h2>Dados Estruturados</h2>
+      <p>São dados organizados em tabelas, com formato definido.</p>
+      <button class="button" onclick="next()">Avançar</button>
+    </div>
+
+    <!-- TELA 6: QUESTÃO 2 -->
+    <div class="screen" id="s6">
+      <h2>Desafio da Ordem</h2>
+      <p>Qual exemplo é um dado estruturado?</p>
+      <div class="options">
+        <label><input type="radio" name="q2" id="q2c"> Planilha de vendas</label>
+        <label><input type="radio" name="q2"> Áudio</label>
+        <label><input type="radio" name="q2"> Vídeo</label>
+        <label><input type="radio" name="q2"> Texto livre</label>
+      </div>
+      <button class="button" onclick="check('q2c')">Confirmar</button>
+    </div>
+
+    <!-- TELA 7: DADOS NÃO ESTRUTURADOS -->
+    <div class="screen" id="s7">
+      <h2>Dados Não Estruturados</h2>
+      <p>Textos, imagens, áudios e vídeos exigem mais processamento.</p>
+      <button class="button" onclick="next()">Prosseguir</button>
+    </div>
+
+    <!-- TELA 8: LIMPEZA -->
+    <div class="screen" id="s8">
+      <h2>Qualidade de Dados</h2>
+      <p>Dados imprecisos geram decisões incorretas.</p>
+      <button class="button" onclick="next()">Entendi</button>
+    </div>
+
+    <!-- TELA 9: ENCERRAMENTO -->
+    <div class="screen" id="s9">
+      <div class="portal"></div>
+      <h2>Ato I Concluído</h2>
+      <p>Teu olhar foi despertado.<br>O método virá a seguir.</p>
+      <button class="button danger" onclick="restart()">Reiniciar Protótipo</button>
+    </div>
   </div>
 
-</section>
+  <script>
+    let current = 1;
+    const total = 9;
 
-<footer>Projeto Renascer • Feitiço Conceitual Implementado</footer>
-
-<script>
-  function validarFeitico() {
-    const texto = document.getElementById('feitiço').value.toLowerCase();
-    const resultado = document.getElementById('resultado');
-
-    const cond1 = texto.includes('receber');
-    const cond2 = texto.includes('organizar');
-    const cond3 = texto.includes('analisar') || texto.includes('entender');
-
-    if (cond1 && cond2 && cond3) {
-      resultado.style.color = 'limegreen';
-      resultado.innerText = '✔ O feitiço ressoa. O portal reconhece seu entendimento.';
-      localStorage.setItem('feitico1', 'concluido');
-    } else {
-      resultado.style.color = 'crimson';
-      resultado.innerText = '✖ O feitiço falha. Releia as etapas do ritual e tente novamente.';
+    function updateProgress() {
+      const percent = Math.round((current - 1) / (total - 1) * 100);
+      document.getElementById('progress').style.width = percent + '%';
     }
-  }
-</script>
+
+    function next() {
+      const cs = document.getElementById('s' + current);
+      if (cs) cs.classList.remove('active');
+      current++;
+      const ns = document.getElementById('s' + current);
+      if (ns) ns.classList.add('active');
+      updateProgress();
+    }
+
+    function check(correctId) {
+      const correct = document.getElementById(correctId);
+      if (correct && correct.checked) {
+        alert('Correto!');
+        next();
+      } else {
+        alert('Resposta incorreta. Observe com atenção.');
+      }
+    }
+
+    function restart() {
+      document.getElementById('s' + current).classList.remove('active');
+      current = 1;
+      document.getElementById('s1').classList.add('active');
+      updateProgress();
+    }
+
+    updateProgress();
+  </script>
 
 </body>
 </html>
