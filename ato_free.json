@@ -126,35 +126,4 @@
           "type": "quiz",
           "question": "Qual opção representa corretamente o início de uma estrutura condicional em Python?",
           "options": [
-            { "text": "if nota > 7", "correct": false },
-            { "text": "if (nota > 7):", "correct": false },
-            { "text": "if nota > 7:", "correct": true }
-          ]
-        },
-
-        {
-          "type": "spell",
-          "title": "Feitiço II — A Decisão Escrita",
-          "prompt": "Escreva um pequeno trecho de código que verifique se a variável nota é maior ou igual a 7. Depois, explique por que os dois-pontos (:) e a indentação são obrigatórios em Python."
-        },
-
-        {
-          "type": "content",
-          "title": "Repetição (Laços)",
-          "text": "Laços permitem repetir ações enquanto uma condição for verdadeira."
-        },
-
-        {
-          "type": "quiz",
-          "question": "Qual é a função principal de um laço em programação?",
-          "options": [
-            { "text": "Tomar decisões", "correct": false },
-            { "text": "Repetir ações", "correct": true },
-            { "text": "Guardar dados", "correct": false }
-          ]
-        },
-
-        {
-          "type": "spell",
-          "title": "Feitiço III — O Caminho Repetido",
-          "prompt": "Escreva um exemplo simples de laço em Python e explique como o programa sabe quando deve p
+            { "tex
