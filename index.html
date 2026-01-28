@@ -212,18 +212,117 @@
       <button class="button" onclick="next()">Entendi</button>
     </div>
 
-    <!-- TELA 9: ENCERRAMENTO -->
+    <!-- TELA 9: ENCERRAMENTO ATO I -->
     <div class="screen" id="s9">
       <div class="portal"></div>
       <h2>Ato I Concluído</h2>
-      <p>Teu olhar foi despertado.<br>O método virá a seguir.</p>
+      <p>Teu olhar foi despertado.<br>Agora aprenderás a investigar.</p>
+      <button class="button" onclick="next()">Entrar no Ato II</button>
+    </div>
+
+    <!-- ================= ATO II ================= -->
+
+    <!-- TELA 10: ABERTURA ATO II -->
+    <div class="screen" id="s10">
+      <div class="portal"></div>
+      <h1>Ato II</h1>
+      <p>A Análise Exploratória<br>O caos começa a revelar padrões.</p>
+      <button class="button" onclick="next()">Iniciar Ato II</button>
+    </div>
+
+    <!-- TELA 11: CONCEITO EDA -->
+    <div class="screen" id="s11">
+      <h2>Análise Exploratória</h2>
+      <p>Explorar dados é entender sua forma, distribuição e comportamento antes de qualquer modelo.</p>
+      <button class="button" onclick="next()">Compreendi</button>
+    </div>
+
+    <!-- TELA 12: QUESTÃO ATO II -->
+    <div class="screen" id="s12">
+      <h2>Desafio do Explorador</h2>
+      <p>Qual é o objetivo principal da análise exploratória?</p>
+      <div class="options">
+        <label><input type="radio" name="q3"> Criar modelos finais</label>
+        <label><input type="radio" name="q3" id="q3c"> Compreender padrões e problemas</label>
+        <label><input type="radio" name="q3"> Treinar algoritmos</label>
+        <label><input type="radio" name="q3"> Automatizar decisões</label>
+      </div>
+      <button class="button" onclick="check('q3c')">Confirmar</button>
+    </div>
+
+    <!-- TELA 13: FEITIÇO ATO II -->
+    <div class="screen" id="s13">
+      <h2>Feitiço da Investigação</h2>
+      <p>Por que explorar os dados antes de modelar é essencial?</p>
+      <textarea placeholder="Digite seu feitiço..."></textarea>
+      <button class="button" onclick="next()">Lançar Feitiço</button>
+    </div>
+
+    <!-- TELA 14: ENCERRAMENTO ATO II -->
+    <div class="screen" id="s14">
+      <div class="portal"></div>
+      <h2>Ato II Concluído</h2>
+      <p>Os padrões começam a emergir.<br>Agora aprenderás a prever.</p>
+      <button class="button" onclick="next()">Entrar no Ato III</button>
+    </div>
+
+    <!-- ================= ATO III ================= -->
+
+    <!-- TELA 15: ABERTURA ATO III -->
+    <div class="screen" id="s15">
+      <div class="portal"></div>
+      <h1>Ato III</h1>
+      <p>Modelagem e Previsão<br>Quando o futuro começa a ser estimado.</p>
+      <button class="button" onclick="next()">Iniciar Ato III</button>
+    </div>
+
+    <!-- TELA 16: CONCEITO MODELO -->
+    <div class="screen" id="s16">
+      <h2>O que é um Modelo?</h2>
+      <p>Um modelo é uma representação matemática que aprende padrões a partir dos dados.</p>
+      <button class="button" onclick="next()">Compreendi</button>
+    </div>
+
+    <!-- TELA 17: CONCEITO VARIÁVEIS -->
+    <div class="screen" id="s17">
+      <h2>Variáveis</h2>
+      <p>Variáveis são características usadas para explicar ou prever um fenômeno.</p>
+      <button class="button" onclick="next()">Avançar</button>
+    </div>
+
+    <!-- TELA 18: QUESTÃO ATO III -->
+    <div class="screen" id="s18">
+      <h2>Desafio do Oráculo</h2>
+      <p>Qual afirmação é correta sobre modelos?</p>
+      <div class="options">
+        <label><input type="radio" name="q4"> Preveem o futuro com certeza</label>
+        <label><input type="radio" name="q4"> Substituem análise humana</label>
+        <label><input type="radio" name="q4" id="q4c"> Estimam padrões com base em dados</label>
+        <label><input type="radio" name="q4"> Funcionam sem dados</label>
+      </div>
+      <button class="button" onclick="check('q4c')">Confirmar</button>
+    </div>
+
+    <!-- TELA 19: FEITIÇO ATO III -->
+    <div class="screen" id="s19">
+      <h2>Feitiço da Previsão</h2>
+      <p>Por que modelos fazem estimativas e não certezas?</p>
+      <textarea placeholder="Digite seu feitiço..."></textarea>
+      <button class="button" onclick="next()">Lançar Feitiço</button>
+    </div>
+
+    <!-- TELA 20: ENCERRAMENTO ATO III -->
+    <div class="screen" id="s20">
+      <div class="portal"></div>
+      <h2>Ato III Concluído</h2>
+      <p>Agora compreendes a arte da previsão.<br>No próximo ato, dominarás a validação.</p>
       <button class="button danger" onclick="restart()">Reiniciar Protótipo</button>
     </div>
   </div>
 
   <script>
     let current = 1;
-    const total = 9;
+    const total = 20;
 
     function updateProgress() {
       const percent = Math.round((current - 1) / (total - 1) * 100);
