@@ -9,12 +9,12 @@
         {
           "type": "narrative",
           "title": "O Despertar do Olhar",
-          "text": "Antes de qualquer linguagem ou código, o mundo já produzia sinais. Observar é o primeiro ato do conhecimento."
+          "text": "Antes de qualquer linguagem, o mundo já deixava rastros. Observar vem antes de agir."
         },
         {
           "type": "content",
           "title": "O que é um dado",
-          "text": "Um dado é um valor bruto, sem interpretação. Ele apenas registra algo observado ou medido.",
+          "text": "Um dado é um valor bruto, sem interpretação.",
           "example": "Temperatura registrada: 28\nQuantidade vendida: 150"
         },
         {
@@ -22,20 +22,23 @@
           "question": "Qual alternativa representa apenas um dado?",
           "options": [
             { "text": "As vendas cresceram", "correct": false },
-            { "text": "150", "correct": true },
-            { "text": "Bom desempenho", "correct": false }
+            { "text": "150", "correct": true }
           ]
         },
         {
-          "type": "content",
-          "title": "De dados a decisões",
-          "text": "Dados sozinhos não decidem nada. Eles precisam ser organizados, comparados e interpretados.",
-          "example": "Janeiro: 120 vendas\nFevereiro: 150 vendas"
+          "type": "ordering",
+          "title": "Ordem do Conhecimento",
+          "text": "Organize o caminho correto até a decisão.",
+          "items": [
+            "Registrar dados",
+            "Analisar dados",
+            "Tomar decisão"
+          ]
         },
         {
           "type": "spell",
           "title": "Feitiço do Olhar",
-          "prompt": "Explique, com suas palavras, por que um dado isolado não é suficiente para tomar uma decisão."
+          "prompt": "Explique por que os dados precisam ser organizados antes de uma decisão."
         }
       ]
     },
@@ -45,34 +48,33 @@
       "title": "Análise de Dados",
       "steps": [
         {
-          "type": "narrative",
-          "title": "A Arte da Análise",
-          "text": "Analisar é buscar sentido no que se repete, no que muda e no que se relaciona."
-        },
-        {
           "type": "content",
-          "title": "O que é análise de dados",
-          "text": "Análise de dados é o processo de transformar dados em informação para apoiar decisões.",
-          "example": "Comparar vendas de dois meses para identificar crescimento."
+          "title": "Analisar dados",
+          "text": "Analisar é comparar, organizar e interpretar dados.",
+          "example": "Janeiro: 120\nFevereiro: 150"
         },
         {
           "type": "quiz",
-          "question": "Qual situação representa análise de dados?",
+          "question": "O que o exemplo representa?",
           "options": [
-            { "text": "Guardar números em uma planilha", "correct": false },
-            { "text": "Comparar resultados de dois períodos", "correct": true }
+            { "text": "Um dado isolado", "correct": false },
+            { "text": "Uma análise simples", "correct": true }
           ]
         },
         {
-          "type": "content",
-          "title": "Correlação e causalidade",
-          "text": "Nem toda relação entre dados indica causa. Às vezes dois eventos apenas acontecem juntos.",
-          "example": "Venda de sorvetes aumenta no verão junto com a temperatura."
+          "type": "ordering",
+          "title": "Fluxo da Análise",
+          "text": "Qual a sequência correta da análise?",
+          "items": [
+            "Coletar dados",
+            "Comparar resultados",
+            "Interpretar padrões"
+          ]
         },
         {
           "type": "spell",
           "title": "Feitiço da Análise",
-          "prompt": "Explique por que confundir correlação com causalidade pode levar a decisões erradas."
+          "prompt": "Explique como a análise transforma dados em apoio à decisão."
         }
       ]
     },
@@ -82,14 +84,9 @@
       "title": "Python Básico",
       "steps": [
         {
-          "type": "narrative",
-          "title": "A Linguagem das Máquinas",
-          "text": "Programar é escrever instruções exatas. A máquina não interpreta intenção, apenas forma."
-        },
-        {
           "type": "content",
           "title": "Variáveis",
-          "text": "Variáveis são nomes que guardam valores. Elas permitem que o programa se lembre de informações.",
+          "text": "Variáveis guardam valores para uso posterior.",
           "example": "idade = 30"
         },
         {
@@ -102,27 +99,29 @@
         },
         {
           "type": "content",
-          "title": "Decisões com if",
-          "text": "Estruturas condicionais permitem que o programa escolha caminhos diferentes.",
+          "title": "Decisões",
+          "text": "Programas podem escolher caminhos.",
           "example": "if idade >= 18:\n    print(\"Maior de idade\")"
         },
         {
-          "type": "quiz",
-          "question": "Qual palavra inicia uma decisão em Python?",
-          "options": [
-            { "text": "when", "correct": false },
-            { "text": "if", "correct": true }
+          "type": "ordering",
+          "title": "Ordem da Decisão",
+          "text": "Organize a lógica de uma decisão em Python.",
+          "items": [
+            "Definir variável",
+            "Avaliar condição",
+            "Executar ação"
           ]
         },
         {
           "type": "spell",
           "title": "Feitiço da Linguagem",
-          "prompt": "Explique por que a sintaxe correta é essencial para que um programa em Python funcione."
+          "prompt": "Explique como variáveis e decisões trabalham juntas em um programa Python."
         },
         {
           "type": "portal",
           "title": "Portal do Conhecimento Profundo",
-          "text": "Você dominou a base gratuita. A partir daqui, o conhecimento se aprofunda."
+          "text": "Você concluiu o caminho gratuito. O próximo nível exige compromisso."
         }
       ]
     }
