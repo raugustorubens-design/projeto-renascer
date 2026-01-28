@@ -4,35 +4,119 @@
   "acts": [
     {
       "act": 0,
-      "title": "Fundamentos",
+      "title": "Fundamentos de Dados",
       "steps": [
         {
           "type": "narrative",
-          "title": "O Despertar",
-          "text": "Antes de programar, é preciso observar."
+          "title": "O Despertar do Olhar",
+          "text": "Antes de qualquer linguagem, o mundo já deixava rastros. Observar vem antes de agir."
         },
         {
           "type": "content",
           "title": "O que é um dado",
-          "text": "Um dado é um valor bruto, sem interpretação."
+          "text": "Um dado é um valor bruto, sem interpretação. Ele descreve algo observado ou medido."
         },
         {
           "type": "quiz",
-          "question": "Qual é um dado?",
+          "question": "Qual alternativa representa apenas um dado?",
           "options": [
-            { "text": "Crescimento das vendas", "correct": false },
-            { "text": "150", "correct": true }
+            { "text": "As vendas aumentaram", "correct": false },
+            { "text": "150", "correct": true },
+            { "text": "Bom resultado", "correct": false }
+          ]
+        },
+        {
+          "type": "content",
+          "title": "De dado à decisão",
+          "text": "Dados sozinhos não decidem nada. Eles precisam ser organizados e analisados."
+        },
+        {
+          "type": "spell",
+          "title": "Feitiço do Olhar",
+          "prompt": "Explique com suas palavras por que um dado sozinho não é suficiente para tomar uma decisão."
+        }
+      ]
+    },
+
+    {
+      "act": 1,
+      "title": "Análise de Dados",
+      "steps": [
+        {
+          "type": "narrative",
+          "title": "A Arte da Análise",
+          "text": "Analisar é procurar padrões, diferenças e relações."
+        },
+        {
+          "type": "content",
+          "title": "O que é análise",
+          "text": "Análise de dados é o processo de transformar dados em informação para apoiar decisões."
+        },
+        {
+          "type": "quiz",
+          "question": "Qual situação representa análise de dados?",
+          "options": [
+            { "text": "Guardar números em uma planilha", "correct": false },
+            { "text": "Comparar vendas de dois meses", "correct": true }
+          ]
+        },
+        {
+          "type": "content",
+          "title": "Cuidado com interpretações",
+          "text": "Nem toda relação entre dados indica causa. Às vezes é apenas coincidência."
+        },
+        {
+          "type": "spell",
+          "title": "Feitiço da Análise",
+          "prompt": "Explique por que confundir correlação com causalidade pode gerar decisões erradas."
+        }
+      ]
+    },
+
+    {
+      "act": 2,
+      "title": "Python Básico",
+      "steps": [
+        {
+          "type": "narrative",
+          "title": "A Linguagem das Máquinas",
+          "text": "Programar é escrever instruções claras para a máquina executar."
+        },
+        {
+          "type": "content",
+          "title": "Variáveis",
+          "text": "Variáveis guardam valores. Elas permitem que o programa lembre informações."
+        },
+        {
+          "type": "quiz",
+          "question": "Qual linha cria corretamente uma variável em Python?",
+          "options": [
+            { "text": "idade == 30", "correct": false },
+            { "text": "idade = 30", "correct": true }
+          ]
+        },
+        {
+          "type": "content",
+          "title": "Decisões",
+          "text": "Estruturas condicionais permitem que o programa escolha caminhos diferentes."
+        },
+        {
+          "type": "quiz",
+          "question": "Qual palavra é usada para iniciar uma decisão em Python?",
+          "options": [
+            { "text": "when", "correct": false },
+            { "text": "if", "correct": true }
           ]
         },
         {
           "type": "spell",
-          "title": "Feitiço Inicial",
-          "prompt": "Explique com suas palavras o que é um dado."
+          "title": "Feitiço da Linguagem",
+          "prompt": "Explique por que a sintaxe correta é essencial para que o programa funcione."
         },
         {
           "type": "portal",
-          "title": "Portal Bloqueado",
-          "text": "Fim da parte FREE."
+          "title": "Portal do Conhecimento Profundo",
+          "text": "Você concluiu a base gratuita. A partir daqui, o conhecimento se aprofunda."
         }
       ]
     }
