@@ -346,3 +346,56 @@ function enablePremiumFeatures() {
 ✔ Nenhuma quebra de congelamento
 ✔ Sistema pronto para escalar com segurança
 
+
+
+---
+
+## 📜 INÍCIO DO GRIMÓRIO DA LINGUAGEM (FASE 6)
+
+> O Grimório é um **sistema de consulta contextual**, não um atalho.
+> Ele não ensina no lugar do aluno — ele **responde quando o aluno já sabe perguntar**.
+
+### Ativação Controlada do Grimório
+```js
+grimorio.enabled = true;
+```
+
+### Estrutura Canônica de Entradas
+```js
+const grimorioEntries = [
+  {
+    id: "print",
+    titulo: "print()",
+    categoria: "Saída",
+    descricao: "Exibe informações no console",
+    exemplo: "print('Olá, mundo')",
+    armadilha: "Confundir print com retorno de função"
+  },
+  {
+    id: "if",
+    titulo: "if / else",
+    categoria: "Controle de Fluxo",
+    descricao: "Executa blocos condicionais",
+    exemplo: "if x > 0:\n    print(x)",
+    armadilha: "Indentação incorreta"
+  }
+];
+```
+
+### Consulta Contextual
+```js
+function consultarGrimorio(id) {
+  return grimorioEntries.find(e => e.id === id);
+}
+```
+
+### Regra Pedagógica
+- O Grimório **não aparece automaticamente**.
+- Ele é acessado por decisão consciente do aluno.
+- Consultar o Grimório **não avança progresso**.
+
+---
+
+✔ Grimório ativado
+✔ Consulta segura e contextual
+✔ Nenhum impacto na progressão
