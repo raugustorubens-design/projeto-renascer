@@ -474,7 +474,7 @@ function listarPorCategoria(cat) {
 ## 🧩 INTEGRAÇÃO DO GRIMÓRIO À INTERFACE (FASE 6.2)
 
 > Integração **manual e consciente** do Grimório à interface.
-> Não há abertura automática, pop-ups invasivos ou sugestões contextuais forçadas.
+> Não há abertura automática, pop‑ups invasivos ou sugestões contextuais forçadas.
 
 ### Elemento de Interface (HTML)
 ```html
@@ -541,3 +541,101 @@ function listarEntradas(cat) {
 ✔ Grimório integrado à UI
 ✔ Acesso consciente preservado
 ✔ FREE intacto
+
+
+
+---
+
+## 🧭 TUTORIAL INICIAL DA PÁGINA — ONBOARDING DO ALUNO (FASE 6.3)
+
+> Este tutorial acontece **ANTES de qualquer estudo**.
+> Ele não ensina conteúdo técnico — ensina **como sobreviver e vencer a dungeon**.
+
+### Objetivos do Tutorial
+- Orientar o aluno sobre **a interface**
+- Explicar **cada botão, tecla e área da tela**
+- Deixar claro **quais ajudas existem e quando usá-las**
+- Reduzir ansiedade inicial
+- Evitar erros por desconhecimento da UI
+
+---
+
+## 🗺️ Estrutura Canônica do Tutorial
+
+### Etapa 1 — Onde você está
+**Mensagem ao aluno:**
+> “Você acaba de entrar na Dungeon do Conhecimento. Aqui, cada decisão importa.”
+
+- Explica a ideia de dungeon
+- Deixa claro que errar faz parte
+- Reforça que não há punição oculta
+
+---
+
+### Etapa 2 — Mapa da Tela
+Apresentação guiada dos elementos:
+
+- 🧭 **Área Central** → onde ocorre o aprendizado
+- 📜 **Grimório** → consulta de comandos e conceitos
+- 🪄 **Área de Feitiços** → onde o aluno prova que entendeu
+- 🚪 **Portal** → fechado até a maturidade ser atingida
+- ⚙️ **Estado do Aluno** → progresso invisível, mas ativo
+
+---
+
+### Etapa 3 — Teclas e Ações
+
+| Ação | Função | Regra |
+|-----|-------|------|
+| Clique em botões | Interagir com o sistema | Sempre consciente |
+| Abrir Grimório | Consultar ajuda | Não avança progresso |
+| Fechar Grimório | Voltar ao foco | Livre |
+| Enviar resposta | Validar conhecimento | Ordem obrigatória |
+| Lançar Feitiço | Provar entendimento | Exige erro consciente |
+
+---
+
+### Etapa 4 — Ferramentas para vencer a Dungeon
+
+**O aluno aprende que pode:**
+- Errar sem punição
+- Refletir sobre o erro
+- Consultar o Grimório
+- Tentar novamente
+
+**O aluno aprende que NÃO pode:**
+- Pular etapas
+- Avançar sem entender
+- Usar ajuda como atalho
+
+---
+
+### Etapa 5 — Contrato Psicológico
+Mensagem final do tutorial:
+> “O sistema não vai te apressar. Mas também não vai te deixar passar sem aprender.”
+
+O aluno confirma explicitamente:
+- “Entendi como a dungeon funciona”
+
+---
+
+## 🔐 Regra Técnica do Tutorial
+```js
+const onboardingState = {
+  completed: false
+};
+
+function completeOnboarding() {
+  onboardingState.completed = true;
+  saveState();
+}
+```
+
+> ⚠️ Nenhuma fase inicia se o tutorial não for concluído.
+
+---
+
+✔ Tutorial antes do estudo
+✔ UI explicada conscientemente
+✔ Aluno entra preparado
+✔ Redução de frustração e abandono
