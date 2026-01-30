@@ -16,11 +16,14 @@
     <button onclick="nextDialog()">Continuar</button>
   </div>
 
-  <!-- PERFIL DO ALUNO -->
+  <!-- PERFIL -->
   <div class="profile hidden" id="studentProfile">
     <h2>🧑‍🎓 Perfil do Aluno</h2>
+
     <p><b>Rank:</b> <span id="profileRank"></span></p>
     <p><b>Título:</b> <span id="profileTitle"></span></p>
+    <p><b>Aproveitamento Geral:</b> <span id="profilePerformance"></span>%</p>
+    <p><b>Carga Horária Consolidada:</b> <span id="profileHours"></span>h</p>
 
     <button onclick="openCertificate()">🏅 Ver Certificado</button>
     <button onclick="openFinalReport()">📘 Ver Relatório Pedagógico</button>
@@ -35,11 +38,13 @@
     <p>Certificamos que</p>
     <h3>Aprendiz do Renascer</h3>
 
-    <p>concluiu com êxito todos os Atos do</p>
+    <p>concluiu com êxito o percurso formativo do</p>
     <h3>Projeto Renascer</h3>
 
     <p><b>Rank:</b> <span id="certRank"></span></p>
     <p><b>Título:</b> <span id="certTitle"></span></p>
+    <p><b>Carga Horária Consolidada:</b> <span id="certHours"></span>h</p>
+    <p><b>Aproveitamento Geral:</b> <span id="certPerformance"></span>%</p>
     <p><b>ID de Validação:</b> <span id="certId"></span></p>
 
     <img id="qrCode" alt="QR Code de verificação">
@@ -60,17 +65,4 @@
     <p><b>Aluno:</b> Aprendiz do Renascer</p>
     <p><b>Rank:</b> <span id="reportRank"></span></p>
     <p><b>Título:</b> <span id="reportTitle"></span></p>
-    <p><b>ID de Validação:</b> <span id="reportId"></span></p>
-
-    <h3>Competências Desenvolvidas</h3>
-    <ul id="reportSkills"></ul>
-
-    <button onclick="exportPDF()">📄 Exportar em PDF</button>
-    <button onclick="closeFinalReport()">Fechar</button>
-  </div>
-
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
+    <p><b>ID de Validação:</b> <span id="reportId"></span>
