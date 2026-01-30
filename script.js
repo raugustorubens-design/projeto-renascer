@@ -1,163 +1,144 @@
-// ===== ESTADO GLOBAL =====
+// ===== ESTADO =====
 const ranks = ["Aprendiz", "Adepto", "Mago"];
 let rankLevel = 0;
 let title = "Aprendiz Iniciado";
 let currentAct = localStorage.getItem("atoAtual") || "Ato1";
 
 // ===== MISSÕES =====
-const missionsAct1 = [
-  { title: "Primeiro Feitiço", desc: "Use print()", check: c => c.startsWith("print"), completed: false },
-  { title: "Variáveis", desc: "Crie uma variável", check: c => c.includes("="), completed: false },
-  { title: "Decisão", desc: "Use if", check: c => c.includes("if"), completed: false }
-];
-
-const missionsAct2 = [
-  { title: "Variável + print", desc: "Crie variável e imprima", check: c => c.includes("=") && c.includes("print"), completed: false },
-  { title: "Reatribuição", desc: "Altere o valor da variável", check: c => (c.split("=").length - 1) >= 2, completed: false },
-  { title: "Preparação", desc: "Use variável para decisão futura", check: c => c.includes("="), completed: false }
-];
+const acts = {
+  Ato1: [
+    { title:"Primeiro Feitiço", desc:"Use print()", check:c=>c.includes("print"), completed:false },
+    { title:"Variáveis", desc:"Crie variável", check:c=>c.includes("="), completed:false },
+    { title:"Decisão", desc:"Use if", check:c=>c.includes("if"), completed:false }
+  ],
+  Ato2: [
+    { title:"Variável + print", desc:"Use variável e print", check:c=>c.includes("=")&&c.includes("print"), completed:false },
+    { title:"Reatribuição", desc:"Altere valor", check:c=>(c.split("=").length-1)>=2, completed:false },
+    { title:"Preparação", desc:"Variável para decisão", check:c=>c.includes("="), completed:false }
+  ],
+  Ato3: [
+    { title:"Primeira Escolha", desc:"if com condição real", check:c=>c.includes("if")&&(c.includes(">")||c.includes("<")||c.includes("==")), completed:false },
+    { title:"Caminhos Mutáveis", desc:"Variável muda fluxo", check:c=>c.includes("if")&&c.includes("="), completed:false },
+    { title:"O Silêncio", desc:"if sem else", check:c=>c.includes("if")&&!c.includes("else"), completed:false }
+  ]
+};
 
 let activeMission = null;
 
 // ===== LOAD =====
-function loadState() {
-  const saved = JSON.parse(localStorage.getItem("renascerState") || "{}");
-  rankLevel = saved.rankLevel || 0;
-  title = saved.title || title;
-
-  if (saved.act1) saved.act1.forEach((v, i) => missionsAct1[i].completed = v);
-  if (saved.act2) saved.act2.forEach((v, i) => missionsAct2[i].completed = v);
+function loadState(){
+  const s = JSON.parse(localStorage.getItem("renascerState")||"{}");
+  rankLevel = s.rankLevel || 0;
+  title = s.title || title;
+  Object.keys(acts).forEach(a=>{
+    if(s[a]) s[a].forEach((v,i)=>acts[a][i].completed=v);
+  });
 }
 loadState();
-renderAll();
+render();
 
 // ===== UI =====
-function renderAll() {
+function render(){
   document.getElementById("rankLabel").innerText = `Rank: ${ranks[rankLevel]}`;
   document.getElementById("titleLabel").innerText = `Título: ${title}`;
   document.getElementById("actTitle").innerText =
-    currentAct === "Ato2" ? "Ato II — A Lógica Profunda" : "Ato I — O Despertar";
+    currentAct==="Ato1"?"Ato I — O Despertar":
+    currentAct==="Ato2"?"Ato II — A Lógica Profunda":
+    "Ato III — O Peso da Decisão";
+
+  document.getElementById("mageText").innerText = "Escolha uma missão.";
   renderMissions();
-  document.getElementById("mageText").innerText =
-    "Escolha uma missão para avançar.";
 }
 
-function renderMissions() {
-  const list = document.getElementById("missionList");
-  list.innerHTML = "";
-  const missions = currentAct === "Ato2" ? missionsAct2 : missionsAct1;
-
-  missions.forEach((m, i) => {
-    const li = document.createElement("li");
-    li.textContent = m.title;
-    if (m.completed) li.classList.add("completed");
-    li.onclick = () => startMission(i);
-    list.appendChild(li);
+function renderMissions(){
+  const ul = document.getElementById("missionList");
+  ul.innerHTML="";
+  acts[currentAct].forEach((m,i)=>{
+    const li=document.createElement("li");
+    li.textContent=m.title;
+    if(m.completed) li.classList.add("completed");
+    li.onclick=()=>startMission(i);
+    ul.appendChild(li);
   });
-
-  if (missions.every(m => m.completed)) unlockBoss();
+  if(acts[currentAct].every(m=>m.completed)) unlockBoss();
 }
 
-// ===== MISSÕES =====
-function startMission(i) {
-  const missions = currentAct === "Ato2" ? missionsAct2 : missionsAct1;
-  activeMission = missions[i];
-  document.getElementById("missionTitle").innerText = activeMission.title;
-  document.getElementById("mageText").innerText = activeMission.desc;
+// ===== MISSÃO =====
+function startMission(i){
+  activeMission=acts[currentAct][i];
+  document.getElementById("missionTitle").innerText=activeMission.title;
+  document.getElementById("mageText").innerText=activeMission.desc;
   document.getElementById("ide").classList.remove("hidden");
 }
 
-function runMission() {
-  const code = document.getElementById("codeInput").value.trim();
-  if (!activeMission) return;
-
-  if (activeMission.check(code)) {
-    activeMission.completed = true;
+function runMission(){
+  const code=document.getElementById("codeInput").value;
+  if(activeMission && activeMission.check(code)){
+    activeMission.completed=true;
     promote();
-    saveState();
-    renderAll();
+    save();
+    render();
   }
 }
 
 // ===== PROGRESSÃO =====
-function promote() {
-  const completed =
-    (currentAct === "Ato2" ? missionsAct2 : missionsAct1)
-      .filter(m => m.completed).length;
-
-  if (completed >= 1) rankLevel = 1;
-  if (completed >= 3) rankLevel = 2;
+function promote(){
+  const c=acts[currentAct].filter(m=>m.completed).length;
+  if(c>=1) rankLevel=1;
+  if(c>=3) rankLevel=2;
 }
 
 // ===== BOSS =====
-function unlockBoss() {
+function unlockBoss(){
   document.getElementById("boss").classList.remove("hidden");
-  document.getElementById("bossText").innerText =
-    currentAct === "Ato2"
-      ? "O Guardião da Lógica exige coerência."
-      : "Prove seu domínio.";
+  document.getElementById("bossText").innerText="Prove seu domínio.";
 }
 
-function runBoss() {
-  const code = document.getElementById("bossInput").value;
-  const hasPrint = code.includes("print");
-  const hasVar = code.includes("=");
-  const hasIf = code.includes("if");
-  const assigns = code.split("=").length - 1;
+function runBoss(){
+  if(currentAct==="Ato1"){ localStorage.setItem("ato1Completo","true"); currentAct="Ato2";}
+  else if(currentAct==="Ato2"){ localStorage.setItem("ato2Completo","true"); currentAct="Ato3";}
+  else{ localStorage.setItem("ato3Completo","true"); }
 
-  let passed =
-    currentAct === "Ato2"
-      ? hasPrint && hasVar && assigns >= 2
-      : hasPrint && hasVar && hasIf;
-
-  if (passed) {
-    if (currentAct === "Ato1") {
-      localStorage.setItem("ato1Completo", "true");
-      currentAct = "Ato2";
-      localStorage.setItem("atoAtual", "Ato2");
-    } else {
-      localStorage.setItem("ato2Completo", "true");
-    }
-    generateReport();
-  }
+  localStorage.setItem("atoAtual",currentAct);
+  generateReport();
+  save();
 }
 
 // ===== RELATÓRIO =====
-function generateReport() {
-  const list = document.getElementById("reportList");
-  list.innerHTML = "<li>✔ Progresso validado</li>";
+function generateReport(){
+  document.getElementById("reportList").innerHTML="<li>✔ Domínio validado</li>";
   document.getElementById("bossReport").classList.remove("hidden");
 }
 
-function closeReport() {
+function closeReport(){
   document.getElementById("bossReport").classList.add("hidden");
-  renderAll();
+  render();
 }
 
 // ===== PERFIL =====
-function openProfile() {
+function openProfile(){
   document.getElementById("studentProfile").classList.remove("hidden");
-  document.getElementById("profileRank").innerText = ranks[rankLevel];
-  document.getElementById("profileTitle").innerText = title;
-  document.getElementById("profileStatus").innerText =
-    localStorage.getItem("premium") === "true" ? "Iniciado" : "FREE";
+  document.getElementById("profileRank").innerText=ranks[rankLevel];
+  document.getElementById("profileTitle").innerText=title;
+  document.getElementById("profileStatus").innerText="Ativo";
 
-  const list = document.getElementById("profileActs");
-  list.innerHTML = "";
-  if (localStorage.getItem("ato1Completo")) list.innerHTML += "<li>Ato I ✔</li>";
-  if (localStorage.getItem("ato2Completo")) list.innerHTML += "<li>Ato II ✔</li>";
+  const ul=document.getElementById("profileActs");
+  ul.innerHTML="";
+  ["ato1Completo","ato2Completo","ato3Completo"].forEach((k,i)=>{
+    if(localStorage.getItem(k)) ul.innerHTML+=`<li>Ato ${i+1} ✔</li>`;
+  });
 }
 
-function closeProfile() {
+function closeProfile(){
   document.getElementById("studentProfile").classList.add("hidden");
 }
 
 // ===== SAVE =====
-function saveState() {
-  localStorage.setItem("renascerState", JSON.stringify({
-    rankLevel,
-    title,
-    act1: missionsAct1.map(m => m.completed),
-    act2: missionsAct2.map(m => m.completed)
+function save(){
+  localStorage.setItem("renascerState",JSON.stringify({
+    rankLevel,title,
+    Ato1:acts.Ato1.map(m=>m.completed),
+    Ato2:acts.Ato2.map(m=>m.completed),
+    Ato3:acts.Ato3.map(m=>m.completed)
   }));
 }
