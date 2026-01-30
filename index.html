@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Projeto Renascer — Ato I</title>
+  <title>Projeto Renascer</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,6 +13,11 @@
   <div class="status-bar">
     <span id="rankLabel"></span>
     <span id="titleLabel"></span>
+  </div>
+
+  <!-- BOTÃO PERFIL -->
+  <div class="profile-button">
+    <button onclick="openProfile()">Perfil</button>
   </div>
 
   <!-- JANELA DO MAGO -->
@@ -27,7 +32,7 @@
 
   <!-- MISSÕES -->
   <div class="missions">
-    <h3>Ato I — O Despertar</h3>
+    <h3 id="actTitle">Ato I — O Despertar</h3>
     <ul id="missionList"></ul>
   </div>
 
@@ -43,10 +48,10 @@
 
   <!-- BOSS -->
   <div class="boss hidden" id="boss">
-    <h3>🐉 Guardião do Conhecimento</h3>
+    <h3>🐉 Guardião</h3>
     <p id="bossText"></p>
     <textarea id="bossInput"
-      placeholder="Use print(), variáveis e if conforme seu rank"></textarea>
+      placeholder="Use os conhecimentos exigidos neste Ato"></textarea>
     <button onclick="runBoss()">Enfrentar o Boss</button>
     <div class="console">
       <pre id="bossOutput"></pre>
@@ -58,6 +63,20 @@
     <h3>📜 Relatório do Ato</h3>
     <ul id="reportList"></ul>
     <button onclick="closeReport()">Prosseguir</button>
+  </div>
+
+  <!-- PERFIL DO ALUNO -->
+  <div class="profile hidden" id="studentProfile">
+    <h3>🧑‍🎓 Perfil do Aluno</h3>
+
+    <p><b>Rank:</b> <span id="profileRank"></span></p>
+    <p><b>Título:</b> <span id="profileTitle"></span></p>
+    <p><b>Status:</b> <span id="profileStatus"></span></p>
+
+    <h4>📜 Atos Concluídos</h4>
+    <ul id="profileActs"></ul>
+
+    <button onclick="closeProfile()">Fechar</button>
   </div>
 
 </div>
