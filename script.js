@@ -1,27 +1,43 @@
 // ===== PERSISTÊNCIA =====
 function saveProgress() {
-  const state = {
+  localStorage.setItem("renascerProgress", JSON.stringify({
     phase: currentPhase,
-    messageIndex,
-    spellUnlocked: !document.getElementById("spellArea").classList.contains("hidden"),
-    portalOpen: !document.getElementById("portal").classList.contains("hidden")
-  };
-  localStorage.setItem("renascerProgress", JSON.stringify(state));
+    messageIndex
+  }));
 }
 
 function loadProgress() {
   const saved = localStorage.getItem("renascerProgress");
-  if (!saved) return null;
-  return JSON.parse(saved);
+  return saved ? JSON.parse(saved) : null;
 }
 
-// ===== FASES E FALAS =====
+// ===== FASES =====
 const phases = [
   {
+    title: "Feitiço do Aprendiz",
+    successKeyword: "print",
     messages: [
       "Bem-vindo, aprendiz. Este é o início da sua jornada.",
-      "Antes de lançar feitiços, é preciso compreender a lógica da magia.",
-      "Quando estiver pronto, tente executar seu primeiro feitiço."
+      "A magia nasce da lógica, não do acaso.",
+      "Experimente manifestar algo no mundo."
+    ]
+  },
+  {
+    title: "Feitiço da Variável",
+    successKeyword: "=",
+    messages: [
+      "Você avançou. Agora controlará valores.",
+      "Variáveis são recipientes de poder.",
+      "Tente criar e atribuir um valor."
+    ]
+  },
+  {
+    title: "Feitiço da Decisão",
+    successKeyword: "if",
+    messages: [
+      "A magia agora exige escolhas.",
+      "Nem todo caminho deve ser seguido.",
+      "Experimente decidir algo com sabedoria."
     ]
   }
 ];
@@ -30,34 +46,32 @@ let currentPhase = 0;
 let messageIndex = 0;
 
 // ===== INICIALIZAÇÃO =====
-const savedState = loadProgress();
-
-if (savedState) {
-  currentPhase = savedState.phase;
-  messageIndex = savedState.messageIndex;
+const saved = loadProgress();
+if (saved) {
+  currentPhase = saved.phase;
+  messageIndex = saved.messageIndex;
 }
 
-document.getElementById("mageText").innerText =
-  phases[currentPhase].messages[messageIndex];
+renderPhase();
 
-if (savedState?.spellUnlocked) {
-  document.getElementById("spellArea").classList.remove("hidden");
-  document.getElementById("continueBtn").classList.add("hidden");
+// ===== FUNÇÕES =====
+function renderPhase() {
+  document.getElementById("spellTitle").innerText = phases[currentPhase].title;
+  document.getElementById("mageText").innerText =
+    phases[currentPhase].messages[messageIndex];
+
+  document.getElementById("spellArea").classList.add("hidden");
+  document.getElementById("portal").classList.add("hidden");
+  document.getElementById("continueBtn").classList.remove("hidden");
   document.getElementById("castBtn").classList.add("hidden");
 }
 
-if (savedState?.portalOpen) {
-  document.getElementById("portal").classList.remove("hidden");
-}
-
-// ===== FLUXO =====
 function nextMessage() {
   messageIndex++;
 
-  const messages = phases[currentPhase].messages;
-
-  if (messageIndex < messages.length) {
-    document.getElementById("mageText").innerText = messages[messageIndex];
+  if (messageIndex < phases[currentPhase].messages.length) {
+    document.getElementById("mageText").innerText =
+      phases[currentPhase].messages[messageIndex];
   } else {
     document.getElementById("continueBtn").classList.add("hidden");
     document.getElementById("castBtn").classList.remove("hidden");
@@ -69,38 +83,38 @@ function nextMessage() {
 function castSpell() {
   document.getElementById("spellArea").classList.remove("hidden");
   document.getElementById("mageText").innerText =
-    "Escreva seu feitiço. Observe o resultado com atenção.";
-  saveProgress();
+    "Concentre-se. Lance o feitiço corretamente.";
 }
 
 function evaluateSpell() {
-  const spell = document.getElementById("spellInput").value.trim();
+  const input = document.getElementById("spellInput").value;
 
-  if (spell.length === 0) {
+  if (input.includes(phases[currentPhase].successKeyword)) {
     document.getElementById("mageText").innerText =
-      "A magia falhou. Um feitiço vazio não produz efeito.";
-    return;
-  }
-
-  if (spell.includes("print")) {
-    document.getElementById("mageText").innerText =
-      "Muito bem. Seu feitiço funcionou. A magia responde à lógica.";
+      "Muito bem. A magia respondeu ao seu comando.";
     openPortal();
   } else {
     document.getElementById("mageText").innerText =
-      "Algo deu errado. Observe a estrutura do feitiço e tente novamente.";
+      "A magia falhou. Reflita e tente novamente.";
   }
-
-  saveProgress();
 }
 
 function openPortal() {
   document.getElementById("portal").classList.remove("hidden");
-  saveProgress();
 }
 
 function enterPortal() {
-  document.getElementById("mageText").innerText =
-    "Você atravessa o vórtice e segue para a próxima etapa da jornada.";
+  currentPhase++;
+  messageIndex = 0;
+
+  if (currentPhase >= phases.length) {
+    document.getElementById("mageText").innerText =
+      "Você concluiu este ciclo de aprendizado.";
+    document.getElementById("portal").classList.add("hidden");
+    localStorage.removeItem("renascerProgress");
+    return;
+  }
+
   saveProgress();
+  renderPhase();
 }
