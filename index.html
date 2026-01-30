@@ -2,24 +2,24 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Projeto Renascer — Missões do Ato</title>
+  <title>Projeto Renascer — Ato I</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="game-container">
 
-  <!-- Status -->
+  <!-- STATUS -->
   <div class="status-bar">
     <span id="rankLabel"></span>
+    <span id="titleLabel"></span>
   </div>
 
-  <!-- Janela do Mago -->
+  <!-- JANELA DO MAGO -->
   <div class="mage-window">
     <div class="mage-portrait">
       <img src="mago.png" alt="Mago Mentor">
     </div>
-
     <div class="mage-dialog">
       <p id="mageText"></p>
     </div>
@@ -34,11 +34,30 @@
   <!-- IDE -->
   <div class="ide hidden" id="ide">
     <h3 id="missionTitle"></h3>
-    <textarea id="codeInput"></textarea>
+    <textarea id="codeInput" placeholder="Digite seu feitiço"></textarea>
     <button onclick="runMission()">Executar</button>
     <div class="console">
       <pre id="consoleOutput"></pre>
     </div>
+  </div>
+
+  <!-- BOSS -->
+  <div class="boss hidden" id="boss">
+    <h3>🐉 Guardião do Conhecimento</h3>
+    <p id="bossText"></p>
+    <textarea id="bossInput"
+      placeholder="Use print(), variáveis e if conforme seu rank"></textarea>
+    <button onclick="runBoss()">Enfrentar o Boss</button>
+    <div class="console">
+      <pre id="bossOutput"></pre>
+    </div>
+  </div>
+
+  <!-- RELATÓRIO -->
+  <div class="report hidden" id="bossReport">
+    <h3>📜 Relatório do Ato</h3>
+    <ul id="reportList"></ul>
+    <button onclick="closeReport()">Prosseguir</button>
   </div>
 
 </div>
