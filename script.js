@@ -1,4 +1,21 @@
-// Fases e falas do mago
+// ===== PERSISTÊNCIA =====
+function saveProgress() {
+  const state = {
+    phase: currentPhase,
+    messageIndex,
+    spellUnlocked: !document.getElementById("spellArea").classList.contains("hidden"),
+    portalOpen: !document.getElementById("portal").classList.contains("hidden")
+  };
+  localStorage.setItem("renascerProgress", JSON.stringify(state));
+}
+
+function loadProgress() {
+  const saved = localStorage.getItem("renascerProgress");
+  if (!saved) return null;
+  return JSON.parse(saved);
+}
+
+// ===== FASES E FALAS =====
 const phases = [
   {
     messages: [
@@ -12,10 +29,28 @@ const phases = [
 let currentPhase = 0;
 let messageIndex = 0;
 
-// Inicialização
+// ===== INICIALIZAÇÃO =====
+const savedState = loadProgress();
+
+if (savedState) {
+  currentPhase = savedState.phase;
+  messageIndex = savedState.messageIndex;
+}
+
 document.getElementById("mageText").innerText =
   phases[currentPhase].messages[messageIndex];
 
+if (savedState?.spellUnlocked) {
+  document.getElementById("spellArea").classList.remove("hidden");
+  document.getElementById("continueBtn").classList.add("hidden");
+  document.getElementById("castBtn").classList.add("hidden");
+}
+
+if (savedState?.portalOpen) {
+  document.getElementById("portal").classList.remove("hidden");
+}
+
+// ===== FLUXO =====
 function nextMessage() {
   messageIndex++;
 
@@ -27,16 +62,17 @@ function nextMessage() {
     document.getElementById("continueBtn").classList.add("hidden");
     document.getElementById("castBtn").classList.remove("hidden");
   }
+
+  saveProgress();
 }
 
-// Início do feitiço
 function castSpell() {
   document.getElementById("spellArea").classList.remove("hidden");
   document.getElementById("mageText").innerText =
     "Escreva seu feitiço. Observe o resultado com atenção.";
+  saveProgress();
 }
 
-// Avaliação do feitiço (simulada)
 function evaluateSpell() {
   const spell = document.getElementById("spellInput").value.trim();
 
@@ -54,15 +90,17 @@ function evaluateSpell() {
     document.getElementById("mageText").innerText =
       "Algo deu errado. Observe a estrutura do feitiço e tente novamente.";
   }
+
+  saveProgress();
 }
 
-// Portal
 function openPortal() {
   document.getElementById("portal").classList.remove("hidden");
+  saveProgress();
 }
 
 function enterPortal() {
   document.getElementById("mageText").innerText =
     "Você atravessa o vórtice e segue para a próxima etapa da jornada.";
-  document.getElementById("portal").classList.add("hidden");
+  saveProgress();
 }
