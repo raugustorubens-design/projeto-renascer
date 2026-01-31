@@ -1,4 +1,26 @@
 // ===============================
+// PROJETO RENASCER — ESTADO GLOBAL
+// FASE 1 — MODO FREE
+// ===============================
+
+const gameState = {
+  version: "1.0.0",
+  mode: "FREE", // FREE | PREMIUM
+  portalLocked: true,
+  player: {
+    id: null,
+    name: null,
+    createdAt: null
+  },
+  progress: {
+    python: {
+      introCompleted: false,
+      basicCompleted: false
+    }
+  }
+};
+
+// ===============================
 // PERSONAGENS — CANÔNICO
 // ===============================
 
