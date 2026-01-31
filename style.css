@@ -1,6 +1,7 @@
-/* =========================
-   RESET E BASE
-========================= */
+/* =========================================================
+   RESET BÁSICO
+   ========================================================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -9,209 +10,170 @@
 
 html, body {
   width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at top, #1a1a2e, #000);
-  color: #ffffff;
+  overflow-x: hidden;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
-  overflow: hidden; /* REGRA ABSOLUTA */
+  background: radial-gradient(circle at top, #14162b 0%, #05060c 70%);
+  color: #eaeaf0;
 }
 
-/* =========================
-   MENU SUPERIOR
-========================= */
-.menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+nav {
   display: flex;
   gap: 12px;
-  padding: 14px 24px;
-  background: linear-gradient(to bottom, #2a2a6a, #1a1a3a);
+  padding: 14px 20px;
+  background: linear-gradient(180deg, #2a2f6a, #1a1e45);
 }
 
-.menu button {
-  background: #3b5bff;
-  color: #fff;
+nav button {
+  background: #2f5cff;
   border: none;
+  color: #fff;
   padding: 8px 14px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
 }
 
-/* =========================
-   ÁREA PRINCIPAL (TELA FIXA)
-========================= */
+nav button:hover {
+  background: #4da3ff;
+}
+
+/* =========================================================
+   ESTRUTURA PRINCIPAL
+   ========================================================= */
+
 main {
-  margin-top: 72px; /* altura do menu */
-  height: calc(100vh - 72px);
-  padding: 32px 56px;
-  display: grid;
-  grid-template-columns: 1fr 0.8fr;
-  grid-template-rows: auto 1fr;
-  gap: 24px;
-  overflow: hidden;
+  padding: 40px 60px;
 }
 
-/* =========================
-   TEXTO PRINCIPAL
-========================= */
-.hero-text {
-  grid-column: 1;
-  grid-row: 1;
-  max-width: 720px;
-}
-
-.hero-text h1 {
-  font-size: 2.6rem;
+h1 {
+  font-size: 42px;
   margin-bottom: 12px;
 }
 
-.hero-text p {
+h2 {
+  margin-top: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  max-width: 780px;
   line-height: 1.6;
-  font-size: 1rem;
+  opacity: 0.9;
 }
 
-/* =========================
-   MAGO (LIMITADO!)
-========================= */
-.mentor-container {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.mentor-container img {
-  max-height: 60vh;   /* 🔑 CONTROLE REAL */
-  max-width: 100%;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 0 30px rgba(120, 120, 255, 0.35);
-}
-
-/* =========================
+/* =========================================================
    ESCOLHA DE PERSONAGEM
-========================= */
-.characters-section {
-  grid-column: 1;
-  grid-row: 2;
-  overflow: hidden;
+   ========================================================= */
+
+.character-selection {
+  margin-top: 40px;
+  position: relative;
 }
 
-.characters-section h2 {
-  font-size: 1.8rem;
-  margin-bottom: 8px;
+.character-selection h2 {
+  margin-bottom: 6px;
 }
 
-.characters-section p {
-  margin-bottom: 12px;
-  font-size: 0.95rem;
-}
-
-/* GRID FIXO SEM SCROLL */
-.characters-grid {
+.character-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  max-height: 30vh;
-  overflow: hidden;
+  gap: 24px;
+  max-width: 100%;
 }
 
 .character-card {
-  background: rgba(255,255,255,0.06);
-  border-radius: 12px;
-  padding: 8px;
+  background: linear-gradient(180deg, #1a1c2f, #0d0f1f);
+  border-radius: 14px;
+  padding: 14px;
   text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.character-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 18px rgba(77, 163, 255, 0.35);
 }
 
 .character-card img {
   width: 100%;
-  max-height: 18vh; /* 🔑 evita scroll */
-  object-fit: contain;
-  border-radius: 8px;
+  max-width: 160px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
-.character-card span {
-  display: block;
-  margin-top: 6px;
+/* =========================================================
+   NOMES — AZUL SOLO LEVELING (FORÇADO)
+   ========================================================= */
+
+.character-card p,
+.character-card span,
+.character-card .name {
+  margin-top: 10px;
+  color: #4da3ff !important;
   font-weight: 600;
-  font-size: 0.9rem;
+  letter-spacing: 0.6px;
+  text-shadow:
+    0 0 4px rgba(77, 163, 255, 0.7),
+    0 0 10px rgba(77, 163, 255, 0.4);
 }
 
-/* =========================
-   RESPONSIVO
-========================= */
-@media (max-width: 1024px) {
-  main {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-  }
+/* =========================================================
+   OCULTAÇÃO TOTAL DO MAGO NA ESCOLHA
+   ========================================================= */
 
-  .mentor-container {
-    grid-column: 1;
-    grid-row: 3;
-  }
-
-  .mentor-container img {
-    max-height: 40vh;
-  }
-
-  .characters-grid {
-    grid-template-columns: repeat(2, 1fr);
-    max-height: 40vh;
-  }
-}
-
-/* =========================
-   CONTROLE CANÔNICO DO MAGO
-========================= */
-
-/* Estado padrão: mago visível */
-.mentor-container {
-  display: flex;
-}
-
-/* Quando NÃO estiver na aba Início, o mago some */
-body:not(.tab-inicio) .mentor-container {
-  display: none;
-}
-
-/* Após escolha do personagem (estado futuro) */
-body.personagem-escolhido .mentor-container {
-  display: flex;
-}
-
-/* ================================
-   SOLO LEVELING — NOME DOS PERSONAGENS
-   ================================ */
-
-.character-name {
-  color: #4da3ff; /* Azul Solo Leveling */
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-shadow: 
-    0 0 4px rgba(77, 163, 255, 0.6),
-    0 0 10px rgba(77, 163, 255, 0.3);
-}
-
-/* Segurança: evita herança indesejada */
-.character-card .character-name {
-  color: #4da3ff;
-}
-
-/* ================================
-   CONTROLE DE VISIBILIDADE DO MAGO
-   ================================ */
-
-/* Esconde o mago durante a escolha de personagem */
-.character-selection ~ .mage-container,
+/* Esconde QUALQUER imagem do mago enquanto estiver na escolha */
+.character-selection ~ img,
+.character-selection img[alt*="Mago"],
+.character-selection img[src*="mago"],
+.character-selection + img,
 .character-selection ~ .mage,
-.character-selection .mage,
-.character-selection .mage-container {
+.character-selection ~ .mage-container {
   display: none !important;
+}
+
+/* =========================================================
+   MAGO — VISUAL PADRÃO (INÍCIO / FUTURO)
+   ========================================================= */
+
+.mage-container {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  width: 320px;
+  max-width: 20vw;
+  z-index: 2;
+}
+
+.mage-container img {
+  width: 100%;
+  height: auto;
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .character-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mage-container {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 24px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
 }
