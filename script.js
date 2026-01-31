@@ -1,82 +1,98 @@
-// CONTROLE DE ABAS
-document.querySelectorAll(".menu button").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const tab = btn.dataset.tab;
+const app = document.getElementById("app");
 
-    document.querySelectorAll(".tab").forEach(t =>
-      t.classList.remove("active")
-    );
+// ============================
+// RENDERIZAÇÕES
+// ============================
 
-    document.getElementById(tab).classList.add("active");
-  });
-});
+function renderInicio() {
+  app.innerHTML = `
+    <div class="inicio-layout">
+      <div class="inicio-texto">
+        <h1>Projeto Renascer</h1>
+        <p>
+          Uma jornada formativa baseada em rigor técnico, clareza pedagógica
+          e evolução consciente.
+        </p>
+        <br />
+        <button onclick="renderEscolha()">Entrar na Dungeon</button>
+      </div>
 
-// ONBOARDING DO MAGO
-const dialog = document.getElementById("mentor-dialog");
-const closeBtn = document.getElementById("close-dialog");
-
-if (!localStorage.getItem("renascer_onboarding_done")) {
-  dialog.classList.remove("hidden");
+      <div class="mago-container">
+        <img src="assets/characters/mago.png" alt="Mago Mentor">
+      </div>
+    </div>
+  `;
 }
 
-closeBtn.addEventListener("click", () => {
-  dialog.classList.add("hidden");
-  localStorage.setItem("renascer_onboarding_done", "true");
-});
+function renderEscolha() {
+  app.innerHTML = `
+    <h2>Escolha seu Personagem</h2>
+    <p class="subtexto">
+      Este será o avatar que representa você ao longo da jornada.
+    </p>
 
-// CONTROLE DA JORNADA
-const startBtn = document.getElementById("startJourney");
-const characterBox = document.getElementById("characterSelection");
+    <div class="personagens">
+      ${criarCard("Giu", "01_Giu_jogadora.png")}
+      ${criarCard("Bi", "02_Bi_jogadora.png")}
+      ${criarCard("Neto", "03_Neto_jogador.png")}
+      ${criarCard("Jack", "04_Jack_jogadora.png")}
+    </div>
 
-if (localStorage.getItem("renascer_journey_started")) {
-  characterBox.classList.remove("hidden");
-  startBtn.style.display = "none";
+    <p class="subtexto">
+      A escolha não define dificuldade. Ela define identidade.
+    </p>
+  `;
 }
 
-startBtn.addEventListener("click", () => {
-  localStorage.setItem("renascer_journey_started", "true");
-  characterBox.classList.remove("hidden");
-  startBtn.style.display = "none";
-});
+function criarCard(nome, arquivo) {
+  return `
+    <div class="card" onclick="selecionarPersonagem('${nome}')">
+      <img src="assets/characters/players/${arquivo}" alt="${nome}">
+      <div class="nome">${nome}</div>
+    </div>
+  `;
+}
 
-// SELEÇÃO DE PERSONAGEM
-let selectedCharacter = localStorage.getItem("renascer_character");
+// ============================
+// AÇÕES
+// ============================
 
-document.querySelectorAll(".character-card").forEach(card => {
-  if (card.dataset.character === selectedCharacter) {
-    card.classList.add("selected");
-  }
+function selecionarPersonagem(nome) {
+  app.innerHTML = `
+    <div class="inicio-layout">
+      <div class="inicio-texto">
+        <h1>${nome}, a jornada começa</h1>
+        <p>
+          Você fez sua escolha conscientemente.
+          O conhecimento exige paciência, atenção e coragem.
+        </p>
+      </div>
 
-  card.addEventListener("click", () => {
-    document.querySelectorAll(".character-card")
-      .forEach(c => c.classList.remove("selected"));
+      <div class="mago-container">
+        <img src="assets/characters/mago.png" alt="Mago Mentor">
+      </div>
+    </div>
+  `;
+}
 
-    card.classList.add("selected");
-    selectedCharacter = card.dataset.character;
-    localStorage.setItem("renascer_character", selectedCharacter);
-  });
-});
+// ============================
+// MENU
+// ============================
 
-// =========================
-// CONTROLE DE ABAS (CANÔNICO)
-// =========================
-const tabs = document.querySelectorAll(".tab");
-const buttons = document.querySelectorAll(".menu button");
+document.getElementById("btnInicio").onclick = renderInicio;
+document.getElementById("btnPortal").onclick = renderEscolha;
+document.getElementById("btnQualidade").onclick = () => {
+  app.innerHTML = `
+    <h2>Qualidade, Ética e Compliance</h2>
+    <p>
+      O Projeto Renascer foi concebido com compromisso explícito com
+      qualidade técnica, clareza pedagógica e responsabilidade ética.
+    </p>
+  `;
+};
 
-buttons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    const target = btn.dataset.tab;
+// ============================
+// START
+// ============================
 
-    tabs.forEach(tab => {
-      tab.classList.toggle("active", tab.id === target);
-    });
-
-    // Controle de estado visual do mago
-    document.body.classList.remove("tab-inicio", "tab-portal", "tab-qualidade");
-    document.body.classList.add(`tab-${target}`);
-  });
-});
-
-// Estado inicial explícito
-document.body.classList.add("tab-inicio");
-
+renderInicio();
