@@ -11,6 +11,34 @@ document.querySelectorAll(".menu button").forEach(btn => {
   });
 });
 
+// ONBOARDING DO MAGO
+const dialog = document.getElementById("mentor-dialog");
+const closeBtn = document.getElementById("close-dialog");
+
+if (!localStorage.getItem("renascer_onboarding_done")) {
+  dialog.classList.remove("hidden");
+}
+
+closeBtn.addEventListener("click", () => {
+  dialog.classList.add("hidden");
+  localStorage.setItem("renascer_onboarding_done", "true");
+});
+
+// CONTROLE DA JORNADA
+const startBtn = document.getElementById("startJourney");
+const characterBox = document.getElementById("characterSelection");
+
+if (localStorage.getItem("renascer_journey_started")) {
+  characterBox.classList.remove("hidden");
+  startBtn.style.display = "none";
+}
+
+startBtn.addEventListener("click", () => {
+  localStorage.setItem("renascer_journey_started", "true");
+  characterBox.classList.remove("hidden");
+  startBtn.style.display = "none";
+});
+
 // SELEÇÃO DE PERSONAGEM
 let selectedCharacter = localStorage.getItem("renascer_character");
 
@@ -27,17 +55,4 @@ document.querySelectorAll(".character-card").forEach(card => {
     selectedCharacter = card.dataset.character;
     localStorage.setItem("renascer_character", selectedCharacter);
   });
-});
-
-// ONBOARDING DO MAGO
-const dialog = document.getElementById("mentor-dialog");
-const closeBtn = document.getElementById("close-dialog");
-
-if (!localStorage.getItem("renascer_onboarding_done")) {
-  dialog.classList.remove("hidden");
-}
-
-closeBtn.addEventListener("click", () => {
-  dialog.classList.add("hidden");
-  localStorage.setItem("renascer_onboarding_done", "true");
 });
