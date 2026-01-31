@@ -1,70 +1,72 @@
 body {
-  background: radial-gradient(circle at top, #0b0f1a, #000);
-  font-family: Arial, sans-serif;
-  color: #fff;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(circle at top, #1a1a2e, #000);
+  color: #f1f1f1;
+}
+
+/* MENU */
+.menu {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  gap: 12px;
+  padding: 12px;
+  background: #0f0f1a;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-.game-container {
-  width: 800px;
-  text-align: center;
-}
-
-.hidden {
-  display: none;
-}
-
-.dialog-box,
-.profile,
-.certificate,
-.final-report {
-  background: #12182b;
-  border: 2px solid #3a5cff;
-  border-radius: 12px;
-  padding: 25px;
-  margin-bottom: 20px;
-}
-
-button {
-  margin: 8px;
-  padding: 10px 20px;
-  background: #3a5cff;
+.menu button {
+  background: #2a4cff;
   border: none;
   color: #fff;
+  padding: 8px 14px;
   border-radius: 6px;
   cursor: pointer;
 }
 
-.certificate {
-  background: linear-gradient(#f5f0d8, #e6d9a8);
-  color: #2b2b2b;
+.menu button:hover {
+  background: #1f39c7;
 }
 
-.cert-footer {
-  margin-top: 20px;
+/* CONTEÚDO */
+main {
+  padding: 24px;
 }
 
-.final-report {
-  background: #f4f6f9;
-  color: #000;
+/* ISOLAMENTO REAL DAS ABAS */
+.tab {
+  display: none;
+  max-width: 960px;
 }
 
-@media print {
-  body * {
-    visibility: hidden;
-  }
-  .certificate,
-  .final-report {
-    visibility: visible;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
-  button {
-    display: none;
-  }
+.tab.active {
+  display: block;
+}
+
+/* TIPOGRAFIA */
+h1, h2, h3 {
+  color: #ffffff;
+}
+
+p, li {
+  line-height: 1.6;
+}
+
+ul {
+  margin-left: 20px;
+}
+
+/* MAGO FIXO (NARRATIVO) */
+#mentor {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 160px;
+  z-index: 5;
+}
+
+#mentor img {
+  width: 100%;
+  border-radius: 12px;
 }
