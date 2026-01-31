@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -13,7 +17,7 @@ body {
   background: #0f0f1a;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 100;
 }
 
 .menu button {
@@ -34,17 +38,17 @@ main {
   padding: 24px;
 }
 
-/* ISOLAMENTO REAL DAS ABAS */
+/* 🔥 ISOLAMENTO ABSOLUTO DAS ABAS */
 .tab {
-  display: none;
+  display: none !important;
   max-width: 960px;
 }
 
 .tab.active {
-  display: block;
+  display: block !important;
 }
 
-/* TIPOGRAFIA */
+/* TEXTO */
 h1, h2, h3 {
   color: #ffffff;
 }
@@ -55,18 +59,4 @@ p, li {
 
 ul {
   margin-left: 20px;
-}
-
-/* MAGO FIXO (NARRATIVO) */
-#mentor {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  width: 160px;
-  z-index: 5;
-}
-
-#mentor img {
-  width: 100%;
-  border-radius: 12px;
 }
