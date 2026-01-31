@@ -1,179 +1,109 @@
-/* =========================================================
-   RESET BÁSICO
-   ========================================================= */
-
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  width: 100%;
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(circle at top, #1b1f3a, #050510);
+  color: #fff;
   overflow-x: hidden;
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
-  background: radial-gradient(circle at top, #14162b 0%, #05060c 70%);
-  color: #eaeaf0;
 }
 
-/* =========================================================
-   NAVBAR
-   ========================================================= */
-
-nav {
+/* MENU */
+.menu {
   display: flex;
   gap: 12px;
-  padding: 14px 20px;
-  background: linear-gradient(180deg, #2a2f6a, #1a1e45);
+  padding: 16px;
+  background: linear-gradient(90deg, #2c2f6b, #1b1f3a);
 }
 
-nav button {
-  background: #2f5cff;
-  border: none;
+.menu button {
+  background: #2f5bff;
   color: #fff;
-  padding: 8px 14px;
+  border: none;
+  padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;
-  font-weight: 600;
 }
 
-nav button:hover {
-  background: #4da3ff;
+.menu button:hover {
+  background: #4c78ff;
 }
 
-/* =========================================================
-   ESTRUTURA PRINCIPAL
-   ========================================================= */
-
-main {
-  padding: 40px 60px;
+/* CONTEÚDO */
+#app {
+  padding: 48px;
+  min-height: calc(100vh - 72px);
 }
 
-h1 {
-  font-size: 42px;
-  margin-bottom: 12px;
-}
-
-h2 {
-  margin-top: 24px;
-  margin-bottom: 10px;
-}
-
-p {
-  max-width: 780px;
-  line-height: 1.6;
-  opacity: 0.9;
-}
-
-/* =========================================================
-   ESCOLHA DE PERSONAGEM
-   ========================================================= */
-
-.character-selection {
-  margin-top: 40px;
-  position: relative;
-}
-
-.character-selection h2 {
-  margin-bottom: 6px;
-}
-
-.character-grid {
+/* INÍCIO */
+.inicio-layout {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  max-width: 100%;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 48px;
+  align-items: center;
 }
 
-.character-card {
-  background: linear-gradient(180deg, #1a1c2f, #0d0f1f);
-  border-radius: 14px;
-  padding: 14px;
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.inicio-texto h1 {
+  font-size: 42px;
+  margin-bottom: 16px;
 }
 
-.character-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 18px rgba(77, 163, 255, 0.35);
+.inicio-texto p {
+  font-size: 18px;
+  max-width: 520px;
 }
 
-.character-card img {
-  width: 100%;
-  max-width: 160px;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 10px;
+.mago-container {
+  display: flex;
+  justify-content: flex-end;
 }
 
-/* =========================================================
-   NOMES — AZUL SOLO LEVELING (FORÇADO)
-   ========================================================= */
-
-.character-card p,
-.character-card span,
-.character-card .name {
-  margin-top: 10px;
-  color: #4da3ff !important;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  text-shadow:
-    0 0 4px rgba(77, 163, 255, 0.7),
-    0 0 10px rgba(77, 163, 255, 0.4);
-}
-
-/* =========================================================
-   OCULTAÇÃO TOTAL DO MAGO NA ESCOLHA
-   ========================================================= */
-
-/* Esconde QUALQUER imagem do mago enquanto estiver na escolha */
-.character-selection ~ img,
-.character-selection img[alt*="Mago"],
-.character-selection img[src*="mago"],
-.character-selection + img,
-.character-selection ~ .mage,
-.character-selection ~ .mage-container {
-  display: none !important;
-}
-
-/* =========================================================
-   MAGO — VISUAL PADRÃO (INÍCIO / FUTURO)
-   ========================================================= */
-
-.mage-container {
-  position: fixed;
-  right: 40px;
-  bottom: 40px;
-  width: 320px;
-  max-width: 20vw;
-  z-index: 2;
-}
-
-.mage-container img {
-  width: 100%;
+.mago-container img {
+  max-width: 80%;
   height: auto;
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(120,120,255,0.4);
 }
 
-/* =========================================================
-   RESPONSIVIDADE
-   ========================================================= */
-
-@media (max-width: 1100px) {
-  .character-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .mage-container {
-    display: none;
-  }
+/* ESCOLHA DE PERSONAGEM */
+.personagens {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
 }
 
-@media (max-width: 600px) {
-  main {
-    padding: 24px;
-  }
+.card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
 
-  h1 {
-    font-size: 32px;
-  }
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(80,120,255,0.6);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* AZUL SOLO LEVELING */
+.card .nome {
+  margin-top: 12px;
+  font-weight: bold;
+  color: #4da3ff;
+}
+
+/* TEXTO AUXILIAR */
+.subtexto {
+  margin-top: 12px;
+  font-size: 14px;
+  opacity: 0.8;
 }
