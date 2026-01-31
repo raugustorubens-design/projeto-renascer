@@ -12,6 +12,7 @@ html, body {
   background: radial-gradient(circle at top, #1a1a2e, #000);
   color: #ffffff;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  overflow-x: hidden; /* garantia absoluta */
 }
 
 /* =========================
@@ -112,8 +113,8 @@ li {
 
 .mentor-image {
   flex: 0 0 auto;
-  width: 320px;
-  max-width: 30vw;
+  width: 300px;
+  max-width: 26vw;
 }
 
 .mentor-image img {
@@ -125,45 +126,47 @@ li {
 
 /* =========================
    ÁREA DE PERSONAGENS
-   (SÓ APARECE DEPOIS)
+   (APARECE SOMENTE DEPOIS)
 ========================= */
 .characters-section {
   margin-top: 48px;
-  display: none; /* aparece só quando liberado */
+  display: none;
 }
 
-/* container limitado à área útil */
+/* container limitado e sem scroll */
 .characters-container {
-  max-height: 80vh; /* regra canônica */
+  max-height: 70vh;   /* ↓ reduzido */
   overflow: hidden;
 }
 
-/* grid dos personagens */
+/* grid */
 .characters-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 20px;
   align-items: start;
 }
 
-/* card individual */
+/* card */
 .character-card {
   text-align: center;
 }
 
+/* IMAGEM MAIS CONTIDA */
 .character-card img {
   width: 100%;
   height: auto;
-  max-height: 28vh; /* controla proporção */
+  max-height: 22vh;   /* ↓ ajuste-chave */
   object-fit: contain;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(80, 80, 200, 0.35);
+  box-shadow: 0 0 18px rgba(80, 80, 200, 0.35);
 }
 
 .character-card span {
   display: block;
-  margin-top: 8px;
+  margin-top: 6px;
   font-weight: 600;
+  font-size: 0.95rem;
 }
 
 /* =========================
@@ -182,6 +185,10 @@ li {
   .mentor-image {
     width: 260px;
   }
+
+  .character-card img {
+    max-height: 24vh;
+  }
 }
 
 @media (max-width: 600px) {
@@ -195,6 +202,10 @@ li {
 
   .mentor-image {
     width: 220px;
+  }
+
+  .character-card img {
+    max-height: 26vh;
   }
 
   h1 {
