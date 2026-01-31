@@ -186,3 +186,20 @@ body.personagem-escolhido .mentor-container {
   display: flex;
 }
 
+/* ================================
+   SOLO LEVELING — NOME DOS PERSONAGENS
+   ================================ */
+
+.character-name {
+  color: #4da3ff; /* Azul Solo Leveling */
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: 
+    0 0 4px rgba(77, 163, 255, 0.6),
+    0 0 10px rgba(77, 163, 255, 0.3);
+}
+
+/* Segurança: evita herança indesejada */
+.character-card .character-name {
+  color: #4da3ff;
+}
