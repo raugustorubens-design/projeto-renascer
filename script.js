@@ -21,6 +21,31 @@ const gameState = {
 };
 
 // ===============================
+// PERSISTÊNCIA LOCAL
+// ===============================
+
+function saveState() {
+  localStorage.setItem("renascer_state", JSON.stringify(gameState));
+}
+
+function loadState() {
+  const saved = localStorage.getItem("renascer_state");
+  if (saved) {
+    Object.assign(gameState, JSON.parse(saved));
+  } else {
+    initializePlayer();
+    saveState();
+  }
+}
+
+function initializePlayer() {
+  gameState.player.id = crypto.randomUUID();
+  gameState.player.createdAt = new Date().toISOString();
+  gameState.player.name = "Aprendiz";
+}
+
+
+// ===============================
 // PERSONAGENS — CANÔNICO
 // ===============================
 
