@@ -166,3 +166,23 @@ main {
     max-height: 40vh;
   }
 }
+
+/* =========================
+   CONTROLE CANÔNICO DO MAGO
+========================= */
+
+/* Estado padrão: mago visível */
+.mentor-container {
+  display: flex;
+}
+
+/* Quando NÃO estiver na aba Início, o mago some */
+body:not(.tab-inicio) .mentor-container {
+  display: none;
+}
+
+/* Após escolha do personagem (estado futuro) */
+body.personagem-escolhido .mentor-container {
+  display: flex;
+}
+
