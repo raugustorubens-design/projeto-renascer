@@ -1,109 +1,22 @@
-* {
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projeto Renascer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: radial-gradient(circle at top, #1b1f3a, #050510);
-  color: #fff;
-  overflow-x: hidden;
-}
+  <nav class="menu">
+    <button id="btnInicio">Início</button>
+    <button id="btnPortal">Portal</button>
+    <button id="btnQualidade">Qualidade</button>
+  </nav>
 
-/* MENU */
-.menu {
-  display: flex;
-  gap: 12px;
-  padding: 16px;
-  background: linear-gradient(90deg, #2c2f6b, #1b1f3a);
-}
+  <!-- ÁREA ÚNICA DE RENDERIZAÇÃO -->
+  <main id="app"></main>
 
-.menu button {
-  background: #2f5bff;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.menu button:hover {
-  background: #4c78ff;
-}
-
-/* CONTEÚDO */
-#app {
-  padding: 48px;
-  min-height: calc(100vh - 72px);
-}
-
-/* INÍCIO */
-.inicio-layout {
-  display: grid;
-  grid-template-columns: 1fr 0.8fr;
-  gap: 48px;
-  align-items: center;
-}
-
-.inicio-texto h1 {
-  font-size: 42px;
-  margin-bottom: 16px;
-}
-
-.inicio-texto p {
-  font-size: 18px;
-  max-width: 520px;
-}
-
-.mago-container {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.mago-container img {
-  max-width: 80%;
-  height: auto;
-  border-radius: 16px;
-  box-shadow: 0 0 40px rgba(120,120,255,0.4);
-}
-
-/* ESCOLHA DE PERSONAGEM */
-.personagens {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 24px;
-  margin-top: 32px;
-}
-
-.card {
-  background: rgba(255,255,255,0.05);
-  border-radius: 16px;
-  padding: 16px;
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 20px rgba(80,120,255,0.6);
-}
-
-.card img {
-  width: 100%;
-  border-radius: 12px;
-}
-
-/* AZUL SOLO LEVELING */
-.card .nome {
-  margin-top: 12px;
-  font-weight: bold;
-  color: #4da3ff;
-}
-
-/* TEXTO AUXILIAR */
-.subtexto {
-  margin-top: 12px;
-  font-size: 14px;
-  opacity: 0.8;
-}
+  <script src="script.js"></script>
+</body>
+</html>
