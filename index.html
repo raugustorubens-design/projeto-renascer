@@ -22,6 +22,7 @@
 
       <div class="inicio-container">
 
+        <!-- TEXTO -->
         <div class="inicio-texto">
           <h1>Projeto Renascer</h1>
           <p>
@@ -29,8 +30,13 @@
             clareza pedagógica e evolução consciente.
           </p>
 
-          <!-- SELEÇÃO DE PERSONAGEM -->
-          <div class="character-selection">
+          <!-- BOTÃO DE ENTRADA -->
+          <button id="startJourney" class="start-btn">
+            Iniciar Jornada
+          </button>
+
+          <!-- SELEÇÃO DE PERSONAGEM (oculta inicialmente) -->
+          <div id="characterSelection" class="character-selection hidden">
             <h2>Escolha seu Personagem</h2>
             <p>Este será o avatar que representa você ao longo da jornada.</p>
 
@@ -73,9 +79,9 @@
       <div id="mentor-dialog" class="mentor-dialog hidden">
         <p>
           Bem-vindo, aprendiz.<br><br>
-          Aqui, errar faz parte do caminho.<br>
-          Avançar sem compreender não é permitido.<br><br>
-          Cresça no seu ritmo. O portal aguardará.
+          Antes de escolher quem você será,
+          entenda onde está.<br><br>
+          Quando estiver pronto, inicie a jornada.
         </p>
         <button id="close-dialog">Entendi</button>
       </div>
@@ -85,18 +91,13 @@
     <!-- PORTAL -->
     <section id="portal" class="tab">
       <h2>Portal de Aprendizado</h2>
-      <p>
-        Conteúdo FREE disponível até Python Básico.
-        O portal avançado será liberado no momento adequado.
-      </p>
+      <p>Conteúdo FREE disponível até Python Básico.</p>
     </section>
 
     <!-- QUALIDADE -->
     <section id="qualidade" class="tab">
       <h2>Qualidade, Ética e Compliance</h2>
-      <p>
-        Qualidade não é promessa. É método.
-      </p>
+      <p>Qualidade não é promessa. É método.</p>
     </section>
 
   </main>
