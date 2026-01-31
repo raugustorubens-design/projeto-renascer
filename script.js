@@ -56,3 +56,27 @@ document.querySelectorAll(".character-card").forEach(card => {
     localStorage.setItem("renascer_character", selectedCharacter);
   });
 });
+
+// =========================
+// CONTROLE DE ABAS (CANÔNICO)
+// =========================
+const tabs = document.querySelectorAll(".tab");
+const buttons = document.querySelectorAll(".menu button");
+
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const target = btn.dataset.tab;
+
+    tabs.forEach(tab => {
+      tab.classList.toggle("active", tab.id === target);
+    });
+
+    // Controle de estado visual do mago
+    document.body.classList.remove("tab-inicio", "tab-portal", "tab-qualidade");
+    document.body.classList.add(`tab-${target}`);
+  });
+});
+
+// Estado inicial explícito
+document.body.classList.add("tab-inicio");
+
