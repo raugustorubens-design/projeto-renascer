@@ -1,27 +1,27 @@
 body {
   margin: 0;
+  padding: 30px;
   background: radial-gradient(circle at top, #0d1117, #000);
   color: #e6edf3;
   font-family: Arial, sans-serif;
-  padding: 30px;
 }
 
 h1 {
   color: #58a6ff;
 }
 
-.subtitulo {
+.subtitle {
   color: #8b949e;
   margin-bottom: 30px;
 }
 
-/* BLOCOS */
-.bloco {
+/* BLOCKS */
+.block {
   background: #161b22;
   border: 1px solid #30363d;
   border-radius: 10px;
   padding: 20px;
-  max-width: 700px;
+  max-width: 720px;
   margin-bottom: 20px;
 }
 
@@ -35,26 +35,27 @@ textarea {
   border-radius: 8px;
   padding: 12px;
   font-family: "Courier New", monospace;
+  font-size: 1rem;
 }
 
-/* BOTÕES */
+/* BUTTONS */
 button {
   padding: 14px 28px;
   border-radius: 10px;
   border: none;
   background: #238636;
-  color: #fff;
+  color: #ffffff;
   font-size: 1rem;
   cursor: pointer;
   margin-top: 20px;
 }
 
 /* PAYWALL */
-.oculto {
+.hidden {
   display: none;
 }
 
-.bloqueio {
+.warning {
   color: #f85149;
   font-weight: bold;
 }
