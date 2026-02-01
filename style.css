@@ -1,37 +1,82 @@
-.tabs {
-  display: flex;
-  gap: 8px;
-  margin: 20px 0;
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(circle at top, #0d1117, #000);
+  color: #e6edf3;
 }
 
-.tabs button {
-  background: #21262d;
-  border: 1px solid #30363d;
+header {
+  padding: 20px;
 }
 
-.tabs button:hover {
-  background: #30363d;
+h1 {
+  color: #58a6ff;
+  margin: 0;
 }
 
-.landing {
+.badge {
+  background: #238636;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+nav {
+  padding: 10px 20px;
+}
+
+nav button {
+  margin-right: 8px;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.primary {
+  background: #238636;
+  color: #fff;
+}
+
+.primary:hover {
+  background: #2ea043;
+}
+
+.hidden {
+  display: none;
+}
+
+.center {
   text-align: center;
-  margin-top: 80px;
+  margin-top: 120px;
 }
 
 .mage {
   font-size: 64px;
-  margin-bottom: 20px;
 }
 
-.primary {
-  font-size: 1.1rem;
-  padding: 14px 28px;
+.block {
+  background: #161b22;
+  border: 1px solid #30363d;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .tab {
   display: none;
+  padding: 20px;
 }
 
 .tab.active {
   display: block;
+}
+
+footer {
+  padding: 20px;
+  font-size: 0.8rem;
+  opacity: 0.6;
 }
