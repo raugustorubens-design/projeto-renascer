@@ -7,14 +7,34 @@
 </head>
 <body>
 
-  <h1>Projeto Renascer</h1>
-  <p class="subtitulo">Escolha seu personagem para iniciar a jornada</p>
+  <!-- SELEÇÃO -->
+  <section id="tela-player">
+    <h1>Projeto Renascer</h1>
+    <p class="subtitulo">Escolha seu personagem</p>
 
-  <section id="players-container"></section>
+    <div id="players-container"></div>
 
-  <button id="iniciarBtn" disabled>
-    Iniciar Jornada
-  </button>
+    <button id="iniciarBtn" disabled>
+      Iniciar Jornada
+    </button>
+  </section>
+
+  <!-- VÓRTICE -->
+  <section id="tela-vortice" class="oculto">
+    <div class="vortice"></div>
+    <p>Travessia em andamento...</p>
+  </section>
+
+  <!-- PERGAMINHO -->
+  <section id="tela-narrativa" class="oculto">
+    <div class="pergaminho">
+      <pre id="texto-narrativo"></pre>
+    </div>
+
+    <button id="avancarBtn">
+      Avançar
+    </button>
+  </section>
 
   <script src="script.js"></script>
 </body>
