@@ -1,106 +1,299 @@
+/* =====================================================
+   PROJETO RENASCER — PYTHON FREE
+   STYLE CANÔNICO
+===================================================== */
+
+/* ===============================
+   RESET BÁSICO
+================================ */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+/* ===============================
+   VARIÁVEIS CANÔNICAS
+================================ */
+:root {
+  --bg-main: #0d1117;
+  --bg-surface: #161b22;
+  --bg-elevated: #1f2933;
+
+  --text-main: #e6edf3;
+  --text-muted: #9da7b3;
+
+  --accent: #58a6ff;
+  --accent-soft: #2f81f7;
+
+  --danger: #f85149;
+  --success: #3fb950;
+
+  --border: #30363d;
+}
+
+/* ===============================
+   BODY GLOBAL
+================================ */
 body {
-  margin: 0;
+  background-color: var(--bg-main);
+  color: var(--text-main);
   font-family: Arial, Helvetica, sans-serif;
-  background: radial-gradient(circle at top, #0d1117, #000);
-  color: #e6edf3;
-}
-
-header {
-  padding: 20px;
-}
-
-.badge {
-  background: #238636;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 0.9rem;
-}
-
-nav {
+  line-height: 1.6;
+  min-height: 100vh;
   display: flex;
-  gap: 10px;
-  padding: 10px 20px;
+  flex-direction: column;
 }
 
-nav button {
-  padding: 8px 14px;
-  border-radius: 6px;
-  border: none;
+/* ===============================
+   HEADER
+================================ */
+#header {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#project-title {
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+
+#project-level {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ===============================
+   NAVEGAÇÃO
+================================ */
+#main-nav {
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px;
+}
+
+#main-nav button {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 6px 14px;
   cursor: pointer;
+  border-radius: 4px;
 }
 
-.hidden {
+#main-nav button:hover {
+  color: var(--text-main);
+  border-color: var(--accent);
+}
+
+/* ===============================
+   CONTAINER PRINCIPAL
+================================ */
+#app {
+  flex: 1;
+  padding: 32px;
+}
+
+/* ===============================
+   TELAS / ESTADOS
+================================ */
+.screen {
   display: none;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.tab {
-  display: none;
-  padding: 20px;
-}
-
-.tab.active {
+.screen.active {
   display: block;
 }
 
-.portal {
+.screen.hidden {
+  display: none;
+}
+
+/* ===============================
+   LANDING / PORTAL
+================================ */
+#landing {
   text-align: center;
-  margin-top: 80px;
+  padding-top: 80px;
 }
 
-.portal img {
-  width: 120px;
+#mage {
+  font-size: 5rem;
+  margin-bottom: 24px;
 }
 
-button {
-  padding: 10px 16px;
-  border-radius: 6px;
+#landing-title {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+#landing-text {
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+#enter-portal-btn {
+  font-size: 1rem;
+  padding: 12px 24px;
+  background: var(--accent);
+  color: #000;
   border: none;
-  cursor: pointer;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 20px;
-}
-
-.player {
-  background: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 10px;
-  text-align: center;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.player img {
-  width: 100%;
   border-radius: 6px;
+  cursor: pointer;
 }
 
-.player.selected {
-  border-color: #58a6ff;
+#enter-portal-btn:hover {
+  background: var(--accent-soft);
 }
 
-.block {
-  background: #161b22;
-  padding: 16px;
-  margin-bottom: 16px;
-  border-radius: 8px;
-  border: 1px solid #30363d;
+/* ===============================
+   PERSONAGENS
+================================ */
+#players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
 }
 
-footer {
+.player-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
   padding: 20px;
-  font-size: 0.85rem;
-  opacity: 0.7;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 6px;
+  color: var(--text-muted);
 }
 
-.premium {
-  background: #238636;
-  color: #fff;
+.player-card:hover {
+  border-color: var(--accent);
+  color: var(--text-main);
+}
+
+.player-card.selected {
+  border-color: var(--accent);
+  background: var(--bg-elevated);
+  color: var(--text-main);
+}
+
+/* ===============================
+   BOTÕES GERAIS
+================================ */
+button {
+  font-family: inherit;
+}
+
+button.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ===============================
+   JORNADA
+================================ */
+#act-title {
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+}
+
+#act-content {
+  background: var(--bg-surface);
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+}
+
+#act-steps .step {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 14px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+#feedback-area {
+  margin-top: 16px;
+  color: var(--text-muted);
+}
+
+#advance-btn {
+  margin-top: 24px;
+  padding: 10px 20px;
+  background: var(--accent);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #000;
+}
+
+/* ===============================
+   QUALIDADE
+================================ */
+#quality-text {
+  background: var(--bg-surface);
+  padding: 24px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+/* ===============================
+   CERTIFICAÇÃO
+================================ */
+#certificate-details {
+  background: var(--bg-surface);
+  padding: 24px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+
+#certificate-status {
+  color: var(--success);
+  font-weight: bold;
+}
+
+/* ===============================
+   PAYWALL
+================================ */
+#paywall {
+  text-align: center;
+  padding-top: 60px;
+}
+
+#premium-cta-btn {
+  margin-top: 24px;
+  padding: 12px 28px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#premium-cta-btn:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+#footer {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  padding: 12px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
 }
