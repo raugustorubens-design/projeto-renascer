@@ -1,10 +1,13 @@
 /* ===============================
-   GLOBAL RESET
+   RESET
 ================================ */
 * {
   box-sizing: border-box;
 }
 
+/* ===============================
+   GLOBAL
+================================ */
 body {
   margin: 0;
   padding: 32px;
@@ -14,11 +17,11 @@ body {
 }
 
 /* ===============================
-   TYPOGRAPHY
+   TEXT
 ================================ */
 h1 {
   color: #58a6ff;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 h3 {
@@ -27,12 +30,12 @@ h3 {
 
 .subtitle {
   color: #8b949e;
-  margin-bottom: 28px;
+  margin-bottom: 30px;
   max-width: 720px;
 }
 
 /* ===============================
-   LAYOUT BLOCKS
+   BLOCKS
 ================================ */
 .block {
   background: #161b22;
@@ -60,7 +63,7 @@ select {
 }
 
 /* ===============================
-   TEXTAREA (SPELL / CODE)
+   TEXTAREA
 ================================ */
 textarea {
   width: 100%;
@@ -97,7 +100,7 @@ button:hover {
 }
 
 /* ===============================
-   PAYWALL / STATES
+   STATES
 ================================ */
 .hidden {
   display: none;
