@@ -9,6 +9,7 @@ const STORAGE_KEY = "renascer_player";
    ESTADO
 ================================ */
 let playerSelecionado = null;
+let blocoAtual = 0;
 
 /* ===============================
    DOM
@@ -29,11 +30,9 @@ const avancarBtn = document.getElementById("avancarBtn");
 function carregarPlayers() {
   for (let i = 1; i <= TOTAL_PLAYERS; i++) {
     const img = document.createElement("img");
-
     img.src = `${PLAYER_PATH}/${String(i).padStart(2, "0")}_${nomeArquivo(i)}.png`;
     img.className = "player-card";
     img.onclick = () => selecionarPlayer(i, img);
-
     container.appendChild(img);
   }
 }
@@ -66,7 +65,7 @@ function selecionarPlayer(id, el) {
 }
 
 /* ===============================
-   FLUXO
+   FLUXO PRINCIPAL
 ================================ */
 iniciarBtn.onclick = () => {
   telaPlayer.classList.add("oculto");
@@ -75,44 +74,79 @@ iniciarBtn.onclick = () => {
   setTimeout(() => {
     telaVortice.classList.add("oculto");
     telaNarrativa.classList.remove("oculto");
-    escreverTexto(narrativaTexto);
+    escreverBloco();
   }, 3000);
 };
 
 avancarBtn.onclick = () => {
-  alert("Próxima fase: Python FREE");
+  blocoAtual++;
+  if (blocoAtual < narrativa.length) {
+    escreverBloco();
+  } else {
+    alert("Fim do Prólogo.\nPróxima fase: Python FREE.");
+  }
 };
 
 /* ===============================
-   NARRATIVA
+   NARRATIVA CANÔNICA
 ================================ */
-const narrativaTexto = `
-Quando o mundo perdeu sua linguagem,
-o conhecimento foi fragmentado.
+const narrativa = [
+`Antes da fragmentação,
+o conhecimento era contínuo.
 
-Os antigos criadores selaram o saber
-em estruturas chamadas Sistemas.
+Não havia linguagens separadas,
+nem sistemas isolados.
+Tudo conversava.`,
 
-Poucos conseguem atravessar o Vórtice.
-Menos ainda retornam com domínio.
+`Mas a complexidade cresceu.
+E com ela, o caos.
 
-Hoje, você foi chamado.
+Para conter o colapso,
+os Arquitetos criaram estruturas.
+Chamaram-nas de Sistemas.`,
 
-Não como aluno.
-Mas como arquiteto do próprio renascer.
-`;
+`Cada Sistema exigia domínio.
+Cada erro cobrava um preço.
+
+Poucos aprenderam.
+Muitos desistiram.
+Quase todos copiaram.`,
+
+`Com o tempo,
+o ato de pensar foi substituído
+pelo ato de repetir.`,
+
+`O Projeto Renascer não nasceu
+para ensinar comandos.
+
+Ele existe para restaurar
+a capacidade de construir,
+entender e decidir.`,
+
+`Se você atravessou o Vórtice,
+não é por acaso.
+
+A linguagem aguarda.
+E ela não perdoa descuido.`
+];
 
 /* ===============================
    EFEITO DE ESCRITA
 ================================ */
-function escreverTexto(texto) {
+function escreverBloco() {
   textoNarrativo.textContent = "";
+  avancarBtn.disabled = true;
+
   let i = 0;
+  const texto = narrativa[blocoAtual];
 
   const intervalo = setInterval(() => {
     textoNarrativo.textContent += texto[i];
     i++;
-    if (i >= texto.length) clearInterval(intervalo);
+    if (i >= texto.length) {
+      clearInterval(intervalo);
+      avancarBtn.disabled = false;
+    }
   }, 35);
 }
 
