@@ -1,5 +1,6 @@
 let acts = [];
 let actIndex = 0;
+let quizStatus = {}; // controla acertos/erros por questão
 
 fetch("ato_free.json")
   .then(r => r.json())
@@ -9,6 +10,9 @@ fetch("ato_free.json")
     renderAct();
   });
 
+/* ===============================
+   PROGRESSO
+================================ */
 function loadProgress() {
   const p = JSON.parse(localStorage.getItem("renascer_progress"));
   if (p && Number.isInteger(p.actIndex)) actIndex = p.actIndex;
@@ -21,9 +25,13 @@ function saveProgress() {
   );
 }
 
+/* ===============================
+   RENDERIZAÇÃO
+================================ */
 function renderAct() {
   const c = document.getElementById("content");
   c.innerHTML = "";
+  quizStatus = {};
 
   if (actIndex >= acts.length) {
     showCertificate();
@@ -32,11 +40,12 @@ function renderAct() {
   }
 
   const act = acts[actIndex];
+
   const h = document.createElement("h2");
   h.textContent = act.title;
   c.appendChild(h);
 
-  act.steps.forEach(step => {
+  act.steps.forEach((step, stepIndex) => {
     const b = document.createElement("div");
     b.className = "block";
 
@@ -49,41 +58,60 @@ function renderAct() {
       `;
     }
 
-    /* QUIZ COM FEEDBACK */
+    /* QUIZ COM FEEDBACK + CONTROLE */
     if (step.type === "quiz") {
-      const question = document.createElement("p");
-      question.innerHTML = `<strong>${step.question}</strong>`;
-      b.appendChild(question);
+      quizStatus[stepIndex] = {
+        correct: false,
+        attempts: 0
+      };
+
+      const q = document.createElement("p");
+      q.innerHTML = `<strong>${step.question}</strong>`;
+      b.appendChild(q);
 
       const feedback = document.createElement("div");
       feedback.style.marginTop = "10px";
 
       step.options.forEach((o, i) => {
-        const letter = String.fromCharCode(65 + i); // A, B, C...
+        const letter = String.fromCharCode(65 + i);
         const btn = document.createElement("button");
         btn.textContent = `${letter}) ${o.text}`;
 
         btn.onclick = () => {
-          // trava todos os botões
-          const buttons = b.querySelectorAll("button");
-          buttons.forEach(bt => bt.disabled = true);
+          quizStatus[stepIndex].attempts++;
 
           if (o.correct) {
+            quizStatus[stepIndex].correct = true;
             btn.style.background = "#238636";
+
             feedback.innerHTML = `
               <p style="color:#3fb950;">
                 ✔ Resposta correta<br>
-                ${o.feedback || "Você demonstrou domínio do conceito."}
+                ${o.feedback || "Conceito demonstrado com sucesso."}
               </p>
             `;
+
+            lockButtons(b);
+            updateMastery();
           } else {
             btn.style.background = "#da3633";
-            feedback.innerHTML = `
-              <p style="color:#f85149;">
-                ✖ Resposta incorreta<br>
-                ${o.feedback || "Revise o conceito antes de prosseguir."}
-              </p>
-            `;
+
+            if (quizStatus[stepIndex].attempts === 1) {
+              feedback.innerHTML = `
+                <p style="color:#f85149;">
+                  ✖ Resposta incorreta<br>
+                  Tente novamente com atenção ao conceito.
+                </p>
+              `;
+            } else {
+              feedback.innerHTML = `
+                <p style="color:#f85149;">
+                  ✖ Segunda tentativa incorreta<br>
+                  Revise o conteúdo antes de prosseguir.
+                </p>
+              `;
+              lockButtons(b);
+            }
           }
         };
 
@@ -107,13 +135,53 @@ function renderAct() {
 
     c.appendChild(b);
   });
+
+  /* BOTÃO DE AVANÇO */
+  const advanceBtn = document.createElement("button");
+  advanceBtn.textContent = "Avançar para o próximo Ato";
+  advanceBtn.onclick = attemptAdvance;
+  advanceBtn.style.marginTop = "20px";
+
+  c.appendChild(advanceBtn);
 }
 
-function validateSpell(expected) {
-  const v = document.getElementById("spell").value.trim();
+/* ===============================
+   CONTROLE DE QUIZ
+================================ */
+function lockButtons(block) {
+  const buttons = block.querySelectorAll("button");
+  buttons.forEach(b => b.disabled = true);
+}
 
-  if (!v.includes(expected)) {
-    alert("O feitiço não demonstra domínio do conceito esperado.");
+function allQuizzesCorrect() {
+  return Object.values(quizStatus).every(q => q.correct);
+}
+
+/* ===============================
+   DOMÍNIO
+================================ */
+function updateMastery() {
+  const total = Object.keys(quizStatus).length;
+  const correct = Object.values(quizStatus).filter(q => q.correct).length;
+
+  let level = "Iniciante";
+  if (correct === total) level = "Domínio Pleno";
+  else if (correct > total / 2) level = "Domínio Parcial";
+
+  localStorage.setItem(
+    "renascer_mastery",
+    JSON.stringify({ act: actIndex, level })
+  );
+}
+
+/* ===============================
+   AVANÇO
+================================ */
+function attemptAdvance() {
+  if (!allQuizzesCorrect()) {
+    alert(
+      "Você ainda não demonstrou domínio completo deste Ato. Revise as questões."
+    );
     return;
   }
 
@@ -122,6 +190,23 @@ function validateSpell(expected) {
   renderAct();
 }
 
+/* ===============================
+   FEITIÇO
+================================ */
+function validateSpell(expected) {
+  const v = document.getElementById("spell").value.trim();
+
+  if (!v.includes(expected)) {
+    alert("O feitiço não demonstra domínio do conceito esperado.");
+    return;
+  }
+
+  alert("Feitiço validado com sucesso.");
+}
+
+/* ===============================
+   CERTIFICADO
+================================ */
 function showCertificate() {
   fetch("certification.json")
     .then(r => r.json())
@@ -142,6 +227,9 @@ function showCertificate() {
     });
 }
 
+/* ===============================
+   PAYWALL
+================================ */
 function showPaywall() {
   document.getElementById("paywall").classList.remove("hidden");
 }
