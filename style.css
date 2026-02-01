@@ -1,4 +1,5 @@
 body {
+  margin: 0;
   background: radial-gradient(circle at top, #0d1117, #000);
   color: #e6edf3;
   font-family: Arial, sans-serif;
@@ -6,21 +7,16 @@ body {
   padding: 30px;
 }
 
-h1 {
-  color: #58a6ff;
-  margin-bottom: 6px;
+/* UTIL */
+.oculto {
+  display: none;
 }
 
-.subtitulo {
-  margin-bottom: 30px;
-  color: #8b949e;
-}
-
-/* PLAYERS */
+/* PLAYER */
 #players-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 18px;
   max-width: 900px;
   margin: 0 auto 30px;
 }
@@ -28,9 +24,9 @@ h1 {
 .player-card {
   width: 100%;
   border-radius: 12px;
-  border: 2px solid transparent;
   cursor: pointer;
-  transition: all 0.25s ease;
+  border: 2px solid transparent;
+  transition: all .25s;
 }
 
 .player-card:hover {
@@ -45,16 +41,47 @@ h1 {
 
 /* BOTÃO */
 button {
-  padding: 14px 28px;
-  font-size: 1rem;
+  padding: 14px 30px;
   border-radius: 10px;
   border: none;
-  cursor: pointer;
   background: #238636;
   color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 button:disabled {
   background: #30363d;
-  cursor: not-allowed;
+}
+
+/* VÓRTICE */
+#tela-vortice {
+  margin-top: 120px;
+}
+
+.vortice {
+  width: 180px;
+  height: 180px;
+  border: 6px solid #58a6ff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  animation: girar 1.2s linear infinite;
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+/* PERGAMINHO */
+.pergaminho {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 700px;
+  margin: 40px auto;
+  font-family: "Courier New", monospace;
+  text-align: left;
+  white-space: pre-wrap;
 }
