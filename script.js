@@ -1,157 +1,88 @@
 /* ===============================
-   LOG VISUAL
+   CONFIGURAÇÃO
 ================================ */
-function log(message, type = "ok") {
-  const logs = document.getElementById("logs");
-  const entry = document.createElement("div");
+const PLAYER_PATH = "assets/personagens/players";
+const TOTAL_PLAYERS = 10;
+const STORAGE_KEY = "renascer_player_selecionado";
 
-  entry.className = `log ${type}`;
-  entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+/* ===============================
+   ESTADO
+================================ */
+let playerSelecionado = null;
 
-  logs.appendChild(entry);
-  logs.scrollTop = logs.scrollHeight;
+/* ===============================
+   DOM
+================================ */
+const container = document.getElementById("players-container");
+const iniciarBtn = document.getElementById("iniciarBtn");
+
+/* ===============================
+   CARREGAR PLAYERS
+================================ */
+function carregarPlayers() {
+  for (let i = 1; i <= TOTAL_PLAYERS; i++) {
+    const img = document.createElement("img");
+
+    img.src = `${PLAYER_PATH}/${String(i).padStart(2, "0")}_${nomeArquivo(i)}.png`;
+    img.alt = `Player ${i}`;
+    img.classList.add("player-card");
+
+    img.onclick = () => selecionarPlayer(i, img);
+
+    container.appendChild(img);
+  }
 }
 
 /* ===============================
-   COMPLIANCE INVISÍVEL
+   MAPA DE NOMES
 ================================ */
-const COMPLIANCE_KEY = "renascer_compliance_log";
+function nomeArquivo(i) {
+  const nomes = {
+    1: "Giu_jogadora",
+    2: "Bi_jogadora",
+    3: "Neto_jogador",
+    4: "Jack_jogadora",
+    5: "Carolina_jogadora",
+    6: "vovo_jogador",
+    7: "du_jogador",
+    8: "douglas_jogador",
+    9: "vovo_jogadora",
+    10: "leo_jogador"
+  };
+  return nomes[i];
+}
 
-const EVENTOS_COMPLIANCE = {
-  TESTE_EXECUTADO: "teste_executado",
-  CHECKLIST_APROVADO: "checklist_aprovado",
-  CHECKLIST_REPROVADO: "checklist_reprovado"
-};
+/* ===============================
+   SELEÇÃO
+================================ */
+function selecionarPlayer(id, elemento) {
+  document
+    .querySelectorAll(".player-card")
+    .forEach(p => p.classList.remove("selecionado"));
 
-function registrarEvento(evento) {
-  const logCompliance =
-    JSON.parse(localStorage.getItem(COMPLIANCE_KEY)) || [];
+  elemento.classList.add("selecionado");
 
-  logCompliance.push({
-    id: crypto.randomUUID(),
-    tipo: evento.tipo,
-    contexto: evento.contexto,
-    bloom: evento.bloom || null,
-    status: evento.status,
-    timestamp: new Date().toISOString()
-  });
+  playerSelecionado = id;
+  iniciarBtn.disabled = false;
 
   localStorage.setItem(
-    COMPLIANCE_KEY,
-    JSON.stringify(logCompliance)
+    STORAGE_KEY,
+    JSON.stringify({ id })
   );
 }
 
 /* ===============================
-   TESTE DA MODIFICAÇÃO
+   INICIAR JORNADA
 ================================ */
-function executarTeste() {
-  log("Iniciando teste da modificação");
+iniciarBtn.onclick = () => {
+  if (!playerSelecionado) return;
 
-  try {
-    // SIMULAÇÃO DE MODIFICAÇÃO
-    const resultado = true;
+  alert(`Player ${playerSelecionado} selecionado.\nA jornada começa agora.`);
 
-    if (resultado) {
-      log("Modificação executada com sucesso", "ok");
-    } else {
-      log("Resultado inesperado", "warn");
-    }
-
-  } catch (e) {
-    log(`Erro detectado: ${e.message}`, "error");
-    throw e;
-  }
-}
-
-/* ===============================
-   CHECKLIST AUTOMÁTICO
-================================ */
-const checklistItens = [
-  {
-    nome: "Script de teste carregado",
-    teste: () => typeof log === "function"
-  },
-  {
-    nome: "Função executarTeste existe",
-    teste: () => typeof executarTeste === "function"
-  },
-  {
-    nome: "DOM de logs carregado",
-    teste: () => document.getElementById("logs") !== null
-  },
-  {
-    nome: "Execução sem erro crítico",
-    teste: () => true
-  }
-];
-
-function executarChecklist() {
-  const ul = document.getElementById("checklist");
-  const veredito = document.getElementById("veredito");
-
-  ul.innerHTML = "";
-  let aprovado = true;
-
-  checklistItens.forEach(item => {
-    const li = document.createElement("li");
-
-    try {
-      const resultado = item.teste();
-
-      if (resultado) {
-        li.textContent = `✔ ${item.nome}`;
-        li.className = "check-ok";
-      } else {
-        li.textContent = `✖ ${item.nome}`;
-        li.className = "check-fail";
-        aprovado = false;
-      }
-    } catch {
-      li.textContent = `✖ ${item.nome} (erro)`;
-      li.className = "check-fail";
-      aprovado = false;
-    }
-
-    ul.appendChild(li);
-  });
-
-  veredito.textContent = aprovado
-    ? "APROVADO — Modificação validada"
-    : "REPROVADO — Correções necessárias";
-
-  veredito.className = aprovado ? "check-ok" : "check-fail";
-
-  registrarEvento({
-    tipo: aprovado
-      ? EVENTOS_COMPLIANCE.CHECKLIST_APROVADO
-      : EVENTOS_COMPLIANCE.CHECKLIST_REPROVADO,
-    contexto: "sandbox_teste",
-    bloom: 3,
-    status: aprovado ? "ok" : "fail"
-  });
-
-  return aprovado;
-}
-
-/* ===============================
-   EXECUÇÃO COMPLETA
-================================ */
-function executarTesteCompleto() {
-  log("Sandbox iniciado", "ok");
-
-  registrarEvento({
-    tipo: EVENTOS_COMPLIANCE.TESTE_EXECUTADO,
-    contexto: "sandbox_teste",
-    bloom: 3,
-    status: "executado"
-  });
-
-  executarTeste();
-  executarChecklist();
-}
+  // Próxima fase: vórtice / narrativa / Python FREE
+};
 
 /* ===============================
    BOOT
 ================================ */
-log("Página de teste carregada", "ok");
+carregarPlayers();
