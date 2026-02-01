@@ -1,17 +1,11 @@
 /* =====================================================
    PROJETO RENASCER — PYTHON FREE
-   SCRIPT.JS — MÁQUINA DE ESTADOS CANÔNICA (CORRIGIDA)
+   SCRIPT.JS — MÁQUINA DE ESTADOS CANÔNICA CORRIGIDA
 ===================================================== */
 
-/* ===============================
-   DEV MODE
-================================ */
 const DEV_MODE =
   new URLSearchParams(window.location.search).get("dev") === "true";
 
-/* ===============================
-   ESTADO GLOBAL
-================================ */
 const state = {
   mode: DEV_MODE ? "dev" : "student",
   screen: "LANDING",
@@ -20,9 +14,6 @@ const state = {
   acts: [],
 };
 
-/* ===============================
-   MAPA DE ESTADOS → IDS DO DOM
-================================ */
 const SCREEN_MAP = {
   LANDING: "landing",
   CHARACTER_SELECT: "character-select",
@@ -32,110 +23,72 @@ const SCREEN_MAP = {
   PAYWALL: "paywall",
 };
 
-/* ===============================
-   BOOT
-================================ */
 document.addEventListener("DOMContentLoaded", init);
 
-/* ===============================
-   INIT
-================================ */
 function init() {
   bindGlobalUI();
   loadActs();
   if (DEV_MODE) enableDevMode();
   goTo("LANDING");
 }
-
-/* ===============================
-   CONTROLE DE TELAS
-================================ */
 function goTo(target) {
   if (!SCREEN_MAP[target]) {
     console.warn("Estado inválido:", target);
     target = "LANDING";
   }
-
   state.screen = target;
-
   Object.values(SCREEN_MAP).forEach((id) => {
     const el = document.getElementById(id);
     if (!el) return;
     el.classList.remove("active");
     el.classList.add("hidden");
   });
-
   const activeId = SCREEN_MAP[target];
   const activeEl = document.getElementById(activeId);
-
   if (activeEl) {
     activeEl.classList.remove("hidden");
     activeEl.classList.add("active");
   }
-
   updateNav();
 }
 
-/* ===============================
-   NAV / HEADER
-================================ */
 function bindGlobalUI() {
   document.querySelectorAll("#main-nav button").forEach((btn) => {
     btn.addEventListener("click", () => {
       const target = btn.dataset.target.toUpperCase();
-
       if (state.mode === "dev") {
         goTo(target);
         return;
       }
-
       if (target === "QUALITY") goTo("QUALITY");
       if (target === "JOURNEY" && state.player) goTo("JOURNEY");
-      if (target === "CERTIFICATE" && journeyCompleted())
-        goTo("CERTIFICATE");
+      if (target === "CERTIFICATE" && journeyCompleted()) goTo("CERTIFICATE");
     });
   });
-
-  document
-    .getElementById("enter-portal-btn")
-    .addEventListener("click", () => {
-      goTo("CHARACTER_SELECT");
-    });
-
-  document
-    .getElementById("certificate-continue-btn")
-    .addEventListener("click", () => {
-      goTo("PAYWALL");
-    });
+  document.getElementById("enter-portal-btn").addEventListener("click", () => {
+    goTo("CHARACTER_SELECT");
+  });
+  document.getElementById("certificate-continue-btn").addEventListener("click", () => {
+    goTo("PAYWALL");
+  });
 }
-
-/* ===============================
-   PERSONAGENS
-================================ */
 function renderCharacters() {
   const grid = document.getElementById("character-grid");
   const confirm = document.getElementById("confirm-character-btn");
-
   grid.innerHTML = "";
   confirm.classList.add("disabled");
-
   for (let i = 1; i <= 10; i++) {
     const card = document.createElement("div");
     card.className = "player-card";
     card.textContent = `Jogador ${i}`;
-
     card.onclick = () => {
-      document
-        .querySelectorAll(".player-card")
-        .forEach((c) => c.classList.remove("selected"));
+      document.querySelectorAll(".player-card").forEach((c) => c.classList.remove("selected"));
       card.classList.add("selected");
       state.player = i;
       confirm.classList.remove("disabled");
     };
-
     grid.appendChild(card);
   }
-
   confirm.onclick = () => {
     if (!state.player) return;
     goTo("JOURNEY");
@@ -143,9 +96,6 @@ function renderCharacters() {
   };
 }
 
-/* ===============================
-   JORNADA
-================================ */
 function loadActs() {
   fetch("ato_free.json")
     .then((r) => r.json())
@@ -156,22 +106,17 @@ function loadActs() {
       state.acts = [];
     });
 }
-
 function renderJourney() {
   const title = document.getElementById("journey-title");
   const content = document.getElementById("journey-content");
   const nextBtn = document.getElementById("journey-next-btn");
-
   if (!state.acts[state.actIndex]) {
     goTo("CERTIFICATE");
     return;
   }
-
   const act = state.acts[state.actIndex];
-
   title.textContent = act.title || "Ato";
   content.textContent = act.text || "Conteúdo em construção.";
-
   nextBtn.classList.remove("disabled");
   nextBtn.onclick = () => {
     state.actIndex++;
@@ -179,28 +124,18 @@ function renderJourney() {
   };
 }
 
-/* ===============================
-   CERTIFICAÇÃO
-================================ */
 function journeyCompleted() {
   return state.actIndex >= state.acts.length;
 }
 
-/* ===============================
-   NAV UPDATE
-================================ */
 function updateNav() {
   if (state.screen === "CHARACTER_SELECT") renderCharacters();
   if (state.screen === "JOURNEY") renderJourney();
 }
 
-/* ===============================
-   DEV MODE
-================================ */
 function enableDevMode() {
   const devBadge = document.getElementById("dev-indicator");
   if (devBadge) devBadge.classList.remove("hidden");
-
   window.dev = {
     goto(screen) {
       goTo(screen.toUpperCase());
