@@ -1,8 +1,23 @@
 body {
+  margin: 0;
   background: #0d1117;
   color: #e6edf3;
   font-family: Arial, sans-serif;
   padding: 32px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.badge {
+  background: #238636;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
 }
 
 h1, h2 {
@@ -11,22 +26,23 @@ h1, h2 {
 
 .subtitle {
   color: #8b949e;
-  margin-bottom: 24px;
+  margin: 16px 0 32px;
 }
 
 .block {
   background: #161b22;
   border: 1px solid #30363d;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 20px;
-  margin-bottom: 20px;
-  max-width: 760px;
+  margin-bottom: 24px;
+  max-width: 780px;
 }
 
 pre {
   background: #0d1117;
-  padding: 10px;
-  border-radius: 6px;
+  padding: 12px;
+  border-radius: 8px;
+  overflow-x: auto;
 }
 
 textarea {
@@ -35,17 +51,17 @@ textarea {
   background: #0d1117;
   color: #e6edf3;
   border: 1px solid #30363d;
-  border-radius: 6px;
-  padding: 8px;
+  border-radius: 8px;
+  padding: 10px;
 }
 
 button {
-  margin-top: 10px;
-  padding: 10px 16px;
+  margin-top: 12px;
+  padding: 10px 18px;
   background: #238636;
   color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -61,18 +77,26 @@ button:disabled {
 .diploma {
   background: #f5f5f5;
   color: #111;
-  padding: 32px;
-  border-radius: 12px;
-  max-width: 760px;
+  padding: 36px;
+  border-radius: 14px;
+  max-width: 780px;
+  margin-top: 32px;
 }
 
 .ethics {
-  margin-top: 16px;
+  margin-top: 18px;
   font-style: italic;
 }
 
 #paywall {
-  margin-top: 40px;
-  padding: 24px;
-  border: 1px dashed #30363d;
+  margin-top: 48px;
+  padding: 28px;
+  border: 2px dashed #30363d;
+  max-width: 780px;
+}
+
+.footer {
+  margin-top: 64px;
+  color: #8b949e;
+  font-size: 0.85rem;
 }
