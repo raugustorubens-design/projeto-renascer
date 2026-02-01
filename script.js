@@ -1,59 +1,121 @@
-/* ===============================
-   DOM REFERENCES
-================================ */
-const onboardingScreen = document.getElementById("onboarding-screen");
-const evaluationScreen = document.getElementById("evaluation-screen");
-const paywallScreen = document.getElementById("paywall-screen");
+let acts = [];
+let currentActIndex = 0;
 
-const startEvaluationBtn = document.getElementById("startEvaluationBtn");
-const validateBtn = document.getElementById("validateBtn");
+fetch("ato_free.json")
+  .then(res => res.json())
+  .then(data => {
+    acts = data.acts;
+    loadProgress();
+    renderAct();
+  });
 
-/* ===============================
-   FLOW CONTROL
-================================ */
-startEvaluationBtn.addEventListener("click", () => {
-  onboardingScreen.classList.add("hidden");
-  evaluationScreen.classList.remove("hidden");
-});
-
-/* ===============================
-   VALIDATION LOGIC
-================================ */
-validateBtn.addEventListener("click", () => {
-
-  const q1 = document.querySelector('input[name="q1"]:checked');
-  if (!q1 || q1.value !== "correct") {
-    alert("Resposta incorreta na questão 1.");
-    return;
+function loadProgress() {
+  const saved = JSON.parse(localStorage.getItem("renascer_progress"));
+  if (saved && saved.actIndex !== undefined) {
+    currentActIndex = saved.actIndex;
   }
+}
 
-  const q2 = document.getElementById("q2").value;
-  if (q2 !== "correct") {
-    alert("Resposta incorreta na questão 2.");
-    return;
-  }
-
-  const q3 = document.getElementById("q3").value.trim();
-  if (!q3.startsWith("print")) {
-    alert("O feitiço informado não é válido.");
-    return;
-  }
-
-  unlockPaywall();
-});
-
-/* ===============================
-   PAYWALL UNLOCK
-================================ */
-function unlockPaywall() {
-  evaluationScreen.classList.add("hidden");
-  paywallScreen.classList.remove("hidden");
-
+function saveProgress() {
   localStorage.setItem(
-    "rebirth_progress",
-    JSON.stringify({
-      status: "free_completed",
-      timestamp: new Date().toISOString()
-    })
+    "renascer_progress",
+    JSON.stringify({ actIndex: currentActIndex })
   );
+}
+
+function renderAct() {
+  const container = document.getElementById("content");
+  container.innerHTML = "";
+
+  if (currentActIndex >= acts.length) {
+    loadCertificate();
+    return;
+  }
+
+  const act = acts[currentActIndex];
+
+  const title = document.createElement("h2");
+  title.textContent = act.title;
+  container.appendChild(title);
+
+  act.steps.forEach(step => {
+    if (step.type === "narrative" || step.type === "content") {
+      const block = document.createElement("div");
+      block.className = "block";
+
+      block.innerHTML = `
+        <h3>${step.title}</h3>
+        <p>${step.text}</p>
+        ${step.example ? `<pre>${step.example}</pre>` : ""}
+      `;
+      container.appendChild(block);
+    }
+
+    if (step.type === "quiz") {
+      const block = document.createElement("div");
+      block.className = "block";
+
+      block.innerHTML = `<p><strong>${step.question}</strong></p>`;
+
+      step.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.textContent = opt.text;
+        btn.onclick = () => {
+          if (opt.correct) {
+            btn.style.background = "#238636";
+          } else {
+            btn.style.background = "#da3633";
+          }
+        };
+        block.appendChild(btn);
+      });
+
+      container.appendChild(block);
+    }
+
+    if (step.type === "spell") {
+      const block = document.createElement("div");
+      block.className = "block";
+
+      block.innerHTML = `
+        <h3>${step.title}</h3>
+        <p>${step.instruction}</p>
+        <textarea id="spellInput"></textarea>
+        <button onclick="validateSpell('${step.expected}')">
+          Validar Feitiço
+        </button>
+      `;
+
+      container.appendChild(block);
+    }
+  });
+}
+
+function validateSpell(expected) {
+  const input = document.getElementById("spellInput").value.trim();
+
+  if (!input.includes("print")) {
+    alert("O feitiço não demonstra domínio do comando esperado.");
+    return;
+  }
+
+  currentActIndex++;
+  saveProgress();
+  renderAct();
+}
+
+function loadCertificate() {
+  fetch("certification.json")
+    .then(res => res.json())
+    .then(data => {
+      const cert = data.certificate;
+
+      document.getElementById("cert-title").textContent = cert.title;
+      document.getElementById("cert-description").textContent = cert.description;
+      document.getElementById("cert-level").textContent = cert.level;
+      document.getElementById("cert-issued").textContent = cert.issued_by;
+      document.getElementById("cert-ethics").textContent = cert.ethics;
+
+      document.getElementById("certificate").classList.remove("hidden");
+    });
 }
