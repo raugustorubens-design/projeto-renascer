@@ -1,95 +1,226 @@
+/* =====================================================
+   PROJETO RENASCER — PYTHON FREE
+   SCRIPT CANÔNICO (STATE MACHINE)
+===================================================== */
+
+/* ===============================
+   DEV MODE
+================================ */
 const DEV_MODE = new URLSearchParams(window.location.search).get("dev") === "true";
 
-let acts = [];
-let actIndex = 0;
-let selectedPlayer = null;
+/* ===============================
+   ESTADO GLOBAL
+================================ */
+const appState = {
+  currentScreen: "LANDING",
+  selectedPlayer: null,
+  currentActIndex: 0,
+  acts: [],
+  certificationUnlocked: false,
+  devMode: DEV_MODE,
+  allowDevWrite: false
+};
 
-fetch("ato_free.json")
-  .then(r => r.json())
-  .then(d => {
-    acts = d.acts;
-  });
+/* ===============================
+   REFERÊNCIAS DE TELAS
+================================ */
+const screens = [
+  "landing",
+  "characters",
+  "journey",
+  "quality",
+  "certificate",
+  "paywall"
+];
 
-function enterPortal() {
-  document.getElementById("landing").classList.add("hidden");
-  document.getElementById("app").classList.remove("hidden");
-  document.getElementById("tabs").classList.remove("hidden");
-  renderAct();
-  loadPlayers();
+/* ===============================
+   BOOT
+================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  initApp();
+});
+
+/* ===============================
+   INICIALIZAÇÃO
+================================ */
+function initApp() {
+  bindNavigation();
+  bindLanding();
+  bindCharacters();
+  bindCertificate();
+  loadJourneyData();
+  renderScreen("LANDING");
 }
 
-function showTab(id) {
-  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+/* ===============================
+   CONTROLE DE TELAS
+================================ */
+function renderScreen(screenName) {
+  appState.currentScreen = screenName;
+
+  screens.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.remove("active");
+    el.classList.add("hidden");
+  });
+
+  const active = document.getElementById(screenName.toLowerCase());
+  if (active) {
+    active.classList.remove("hidden");
+    active.classList.add("active");
+  }
+}
+
+/* ===============================
+   NAVEGAÇÃO
+================================ */
+function bindNavigation() {
+  document.querySelectorAll("#main-nav button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const target = btn.getAttribute("data-target").toUpperCase();
+
+      if (appState.devMode) {
+        renderScreen(target);
+        return;
+      }
+
+      if (target === "QUALITY") {
+        renderScreen("QUALITY");
+      }
+
+      if (target === "JOURNEY" && appState.selectedPlayer) {
+        renderScreen("JOURNEY");
+      }
+
+      if (target === "CERTIFICATE" && appState.certificationUnlocked) {
+        renderScreen("CERTIFICATE");
+      }
+    });
+  });
+}
+
+/* ===============================
+   LANDING
+================================ */
+function bindLanding() {
+  const btn = document.getElementById("enter-portal-btn");
+  btn.addEventListener("click", () => {
+    renderScreen("CHARACTERS");
+  });
+}
+
+/* ===============================
+   PERSONAGENS
+================================ */
+function bindCharacters() {
+  const grid = document.getElementById("players-grid");
+  const confirmBtn = document.getElementById("confirm-player-btn");
+
+  const players = Array.from({ length: 10 }).map((_, i) => ({
+    id: `player_${i + 1}`,
+    name: `Jogador ${i + 1}`
+  }));
+
+  players.forEach(player => {
+    const div = document.createElement("div");
+    div.className = "player-card";
+    div.textContent = player.name;
+    div.addEventListener("click", () => {
+      document.querySelectorAll(".player-card").forEach(p =>
+        p.classList.remove("selected")
+      );
+      div.classList.add("selected");
+      appState.selectedPlayer = player.id;
+      confirmBtn.classList.remove("disabled");
+    });
+    grid.appendChild(div);
+  });
+
+  confirmBtn.addEventListener("click", () => {
+    if (!appState.selectedPlayer) return;
+    renderScreen("JOURNEY");
+    renderAct();
+  });
+}
+
+/* ===============================
+   JORNADA
+================================ */
+function loadJourneyData() {
+  fetch("ato_free.json")
+    .then(r => r.json())
+    .then(d => {
+      appState.acts = d.acts || [];
+    });
 }
 
 function renderAct() {
-  const c = document.getElementById("content");
-  c.innerHTML = "";
-
-  if (actIndex >= acts.length) {
-    document.getElementById("paywall").classList.remove("hidden");
-    loadCertificate();
+  const act = appState.acts[appState.currentActIndex];
+  if (!act) {
+    unlockCertification();
     return;
   }
 
-  const act = acts[actIndex];
-  c.innerHTML += `<h2>${act.title}</h2>`;
+  document.getElementById("act-title").textContent = act.title;
+  document.getElementById("act-content").textContent = act.text || "";
+  document.getElementById("act-steps").innerHTML = "";
+  document.getElementById("feedback-area").innerHTML = "";
 
   act.steps.forEach(step => {
-    const b = document.createElement("div");
-    b.className = "block";
+    const div = document.createElement("div");
+    div.className = "step";
+    div.textContent = step.prompt;
+    document.getElementById("act-steps").appendChild(div);
+  });
 
-    if (step.type === "content" || step.type === "narrative") {
-      b.innerHTML = `<h3>${step.title}</h3><p>${step.text}</p>`;
+  const advanceBtn = document.getElementById("advance-btn");
+  advanceBtn.classList.remove("disabled");
+
+  advanceBtn.onclick = () => {
+    if (!appState.devMode) {
+      appState.currentActIndex++;
+    } else {
+      appState.currentActIndex++;
     }
-
-    c.appendChild(b);
-  });
-
-  if (DEV_MODE) {
-    const nav = document.createElement("div");
-    nav.className = "block";
-    nav.innerHTML = `
-      <strong>Modo Desenvolvedor</strong><br>
-      <button onclick="actIndex--; renderAct()">⬅ Ato</button>
-      <button onclick="actIndex++; renderAct()">Ato ➡</button>
-    `;
-    c.appendChild(nav);
-  }
+    renderAct();
+  };
 }
 
-function loadPlayers() {
-  const p = document.getElementById("players");
-  p.innerHTML = "";
+/* ===============================
+   CERTIFICAÇÃO
+================================ */
+function unlockCertification() {
+  appState.certificationUnlocked = true;
+  renderScreen("QUALITY");
+}
 
-  const files = [
-    "01_Giu_jogadora.png",
-    "02_Bi_jogadora.png",
-    "03_Neto_jogador.png"
-  ];
-
-  files.forEach(f => {
-    const d = document.createElement("div");
-    d.className = "player";
-    d.innerHTML = `<img src="assets/personagens/players/${f}"><p>${f}</p>`;
-    d.onclick = () => {
-      document.querySelectorAll(".player").forEach(x => x.classList.remove("selected"));
-      d.classList.add("selected");
-      selectedPlayer = f;
-    };
-    p.appendChild(d);
+function bindCertificate() {
+  const btn = document.getElementById("continue-btn");
+  btn.addEventListener("click", () => {
+    renderScreen("PAYWALL");
   });
 }
 
-function loadCertificate() {
-  fetch("certification.json")
-    .then(r => r.json())
-    .then(d => {
-      document.getElementById("certificate").innerHTML = `
-        <h2>${d.certificate.title}</h2>
-        <p>${d.certificate.description}</p>
-      `;
-      document.getElementById("certificate").classList.remove("hidden");
-    });
+/* ===============================
+   DEV MODE CONTROLES
+================================ */
+if (DEV_MODE) {
+  window.dev = {
+    goto(screen) {
+      renderScreen(screen.toUpperCase());
+    },
+    nextAct() {
+      appState.currentActIndex++;
+      renderAct();
+    },
+    prevAct() {
+      appState.currentActIndex =
+        Math.max(0, appState.currentActIndex - 1);
+      renderAct();
+    },
+    allowWrite() {
+      appState.allowDevWrite = true;
+    }
+  };
 }
