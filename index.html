@@ -1,61 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Project Rebirth</title>
+  <title>Projeto Renascer</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<section id="evaluation-screen">
+<!-- ONBOARDING -->
+<section id="onboarding-screen">
 
-  <h1>System Evaluation</h1>
+  <h1>Bem-vindo ao Projeto Renascer</h1>
   <p class="subtitle">
-    Knowledge will be tested. Do not proceed without mastery.
+    Você acaba de acessar um Sistema de Formação Progressiva.
   </p>
 
-  <!-- QUESTION 1 -->
   <div class="block">
-    <h3>1. Which command displays output on the screen?</h3>
+    <p>
+      Aqui, conhecimento não é consumido — é <strong>conquistado</strong>.
+    </p>
+    <p>
+      Cada etapa exige compreensão real.  
+      Não há avanço por tentativa aleatória.
+    </p>
+    <p>
+      O progresso acontece quando você demonstra domínio.
+    </p>
+  </div>
+
+  <button id="startEvaluationBtn">
+    Iniciar Avaliação
+  </button>
+
+</section>
+
+<!-- AVALIAÇÃO -->
+<section id="evaluation-screen" class="hidden">
+
+  <h1>Avaliação do Sistema</h1>
+  <p class="subtitle">
+    O conhecimento será testado. Não avance sem domínio.
+  </p>
+
+  <div class="block">
+    <p>
+      Esta avaliação verifica se você compreendeu os fundamentos apresentados.
+    </p>
+    <p>
+      Não há limite de tempo, mas há critério.
+    </p>
+    <p>
+      Cada resposta incorreta indica que o conceito ainda não está consolidado.
+    </p>
+  </div>
+
+  <!-- QUESTÃO 1 -->
+  <div class="block">
+    <h3>1. Qual comando exibe algo na tela?</h3>
     <label><input type="radio" name="q1" value="wrong"> echo()</label><br>
     <label><input type="radio" name="q1" value="correct"> print()</label><br>
     <label><input type="radio" name="q1" value="wrong"> show()</label>
   </div>
 
-  <!-- QUESTION 2 -->
+  <!-- QUESTÃO 2 -->
   <div class="block">
-    <h3>2. Correct association:</h3>
-    <p><strong>print("Hello")</strong> →</p>
+    <h3>2. Associe corretamente:</h3>
+    <p><strong>print("Olá")</strong> →</p>
     <select id="q2">
-      <option value="">Select an option</option>
-      <option value="wrong">Creates a variable</option>
-      <option value="correct">Displays text</option>
-      <option value="wrong">Reads input</option>
+      <option value="">Selecione uma opção</option>
+      <option value="wrong">Cria uma variável</option>
+      <option value="correct">Exibe um texto</option>
+      <option value="wrong">Lê uma entrada</option>
     </select>
   </div>
 
-  <!-- QUESTION 3 -->
+  <!-- QUESTÃO 3 -->
   <div class="block">
-    <h3>3. Write a valid spell:</h3>
-    <textarea id="q3" spellcheck="false">print("Rebirth")</textarea>
+    <h3>3. Escreva um feitiço válido:</h3>
+    <p>
+      Agora você deve escrever um comando válido.
+    </p>
+    <p>
+      O Sistema não analisa intenção — apenas estrutura e coerência.
+    </p>
+    <p>
+      Escreva exatamente o que faria em um ambiente real.
+    </p>
+    <textarea id="q3" spellcheck="false">print("Renascer")</textarea>
   </div>
 
-  <button id="validateBtn">Validate Knowledge</button>
+  <button id="validateBtn">
+    Validar Conhecimento
+  </button>
 
 </section>
 
+<!-- PAYWALL -->
 <section id="paywall-screen" class="hidden">
-  <h1>Restricted Access</h1>
+
+  <h1>Acesso Restrito</h1>
+
   <p class="warning">
-    You have reached the limit of free knowledge.
-  </p>
-  <p>
-    The next System requires commitment.
+    Você atingiu o limite do conhecimento disponível no modo gratuito.
   </p>
 
-  <button onclick="alert('PREMIUM ACCESS SIMULATED')">
-    Become a PREMIUM Architect
+  <p>
+    A partir deste ponto, o Sistema exige compromisso contínuo.
+  </p>
+
+  <p>
+    O próximo nível aprofunda lógica, prática e responsabilidade técnica.
+  </p>
+
+  <p>
+    Apenas quem decide seguir com seriedade avança.
+  </p>
+
+  <button onclick="alert('Acesso PREMIUM simulado liberado')">
+    Tornar-se Arquitet@ PREMIUM
   </button>
+
+  <p class="footer">
+    Projeto Renascer — Formação técnica baseada em domínio, ética e impacto real.
+  </p>
+
 </section>
 
 <script src="script.js"></script>
