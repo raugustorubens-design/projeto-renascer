@@ -1,107 +1,62 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
-  padding: 32px;
-  background: radial-gradient(circle at top, #0d1117, #000000);
+  background: #0d1117;
   color: #e6edf3;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
+  padding: 32px;
 }
 
-h1 {
+h1, h2 {
   color: #58a6ff;
-  margin-bottom: 10px;
-}
-
-h3 {
-  margin-top: 0;
 }
 
 .subtitle {
   color: #8b949e;
-  margin-bottom: 30px;
-  max-width: 720px;
+  margin-bottom: 32px;
 }
 
 .block {
   background: #161b22;
   border: 1px solid #30363d;
-  border-radius: 12px;
-  padding: 20px 22px;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
   max-width: 720px;
-  margin-bottom: 22px;
 }
 
-label {
-  cursor: pointer;
-}
-
-select {
-  margin-top: 10px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  border: 1px solid #30363d;
+pre {
   background: #0d1117;
-  color: #e6edf3;
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
 }
 
 textarea {
   width: 100%;
-  height: 130px;
-  margin-top: 10px;
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid #30363d;
+  height: 100px;
   background: #0d1117;
   color: #e6edf3;
-  font-family: "Courier New", monospace;
-  font-size: 1rem;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 10px;
 }
 
 button {
-  margin-top: 18px;
-  padding: 14px 28px;
-  border-radius: 12px;
+  display: block;
+  margin-top: 10px;
+  padding: 10px 16px;
   border: none;
+  border-radius: 6px;
   background: #238636;
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: bold;
+  color: #fff;
   cursor: pointer;
-}
-
-button:hover {
-  background: #2ea043;
 }
 
 .hidden {
   display: none;
 }
 
-.warning {
-  color: #f85149;
-  font-weight: bold;
-  max-width: 720px;
-}
-
-.footer {
-  margin-top: 40px;
-  font-size: 0.9rem;
+.ethics {
+  margin-top: 20px;
+  font-style: italic;
   color: #8b949e;
-  max-width: 720px;
-}
-
-@media (max-width: 768px) {
-  body {
-    padding: 20px;
-  }
-
-  .block,
-  .subtitle,
-  .warning,
-  .footer {
-    max-width: 100%;
-  }
 }
