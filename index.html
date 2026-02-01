@@ -1,61 +1,129 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Projeto Renascer — Python FREE</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-<header>
-  <h1>Projeto Renascer</h1>
-  <span class="badge">Python FREE · v1.0.0</span>
+<!-- ===============================
+     HEADER FIXO
+================================ -->
+<header id="header">
+  <h1 id="project-title">Projeto Renascer</h1>
+  <span id="project-level">Python FREE</span>
 </header>
 
-<nav id="tabs" class="hidden">
-  <button onclick="showTab('journey')">Jornada</button>
-  <button onclick="showTab('quality')">Qualidade</button>
-  <button onclick="showTab('characters')">Personagens</button>
-  <button onclick="showTab('certificate')">Certificação</button>
+<!-- ===============================
+     NAVEGAÇÃO (CONTROLADA PELO JS)
+================================ -->
+<nav id="main-nav">
+  <button data-target="journey">Jornada</button>
+  <button data-target="quality">Qualidade</button>
+  <button data-target="certificate">Certificação</button>
 </nav>
 
-<section id="landing">
-  <div class="portal">
-    <img src="assets/personagens/mago.png" alt="Mago">
-    <h2>O Portal do Renascer</h2>
-    <p>Aqui não se aprende por tentativa. Aqui só avança quem domina.</p>
-    <button onclick="enterPortal()">Entrar no Portal</button>
-  </div>
-</section>
+<!-- ===============================
+     CONTAINER PRINCIPAL DE ESTADOS
+================================ -->
+<main id="app">
 
-<main id="app" class="hidden">
-
-  <section id="journey" class="tab active">
-    <div id="content"></div>
+  <!-- 🧙‍♂️ LANDING / PORTAL -->
+  <section id="landing" class="screen active">
+    <div id="mage">🧙‍♂️</div>
+    <h2 id="landing-title">O Portal do Renascer</h2>
+    <p id="landing-text">
+      Aqui não se aprende por tentativa.  
+      Aqui só atravessa quem está disposto a dominar.
+    </p>
+    <button id="enter-portal-btn">Entrar no Portal</button>
   </section>
 
-  <section id="quality" class="tab">
-    <h2>Qualidade do Sistema</h2>
-    <p>Progressão baseada em domínio real, não em tentativa.</p>
+  <!-- 🎭 PERSONAGENS -->
+  <section id="characters" class="screen hidden">
+    <h2 id="characters-title">Escolha seu Personagem</h2>
+    <p id="characters-text">
+      Cada jornada começa com uma identidade.
+    </p>
+
+    <div id="players-grid">
+      <!-- Jogadores serão renderizados via JS -->
+    </div>
+
+    <button id="confirm-player-btn" class="disabled">
+      Confirmar Personagem
+    </button>
   </section>
 
-  <section id="characters" class="tab">
-    <h2>Escolha seu Personagem</h2>
-    <div id="players" class="grid"></div>
+  <!-- 📚 JORNADA -->
+  <section id="journey" class="screen hidden">
+    <h2 id="act-title"></h2>
+
+    <div id="act-content">
+      <!-- Conteúdo narrativo/técnico -->
+    </div>
+
+    <div id="act-steps">
+      <!-- Passos, desafios, quizzes -->
+    </div>
+
+    <div id="feedback-area">
+      <!-- Feedback pedagógico -->
+    </div>
+
+    <button id="advance-btn" class="disabled">
+      Avançar
+    </button>
   </section>
 
-  <section id="certificate" class="tab hidden"></section>
+  <!-- 🧠 QUALIDADE -->
+  <section id="quality" class="screen hidden">
+    <h2 id="quality-title">Modelo de Qualidade</h2>
+    <div id="quality-text">
+      <!-- Explicação do método -->
+    </div>
+  </section>
+
+  <!-- 🎓 CERTIFICAÇÃO -->
+  <section id="certificate" class="screen hidden">
+    <h2 id="certificate-title">Certificação</h2>
+
+    <div id="certificate-details">
+      <!-- Dados da certificação -->
+    </div>
+
+    <div id="certificate-status">
+      <!-- Status de validação -->
+    </div>
+
+    <button id="continue-btn">
+      Continuar
+    </button>
+  </section>
+
+  <!-- 🔒 PAYWALL -->
+  <section id="paywall" class="screen hidden">
+    <h2 id="paywall-title">Próximo Nível</h2>
+    <p id="paywall-text">
+      O Python FREE termina aqui.  
+      O próximo nível exige compromisso.
+    </p>
+
+    <button id="premium-cta-btn">
+      Tornar-se Arquiteto PREMIUM
+    </button>
+  </section>
 
 </main>
 
-<section id="paywall" class="hidden">
-  <h2>Acesso Restrito</h2>
-  <p>O Python FREE foi concluído.</p>
-  <button class="premium">Tornar-se Arquitet@ PREMIUM</button>
-</section>
-
-<footer>
-  Projeto Renascer © 2026 · Python FREE
+<!-- ===============================
+     FOOTER FIXO
+================================ -->
+<footer id="footer">
+  <p>Projeto Renascer © 2026</p>
 </footer>
 
 <script src="script.js"></script>
