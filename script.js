@@ -16,9 +16,6 @@ fetch("ato_free.json")
     renderAct();
   });
 
-/* ===============================
-   PROGRESSO & ANALYTICS
-================================ */
 function loadProgress() {
   const p = JSON.parse(localStorage.getItem("renascer_progress"));
   if (p && Number.isInteger(p.actIndex)) actIndex = p.actIndex;
@@ -38,9 +35,6 @@ function saveProgress() {
   );
 }
 
-/* ===============================
-   RENDERIZAÇÃO DO ATO
-================================ */
 function renderAct() {
   const c = document.getElementById("content");
   c.innerHTML = "";
@@ -55,16 +49,12 @@ function renderAct() {
   }
 
   const act = acts[actIndex];
-
-  const h = document.createElement("h2");
-  h.textContent = act.title;
-  c.appendChild(h);
+  c.innerHTML += `<h2>${act.title}</h2>`;
 
   act.steps.forEach((step, stepIndex) => {
     const b = document.createElement("div");
     b.className = "block";
 
-    /* CONTEÚDO / NARRATIVA */
     if (step.type === "content" || step.type === "narrative") {
       b.innerHTML = `
         <h3>${step.title}</h3>
@@ -73,17 +63,14 @@ function renderAct() {
       `;
     }
 
-    /* QUIZ COM FEEDBACK */
     if (step.type === "quiz") {
       quizStatus[stepIndex] = { correct: false, attempts: 0 };
-
       b.innerHTML += `<p><strong>${step.question}</strong></p>`;
       const feedback = document.createElement("div");
 
       step.options.forEach((o, i) => {
-        const letter = String.fromCharCode(65 + i);
         const btn = document.createElement("button");
-        btn.textContent = `${letter}) ${o.text}`;
+        btn.textContent = `${String.fromCharCode(65 + i)}) ${o.text}`;
 
         btn.onclick = () => {
           quizStatus[stepIndex].attempts++;
@@ -92,53 +79,36 @@ function renderAct() {
           if (o.correct) {
             quizStatus[stepIndex].correct = true;
             btn.style.background = "#238636";
-            feedback.innerHTML =
-              `<p style="color:#3fb950;">✔ Correto. ${o.feedback || ""}</p>`;
+            feedback.innerHTML = `<p style="color:#3fb950;">✔ Correto.</p>`;
             lockButtons(b);
-            checkAutoAdvance();
+            checkAdvance();
           } else {
             analytics.errors++;
             btn.style.background = "#da3633";
-
-            if (quizStatus[stepIndex].attempts === 1) {
-              feedback.innerHTML =
-                `<p style="color:#f85149;">✖ Incorreto. Tente novamente.</p>`;
-            } else {
-              feedback.innerHTML =
-                `<p style="color:#f85149;">✖ Segunda tentativa incorreta. Revise o conteúdo.</p>`;
-              lockButtons(b);
-            }
+            feedback.innerHTML = `<p style="color:#f85149;">✖ Incorreto.</p>`;
           }
           saveProgress();
         };
-
         b.appendChild(btn);
       });
-
       b.appendChild(feedback);
     }
 
-    /* FEITIÇO – VALIDAÇÃO SEMÂNTICA */
     if (step.type === "spell") {
       b.innerHTML += `
         <h3>${step.title}</h3>
         <p>${step.instruction}</p>
         <textarea id="spell"></textarea>
-        <button id="spellBtn">Validar Feitiço</button>
+        <button onclick="validateSpell(${JSON.stringify(step.validation)})">
+          Validar Feitiço
+        </button>
         <div id="spellFeedback"></div>
       `;
-
-      b.querySelector("#spellBtn").onclick = () =>
-        validateSpell(step.validation);
     }
-
     c.appendChild(b);
   });
 }
 
-/* ===============================
-   CONTROLES
-================================ */
 function lockButtons(block) {
   block.querySelectorAll("button").forEach(b => b.disabled = true);
 }
@@ -147,49 +117,32 @@ function allQuizzesCorrect() {
   return Object.values(quizStatus).every(q => q.correct);
 }
 
-/* ===============================
-   FEITIÇO
-================================ */
 function validateSpell(validation) {
-  const v = document.getElementById("spell").value.trim();
+  const v = document.getElementById("spell").value;
   const fb = document.getElementById("spellFeedback");
 
-  const ok = validation.mustContain.every(t => v.includes(t));
-
-  if (!ok) {
-    fb.innerHTML =
-      `<p style="color:#f85149;">✖ O feitiço não atende à estrutura esperada.</p>`;
+  if (!validation.mustContain.every(t => v.includes(t))) {
+    fb.innerHTML = `<p style="color:#f85149;">✖ Estrutura inválida.</p>`;
     analytics.errors++;
     saveProgress();
     return;
   }
-
   spellValidated = true;
-  fb.innerHTML =
-    `<p style="color:#3fb950;">✔ Feitiço validado com sucesso.</p>`;
+  fb.innerHTML = `<p style="color:#3fb950;">✔ Feitiço validado.</p>`;
   saveProgress();
-  checkAutoAdvance();
+  checkAdvance();
 }
 
-/* ===============================
-   AVANÇO AUTOMÁTICO
-================================ */
-function checkAutoAdvance() {
+function checkAdvance() {
   if (allQuizzesCorrect() && spellValidated) {
-    setTimeout(() => {
-      actIndex++;
-      saveProgress();
-      renderAct();
-    }, 700);
+    actIndex++;
+    saveProgress();
+    setTimeout(renderAct, 600);
   }
 }
 
-/* ===============================
-   DASHBOARD
-================================ */
 function showDashboard() {
   const c = document.getElementById("content");
-
   const level =
     analytics.errors === 0
       ? "Domínio Pleno"
@@ -199,7 +152,7 @@ function showDashboard() {
 
   c.innerHTML += `
     <div class="block">
-      <h2>Resumo do Aprendizado</h2>
+      <h2>Resumo Final</h2>
       <p><strong>Tentativas:</strong> ${analytics.attempts}</p>
       <p><strong>Erros:</strong> ${analytics.errors}</p>
       <p><strong>Nível:</strong> ${level}</p>
@@ -207,17 +160,12 @@ function showDashboard() {
   `;
 }
 
-/* ===============================
-   CERTIFICADO
-================================ */
 function showCertificate() {
   fetch("certification.json")
     .then(r => r.json())
     .then(d => {
       const cert = d.certificate;
-      const el = document.getElementById("certificate");
-
-      el.innerHTML = `
+      document.getElementById("certificate").innerHTML = `
         <div class="diploma">
           <h2>${cert.title}</h2>
           <p>${cert.description}</p>
@@ -226,13 +174,10 @@ function showCertificate() {
           <button onclick="window.print()">Exportar PDF</button>
         </div>
       `;
-      el.classList.remove("hidden");
+      document.getElementById("certificate").classList.remove("hidden");
     });
 }
 
-/* ===============================
-   PREMIUM
-================================ */
 function showPremium() {
   document.getElementById("paywall").classList.remove("hidden");
 }
