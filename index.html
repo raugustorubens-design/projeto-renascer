@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Projeto Renascer — Python FREE</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -13,50 +13,45 @@
 </header>
 
 <nav id="tabs" class="hidden">
-  <button onclick="showTab('content')">Jornada</button>
+  <button onclick="showTab('journey')">Jornada</button>
   <button onclick="showTab('quality')">Qualidade</button>
   <button onclick="showTab('characters')">Personagens</button>
   <button onclick="showTab('certificate')">Certificação</button>
 </nav>
 
 <section id="landing">
-  <div class="center">
-    <div class="mage">🧙‍♂️</div>
+  <div class="portal">
+    <img src="assets/personagens/mago.png" alt="Mago">
     <h2>O Portal do Renascer</h2>
     <p>Aqui não se aprende por tentativa. Aqui só avança quem domina.</p>
-    <button class="primary" onclick="enterPortal()">Entrar no Portal</button>
+    <button onclick="enterPortal()">Entrar no Portal</button>
   </div>
 </section>
 
 <main id="app" class="hidden">
-  <section id="content" class="tab active"></section>
+
+  <section id="journey" class="tab active">
+    <div id="content"></div>
+  </section>
 
   <section id="quality" class="tab">
-    <div class="block">
-      <h2>Modelo de Qualidade</h2>
-      <p>O avanço ocorre apenas por domínio comprovado.</p>
-      <ul>
-        <li>Sem progresso por tentativa</li>
-        <li>Sem avanço automático</li>
-        <li>Aprendizado rastreável</li>
-      </ul>
-    </div>
+    <h2>Qualidade do Sistema</h2>
+    <p>Progressão baseada em domínio real, não em tentativa.</p>
   </section>
 
   <section id="characters" class="tab">
-    <div class="block">
-      <h2>Personagens</h2>
-      <p>O aprendiz evolui conforme sua própria competência.</p>
-    </div>
+    <h2>Escolha seu Personagem</h2>
+    <div id="players" class="grid"></div>
   </section>
 
   <section id="certificate" class="tab hidden"></section>
+
 </main>
 
 <section id="paywall" class="hidden">
   <h2>Acesso Restrito</h2>
   <p>O Python FREE foi concluído.</p>
-  <button class="primary">Tornar-se Arquitet@ PREMIUM</button>
+  <button class="premium">Tornar-se Arquitet@ PREMIUM</button>
 </section>
 
 <footer>
