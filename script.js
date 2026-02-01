@@ -179,6 +179,24 @@ function checkAdvance() {
     saveProgress();
     setTimeout(renderAct, 600);
   }
+
+   /* ===============================
+   UI / NAVEGAÇÃO
+================================ */
+function enterPortal() {
+  document.getElementById("landing").classList.add("hidden");
+  document.getElementById("app").classList.remove("hidden");
+  document.getElementById("tabs").classList.remove("hidden");
+  renderAct(); // inicia a engine
+}
+
+function showTab(id) {
+  document.querySelectorAll(".tab").forEach(t => {
+    t.classList.remove("active");
+  });
+  document.getElementById(id).classList.add("active");
+}
+
 }
 
 /* ===============================
