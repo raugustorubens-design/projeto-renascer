@@ -40,6 +40,7 @@ function renderAct() {
     const b = document.createElement("div");
     b.className = "block";
 
+    /* CONTEÚDO / NARRATIVA */
     if (step.type === "content" || step.type === "narrative") {
       b.innerHTML = `
         <h3>${step.title}</h3>
@@ -48,8 +49,14 @@ function renderAct() {
       `;
     }
 
+    /* QUIZ COM FEEDBACK */
     if (step.type === "quiz") {
-      b.innerHTML = `<p><strong>${step.question}</strong></p>`;
+      const question = document.createElement("p");
+      question.innerHTML = `<strong>${step.question}</strong>`;
+      b.appendChild(question);
+
+      const feedback = document.createElement("div");
+      feedback.style.marginTop = "10px";
 
       step.options.forEach((o, i) => {
         const letter = String.fromCharCode(65 + i); // A, B, C...
@@ -57,13 +64,36 @@ function renderAct() {
         btn.textContent = `${letter}) ${o.text}`;
 
         btn.onclick = () => {
-          btn.style.background = o.correct ? "#238636" : "#da3633";
+          // trava todos os botões
+          const buttons = b.querySelectorAll("button");
+          buttons.forEach(bt => bt.disabled = true);
+
+          if (o.correct) {
+            btn.style.background = "#238636";
+            feedback.innerHTML = `
+              <p style="color:#3fb950;">
+                ✔ Resposta correta<br>
+                ${o.feedback || "Você demonstrou domínio do conceito."}
+              </p>
+            `;
+          } else {
+            btn.style.background = "#da3633";
+            feedback.innerHTML = `
+              <p style="color:#f85149;">
+                ✖ Resposta incorreta<br>
+                ${o.feedback || "Revise o conceito antes de prosseguir."}
+              </p>
+            `;
+          }
         };
 
         b.appendChild(btn);
       });
+
+      b.appendChild(feedback);
     }
 
+    /* FEITIÇO */
     if (step.type === "spell") {
       b.innerHTML = `
         <h3>${step.title}</h3>
@@ -83,7 +113,7 @@ function validateSpell(expected) {
   const v = document.getElementById("spell").value.trim();
 
   if (!v.includes(expected)) {
-    alert("Feitiço não demonstra domínio do conceito esperado.");
+    alert("O feitiço não demonstra domínio do conceito esperado.");
     return;
   }
 
