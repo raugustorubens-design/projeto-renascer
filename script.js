@@ -1,226 +1,230 @@
 /* =====================================================
    PROJETO RENASCER — PYTHON FREE
-   SCRIPT CANÔNICO (STATE MACHINE)
+   SCRIPT.JS — MÁQUINA DE ESTADOS CANÔNICA
 ===================================================== */
 
 /* ===============================
    DEV MODE
 ================================ */
-const DEV_MODE = new URLSearchParams(window.location.search).get("dev") === "true";
+const DEV_MODE =
+  new URLSearchParams(window.location.search).get("dev") === "true";
 
 /* ===============================
    ESTADO GLOBAL
 ================================ */
-const appState = {
-  currentScreen: "LANDING",
-  selectedPlayer: null,
-  currentActIndex: 0,
+const state = {
+  mode: DEV_MODE ? "dev" : "student",
+  screen: "LANDING",
+  player: null,
+  actIndex: 0,
   acts: [],
-  certificationUnlocked: false,
-  devMode: DEV_MODE,
-  allowDevWrite: false
 };
 
 /* ===============================
-   REFERÊNCIAS DE TELAS
+   MAPA DE TELAS
 ================================ */
-const screens = [
+const SCREENS = [
   "landing",
-  "characters",
+  "character-select",
   "journey",
   "quality",
   "certificate",
-  "paywall"
+  "paywall",
 ];
 
 /* ===============================
    BOOT
 ================================ */
-document.addEventListener("DOMContentLoaded", () => {
-  initApp();
-});
+document.addEventListener("DOMContentLoaded", init);
 
 /* ===============================
-   INICIALIZAÇÃO
+   INIT
 ================================ */
-function initApp() {
-  bindNavigation();
-  bindLanding();
-  bindCharacters();
-  bindCertificate();
-  loadJourneyData();
-  renderScreen("LANDING");
+function init() {
+  bindGlobalUI();
+  loadActs();
+  if (DEV_MODE) enableDevMode();
+  goTo("LANDING");
 }
 
 /* ===============================
    CONTROLE DE TELAS
 ================================ */
-function renderScreen(screenName) {
-  appState.currentScreen = screenName;
+function goTo(target) {
+  if (!isValidState(target)) {
+    console.warn("Estado inválido:", target);
+    target = "LANDING";
+  }
 
-  screens.forEach(id => {
+  state.screen = target;
+
+  SCREENS.forEach((id) => {
     const el = document.getElementById(id);
     if (!el) return;
     el.classList.remove("active");
     el.classList.add("hidden");
   });
 
-  const active = document.getElementById(screenName.toLowerCase());
+  const active = document.getElementById(target.toLowerCase());
   if (active) {
     active.classList.remove("hidden");
     active.classList.add("active");
   }
+
+  updateNav();
 }
 
 /* ===============================
-   NAVEGAÇÃO
+   VALIDAÇÃO DE ESTADO
 ================================ */
-function bindNavigation() {
-  document.querySelectorAll("#main-nav button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const target = btn.getAttribute("data-target").toUpperCase();
+function isValidState(stateName) {
+  return [
+    "LANDING",
+    "CHARACTER_SELECT",
+    "JOURNEY",
+    "QUALITY",
+    "CERTIFICATE",
+    "PAYWALL",
+  ].includes(stateName);
+}
 
-      if (appState.devMode) {
-        renderScreen(target);
+/* ===============================
+   HEADER / NAV
+================================ */
+function bindGlobalUI() {
+  document.querySelectorAll("#main-nav button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = btn.dataset.target.toUpperCase();
+
+      if (state.mode === "dev") {
+        goTo(target);
         return;
       }
 
-      if (target === "QUALITY") {
-        renderScreen("QUALITY");
-      }
-
-      if (target === "JOURNEY" && appState.selectedPlayer) {
-        renderScreen("JOURNEY");
-      }
-
-      if (target === "CERTIFICATE" && appState.certificationUnlocked) {
-        renderScreen("CERTIFICATE");
-      }
+      if (target === "QUALITY") goTo("QUALITY");
+      if (target === "JOURNEY" && state.player) goTo("JOURNEY");
+      if (target === "CERTIFICATE" && journeyCompleted())
+        goTo("CERTIFICATE");
     });
   });
-}
 
-/* ===============================
-   LANDING
-================================ */
-function bindLanding() {
-  const btn = document.getElementById("enter-portal-btn");
-  btn.addEventListener("click", () => {
-    renderScreen("CHARACTERS");
-  });
+  document
+    .getElementById("enter-portal-btn")
+    .addEventListener("click", () => {
+      goTo("CHARACTER_SELECT");
+    });
+
+  document
+    .getElementById("certificate-continue-btn")
+    .addEventListener("click", () => {
+      goTo("PAYWALL");
+    });
 }
 
 /* ===============================
    PERSONAGENS
 ================================ */
-function bindCharacters() {
-  const grid = document.getElementById("players-grid");
-  const confirmBtn = document.getElementById("confirm-player-btn");
+function renderCharacters() {
+  const grid = document.getElementById("character-grid");
+  const confirm = document.getElementById("confirm-character-btn");
 
-  const players = Array.from({ length: 10 }).map((_, i) => ({
-    id: `player_${i + 1}`,
-    name: `Jogador ${i + 1}`
-  }));
+  grid.innerHTML = "";
+  confirm.classList.add("disabled");
 
-  players.forEach(player => {
-    const div = document.createElement("div");
-    div.className = "player-card";
-    div.textContent = player.name;
-    div.addEventListener("click", () => {
-      document.querySelectorAll(".player-card").forEach(p =>
-        p.classList.remove("selected")
-      );
-      div.classList.add("selected");
-      appState.selectedPlayer = player.id;
-      confirmBtn.classList.remove("disabled");
-    });
-    grid.appendChild(div);
-  });
+  for (let i = 1; i <= 10; i++) {
+    const card = document.createElement("div");
+    card.className = "player-card";
+    card.textContent = `Jogador ${i}`;
 
-  confirmBtn.addEventListener("click", () => {
-    if (!appState.selectedPlayer) return;
-    renderScreen("JOURNEY");
-    renderAct();
-  });
+    card.onclick = () => {
+      document
+        .querySelectorAll(".player-card")
+        .forEach((c) => c.classList.remove("selected"));
+      card.classList.add("selected");
+      state.player = i;
+      confirm.classList.remove("disabled");
+    };
+
+    grid.appendChild(card);
+  }
+
+  confirm.onclick = () => {
+    if (!state.player) return;
+    goTo("JOURNEY");
+    renderJourney();
+  };
 }
 
 /* ===============================
    JORNADA
 ================================ */
-function loadJourneyData() {
+function loadActs() {
   fetch("ato_free.json")
-    .then(r => r.json())
-    .then(d => {
-      appState.acts = d.acts || [];
+    .then((r) => r.json())
+    .then((data) => {
+      state.acts = data.acts || [];
+    })
+    .catch(() => {
+      state.acts = [];
     });
 }
 
-function renderAct() {
-  const act = appState.acts[appState.currentActIndex];
-  if (!act) {
-    unlockCertification();
+function renderJourney() {
+  const title = document.getElementById("journey-title");
+  const content = document.getElementById("journey-content");
+  const nextBtn = document.getElementById("journey-next-btn");
+
+  if (!state.acts[state.actIndex]) {
+    goTo("CERTIFICATE");
     return;
   }
 
-  document.getElementById("act-title").textContent = act.title;
-  document.getElementById("act-content").textContent = act.text || "";
-  document.getElementById("act-steps").innerHTML = "";
-  document.getElementById("feedback-area").innerHTML = "";
+  const act = state.acts[state.actIndex];
 
-  act.steps.forEach(step => {
-    const div = document.createElement("div");
-    div.className = "step";
-    div.textContent = step.prompt;
-    document.getElementById("act-steps").appendChild(div);
-  });
+  title.textContent = act.title || "Ato";
+  content.textContent = act.text || "Conteúdo em construção.";
 
-  const advanceBtn = document.getElementById("advance-btn");
-  advanceBtn.classList.remove("disabled");
-
-  advanceBtn.onclick = () => {
-    if (!appState.devMode) {
-      appState.currentActIndex++;
-    } else {
-      appState.currentActIndex++;
-    }
-    renderAct();
+  nextBtn.classList.remove("disabled");
+  nextBtn.onclick = () => {
+    state.actIndex++;
+    renderJourney();
   };
 }
 
 /* ===============================
    CERTIFICAÇÃO
 ================================ */
-function unlockCertification() {
-  appState.certificationUnlocked = true;
-  renderScreen("QUALITY");
-}
-
-function bindCertificate() {
-  const btn = document.getElementById("continue-btn");
-  btn.addEventListener("click", () => {
-    renderScreen("PAYWALL");
-  });
+function journeyCompleted() {
+  return state.actIndex >= state.acts.length;
 }
 
 /* ===============================
-   DEV MODE CONTROLES
+   NAV UPDATE
 ================================ */
-if (DEV_MODE) {
+function updateNav() {
+  if (state.screen === "CHARACTER_SELECT") renderCharacters();
+  if (state.screen === "JOURNEY") renderJourney();
+}
+
+/* ===============================
+   DEV MODE
+================================ */
+function enableDevMode() {
+  const devBadge = document.getElementById("dev-indicator");
+  if (devBadge) devBadge.classList.remove("hidden");
+
   window.dev = {
     goto(screen) {
-      renderScreen(screen.toUpperCase());
+      goTo(screen.toUpperCase());
     },
     nextAct() {
-      appState.currentActIndex++;
-      renderAct();
+      state.actIndex++;
+      renderJourney();
     },
     prevAct() {
-      appState.currentActIndex =
-        Math.max(0, appState.currentActIndex - 1);
-      renderAct();
+      state.actIndex = Math.max(0, state.actIndex - 1);
+      renderJourney();
     },
-    allowWrite() {
-      appState.allowDevWrite = true;
-    }
+    state,
   };
 }
