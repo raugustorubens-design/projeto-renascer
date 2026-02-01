@@ -4,7 +4,7 @@
 const DEV_MODE = new URLSearchParams(window.location.search).get("dev") === "true";
 
 /* ===============================
-   ESTADO
+   ESTADO GLOBAL
 ================================ */
 let acts = [];
 let actIndex = 0;
@@ -16,17 +16,28 @@ let analytics = {
   errors: 0
 };
 
+/* ===============================
+   CARREGAMENTO DOS ATOS
+================================ */
 fetch("ato_free.json")
   .then(r => r.json())
   .then(d => {
-    acts = d.acts;
-    if (DEV_MODE) {
-      actIndex = 0;
-    } else {
-      loadProgress();
+    if (!d.acts || !Array.isArray(d.acts)) {
+      console.error("ato_free.json inválido");
+      return;
     }
-    renderAct();
-  });
+
+    acts = d.acts;
+
+    if (!DEV_MODE) {
+      loadProgress();
+    } else {
+      actIndex = 0;
+    }
+
+    // ⚠ NÃO inicia a engine aqui
+  })
+  .catch(err => console.error("Erro ao carregar atos:", err));
 
 /* ===============================
    PROGRESSO
@@ -40,12 +51,13 @@ function loadProgress() {
 }
 
 function saveProgress() {
-  if (DEV_MODE) return; // nunca grava em dev mode
+  if (DEV_MODE) return;
 
   localStorage.setItem(
     "renascer_progress",
     JSON.stringify({ actIndex })
   );
+
   localStorage.setItem(
     "renascer_analytics",
     JSON.stringify(analytics)
@@ -53,11 +65,12 @@ function saveProgress() {
 }
 
 /* ===============================
-   RENDERIZAÇÃO
+   RENDERIZAÇÃO DO ATO
 ================================ */
 function renderAct() {
   const c = document.getElementById("content");
   c.innerHTML = "";
+
   quizStatus = {};
   spellValidated = false;
 
@@ -86,6 +99,7 @@ function renderAct() {
     const b = document.createElement("div");
     b.className = "block";
 
+    /* -------- CONTEÚDO / NARRATIVA -------- */
     if (step.type === "content" || step.type === "narrative") {
       b.innerHTML = `
         <h3>${step.title}</h3>
@@ -94,12 +108,13 @@ function renderAct() {
       `;
     }
 
+    /* -------- QUIZ -------- */
     if (step.type === "quiz") {
-      quizStatus[stepIndex] = { correct: DEV_MODE, attempts: 0 };
+      quizStatus[stepIndex] = { correct: DEV_MODE };
+
       b.innerHTML += `<p><strong>${step.question}</strong></p>`;
 
       if (!DEV_MODE) {
-        const feedback = document.createElement("div");
         step.options.forEach((o, i) => {
           const btn = document.createElement("button");
           btn.textContent = `${String.fromCharCode(65 + i)}) ${o.text}`;
@@ -109,19 +124,19 @@ function renderAct() {
           };
           b.appendChild(btn);
         });
-        b.appendChild(feedback);
       } else {
         b.innerHTML += `<em>(Quiz ignorado no modo desenvolvedor)</em>`;
       }
     }
 
+    /* -------- FEITIÇO -------- */
     if (step.type === "spell") {
       if (!DEV_MODE) {
         b.innerHTML += `
           <h3>${step.title}</h3>
           <p>${step.instruction}</p>
           <textarea id="spell"></textarea>
-          <button onclick="validateSpell(${JSON.stringify(step.validation)})">
+          <button onclick='validateSpell(${JSON.stringify(step.validation)})'>
             Validar Feitiço
           </button>
           <div id="spellFeedback"></div>
@@ -135,6 +150,7 @@ function renderAct() {
     c.appendChild(b);
   });
 
+  /* -------- NAVEGAÇÃO DEV -------- */
   if (DEV_MODE) {
     const nav = document.createElement("div");
     nav.className = "block";
@@ -160,7 +176,7 @@ function prevAct() {
 }
 
 /* ===============================
-   VALIDAÇÕES NORMAIS
+   VALIDAÇÕES
 ================================ */
 function allQuizzesCorrect() {
   return Object.values(quizStatus).every(q => q.correct);
@@ -177,34 +193,35 @@ function checkAdvance() {
   if (allQuizzesCorrect() && spellValidated) {
     actIndex++;
     saveProgress();
-    setTimeout(renderAct, 600);
+    setTimeout(renderAct, 500);
   }
+}
 
-   /* ===============================
-   UI / NAVEGAÇÃO
+/* ===============================
+   UI / PORTAL
 ================================ */
 function enterPortal() {
   document.getElementById("landing").classList.add("hidden");
   document.getElementById("app").classList.remove("hidden");
   document.getElementById("tabs").classList.remove("hidden");
-  renderAct(); // inicia a engine
+  renderAct();
 }
 
 function showTab(id) {
-  document.querySelectorAll(".tab").forEach(t => {
-    t.classList.remove("active");
-  });
+  document.querySelectorAll(".tab").forEach(t =>
+    t.classList.remove("active")
+  );
   document.getElementById(id).classList.add("active");
 }
 
-}
-
 /* ===============================
-   FINAL
+   FINALIZAÇÃO
 ================================ */
 function showDashboard() {
-  document.getElementById("content").innerHTML += `
-    <div class="block"><strong>Dashboard final (DEV)</strong></div>
+  document.getElementById("content").innerHTML = `
+    <div class="block">
+      <strong>Python FREE concluído com domínio comprovado.</strong>
+    </div>
   `;
 }
 
@@ -213,14 +230,15 @@ function showCertificate() {
     .then(r => r.json())
     .then(d => {
       const cert = d.certificate;
-      document.getElementById("certificate").innerHTML = `
+      const c = document.getElementById("certificate");
+      c.innerHTML = `
         <div class="diploma">
           <h2>${cert.title}</h2>
           <p>${cert.description}</p>
           <p><strong>Nível:</strong> ${cert.level}</p>
         </div>
       `;
-      document.getElementById("certificate").classList.remove("hidden");
+      c.classList.remove("hidden");
     });
 }
 
