@@ -1,3 +1,11 @@
+/* ===============================
+   DEV MODE
+================================ */
+const DEV_MODE = new URLSearchParams(window.location.search).get("dev") === "true";
+
+/* ===============================
+   ESTADO
+================================ */
 let acts = [];
 let actIndex = 0;
 let quizStatus = {};
@@ -12,10 +20,17 @@ fetch("ato_free.json")
   .then(r => r.json())
   .then(d => {
     acts = d.acts;
-    loadProgress();
+    if (DEV_MODE) {
+      actIndex = 0;
+    } else {
+      loadProgress();
+    }
     renderAct();
   });
 
+/* ===============================
+   PROGRESSO
+================================ */
 function loadProgress() {
   const p = JSON.parse(localStorage.getItem("renascer_progress"));
   if (p && Number.isInteger(p.actIndex)) actIndex = p.actIndex;
@@ -25,6 +40,8 @@ function loadProgress() {
 }
 
 function saveProgress() {
+  if (DEV_MODE) return; // nunca grava em dev mode
+
   localStorage.setItem(
     "renascer_progress",
     JSON.stringify({ actIndex })
@@ -35,6 +52,9 @@ function saveProgress() {
   );
 }
 
+/* ===============================
+   RENDERIZAÇÃO
+================================ */
 function renderAct() {
   const c = document.getElementById("content");
   c.innerHTML = "";
@@ -51,6 +71,17 @@ function renderAct() {
   const act = acts[actIndex];
   c.innerHTML += `<h2>${act.title}</h2>`;
 
+  if (DEV_MODE) {
+    const devBanner = document.createElement("div");
+    devBanner.className = "block";
+    devBanner.style.border = "2px dashed #d29922";
+    devBanner.innerHTML = `
+      <strong>⚙ MODO DESENVOLVEDOR ATIVO</strong><br>
+      Navegação livre habilitada.
+    `;
+    c.appendChild(devBanner);
+  }
+
   act.steps.forEach((step, stepIndex) => {
     const b = document.createElement("div");
     b.className = "block";
@@ -64,72 +95,81 @@ function renderAct() {
     }
 
     if (step.type === "quiz") {
-      quizStatus[stepIndex] = { correct: false, attempts: 0 };
+      quizStatus[stepIndex] = { correct: DEV_MODE, attempts: 0 };
       b.innerHTML += `<p><strong>${step.question}</strong></p>`;
-      const feedback = document.createElement("div");
 
-      step.options.forEach((o, i) => {
-        const btn = document.createElement("button");
-        btn.textContent = `${String.fromCharCode(65 + i)}) ${o.text}`;
-
-        btn.onclick = () => {
-          quizStatus[stepIndex].attempts++;
-          analytics.attempts++;
-
-          if (o.correct) {
-            quizStatus[stepIndex].correct = true;
-            btn.style.background = "#238636";
-            feedback.innerHTML = `<p style="color:#3fb950;">✔ Correto.</p>`;
-            lockButtons(b);
-            checkAdvance();
-          } else {
-            analytics.errors++;
-            btn.style.background = "#da3633";
-            feedback.innerHTML = `<p style="color:#f85149;">✖ Incorreto.</p>`;
-          }
-          saveProgress();
-        };
-        b.appendChild(btn);
-      });
-      b.appendChild(feedback);
+      if (!DEV_MODE) {
+        const feedback = document.createElement("div");
+        step.options.forEach((o, i) => {
+          const btn = document.createElement("button");
+          btn.textContent = `${String.fromCharCode(65 + i)}) ${o.text}`;
+          btn.onclick = () => {
+            quizStatus[stepIndex].correct = o.correct;
+            if (o.correct) checkAdvance();
+          };
+          b.appendChild(btn);
+        });
+        b.appendChild(feedback);
+      } else {
+        b.innerHTML += `<em>(Quiz ignorado no modo desenvolvedor)</em>`;
+      }
     }
 
     if (step.type === "spell") {
-      b.innerHTML += `
-        <h3>${step.title}</h3>
-        <p>${step.instruction}</p>
-        <textarea id="spell"></textarea>
-        <button onclick="validateSpell(${JSON.stringify(step.validation)})">
-          Validar Feitiço
-        </button>
-        <div id="spellFeedback"></div>
-      `;
+      if (!DEV_MODE) {
+        b.innerHTML += `
+          <h3>${step.title}</h3>
+          <p>${step.instruction}</p>
+          <textarea id="spell"></textarea>
+          <button onclick="validateSpell(${JSON.stringify(step.validation)})">
+            Validar Feitiço
+          </button>
+          <div id="spellFeedback"></div>
+        `;
+      } else {
+        spellValidated = true;
+        b.innerHTML += `<em>(Feitiço ignorado no modo desenvolvedor)</em>`;
+      }
     }
+
     c.appendChild(b);
   });
+
+  if (DEV_MODE) {
+    const nav = document.createElement("div");
+    nav.className = "block";
+    nav.innerHTML = `
+      <button onclick="prevAct()">⬅ Ato anterior</button>
+      <button onclick="nextAct()">Próximo Ato ➡</button>
+    `;
+    c.appendChild(nav);
+  }
 }
 
-function lockButtons(block) {
-  block.querySelectorAll("button").forEach(b => b.disabled = true);
+/* ===============================
+   DEV NAV
+================================ */
+function nextAct() {
+  actIndex++;
+  renderAct();
 }
 
+function prevAct() {
+  if (actIndex > 0) actIndex--;
+  renderAct();
+}
+
+/* ===============================
+   VALIDAÇÕES NORMAIS
+================================ */
 function allQuizzesCorrect() {
   return Object.values(quizStatus).every(q => q.correct);
 }
 
 function validateSpell(validation) {
   const v = document.getElementById("spell").value;
-  const fb = document.getElementById("spellFeedback");
-
-  if (!validation.mustContain.every(t => v.includes(t))) {
-    fb.innerHTML = `<p style="color:#f85149;">✖ Estrutura inválida.</p>`;
-    analytics.errors++;
-    saveProgress();
-    return;
-  }
+  if (!validation.mustContain.every(t => v.includes(t))) return;
   spellValidated = true;
-  fb.innerHTML = `<p style="color:#3fb950;">✔ Feitiço validado.</p>`;
-  saveProgress();
   checkAdvance();
 }
 
@@ -141,22 +181,12 @@ function checkAdvance() {
   }
 }
 
+/* ===============================
+   FINAL
+================================ */
 function showDashboard() {
-  const c = document.getElementById("content");
-  const level =
-    analytics.errors === 0
-      ? "Domínio Pleno"
-      : analytics.errors < analytics.attempts / 2
-      ? "Domínio Parcial"
-      : "Domínio Inicial";
-
-  c.innerHTML += `
-    <div class="block">
-      <h2>Resumo Final</h2>
-      <p><strong>Tentativas:</strong> ${analytics.attempts}</p>
-      <p><strong>Erros:</strong> ${analytics.errors}</p>
-      <p><strong>Nível:</strong> ${level}</p>
-    </div>
+  document.getElementById("content").innerHTML += `
+    <div class="block"><strong>Dashboard final (DEV)</strong></div>
   `;
 }
 
@@ -170,8 +200,6 @@ function showCertificate() {
           <h2>${cert.title}</h2>
           <p>${cert.description}</p>
           <p><strong>Nível:</strong> ${cert.level}</p>
-          <p class="ethics">${cert.ethics}</p>
-          <button onclick="window.print()">Exportar PDF</button>
         </div>
       `;
       document.getElementById("certificate").classList.remove("hidden");
