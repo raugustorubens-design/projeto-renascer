@@ -7,35 +7,57 @@
 </head>
 <body>
 
-  <!-- SELEÇÃO -->
-  <section id="tela-player">
-    <h1>Projeto Renascer</h1>
-    <p class="subtitulo">Escolha seu personagem</p>
+<section id="tela-avaliacao">
 
-    <div id="players-container"></div>
+  <h1>Avaliação do Sistema</h1>
+  <p class="subtitulo">
+    O conhecimento será testado. Não avance sem domínio.
+  </p>
 
-    <button id="iniciarBtn" disabled>
-      Iniciar Jornada
-    </button>
-  </section>
+  <!-- QUESTÃO 1 -->
+  <div class="bloco">
+    <h3>1. Qual comando exibe algo na tela?</h3>
+    <label><input type="radio" name="q1" value="errado"> echo()</label><br>
+    <label><input type="radio" name="q1" value="certo"> print()</label><br>
+    <label><input type="radio" name="q1" value="errado"> show()</label>
+  </div>
 
-  <!-- VÓRTICE -->
-  <section id="tela-vortice" class="oculto">
-    <div class="vortice"></div>
-    <p>O Vórtice reconheceu sua presença…</p>
-  </section>
+  <!-- QUESTÃO 2 -->
+  <div class="bloco">
+    <h3>2. Associe corretamente:</h3>
+    <p><b>print("Olá")</b> →</p>
+    <select id="q2">
+      <option value="">Selecione</option>
+      <option value="errado">Cria variável</option>
+      <option value="certo">Exibe texto</option>
+      <option value="errado">Lê entrada</option>
+    </select>
+  </div>
 
-  <!-- PERGAMINHO -->
-  <section id="tela-narrativa" class="oculto">
-    <div class="pergaminho">
-      <pre id="texto-narrativo"></pre>
-    </div>
+  <!-- QUESTÃO 3 -->
+  <div class="bloco">
+    <h3>3. Escreva um feitiço válido:</h3>
+    <textarea id="q3" spellcheck="false">print("Renascer")</textarea>
+  </div>
 
-    <button id="avancarBtn" disabled>
-      Avançar
-    </button>
-  </section>
+  <button id="validarBtn">Validar Conhecimento</button>
 
-  <script src="script.js"></script>
+</section>
+
+<section id="tela-paywall" class="oculto">
+  <h1>Acesso Restrito</h1>
+  <p class="bloqueio">
+    Você chegou ao limite do conhecimento gratuito.
+  </p>
+  <p>
+    O próximo Sistema exige compromisso.
+  </p>
+
+  <button onclick="alert('PREMIUM SIMULADO LIBERADO')">
+    Tornar-se Arquitet@ PREMIUM
+  </button>
+</section>
+
+<script src="script.js"></script>
 </body>
 </html>
