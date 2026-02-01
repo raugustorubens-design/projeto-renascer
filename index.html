@@ -13,20 +13,64 @@
   <span class="badge">Python FREE • v1.0.0</span>
 </header>
 
-<p class="subtitle">
-  Formação em Python baseada em domínio real, não em tentativa.
-</p>
+<nav class="tabs hidden" id="tabs">
+  <button onclick="showTab('journey')">Jornada</button>
+  <button onclick="showTab('quality')">Qualidade</button>
+  <button onclick="showTab('characters')">Personagens</button>
+  <button onclick="showTab('certificate')">Certificação</button>
+</nav>
 
-<section id="content"></section>
+<!-- TELA INICIAL -->
+<section id="landing" class="landing">
+  <div class="mage">🧙‍♂️</div>
+  <h2>O Portal do Renascer</h2>
+  <p>
+    Aqui não se aprende por tentativa.  
+    Aqui só avança quem domina.
+  </p>
+  <button class="primary" onclick="enterPortal()">
+    Entrar no Portal
+  </button>
+</section>
 
-<section id="certificate" class="hidden"></section>
+<!-- CONTEÚDO PRINCIPAL -->
+<section id="app" class="hidden">
+  <section id="journey" class="tab active">
+    <p class="subtitle">
+      Formação em Python baseada em domínio real.
+    </p>
+    <section id="content"></section>
+  </section>
+
+  <section id="quality" class="tab">
+    <div class="block">
+      <h2>Qualidade Pedagógica</h2>
+      <ul>
+        <li>✔ Progressão por domínio</li>
+        <li>✔ Avaliação semântica</li>
+        <li>✔ Feedback imediato</li>
+        <li>✔ Certificação por competência</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="characters" class="tab">
+    <div class="block">
+      <h2>Personagens</h2>
+      <p>
+        O aluno assume o papel do Aprendiz.
+        O sistema reage conforme suas decisões.
+      </p>
+      <p><em>Expansão visual prevista no PREMIUM.</em></p>
+    </div>
+  </section>
+
+  <section id="certificate" class="tab hidden"></section>
+</section>
 
 <section id="paywall" class="hidden">
   <h2>Acesso Restrito</h2>
-  <p>
-    Você concluiu toda a formação Python FREE.
-    O próximo nível aprofunda lógica, estrutura e responsabilidade técnica.
-  </p>
+  <p>O Python FREE foi concluído.</p>
   <button onclick="alert('PREMIUM EM DESENVOLVIMENTO')">
     Tornar-se Arquitet@ PREMIUM
   </button>
