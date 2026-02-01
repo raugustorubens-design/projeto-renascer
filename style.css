@@ -3,87 +3,58 @@ body {
   background: radial-gradient(circle at top, #0d1117, #000);
   color: #e6edf3;
   font-family: Arial, sans-serif;
-  text-align: center;
   padding: 30px;
 }
 
-/* UTIL */
-.oculto {
-  display: none;
+h1 {
+  color: #58a6ff;
 }
 
-/* PLAYER */
-#players-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 18px;
-  max-width: 900px;
-  margin: 0 auto 30px;
+.subtitulo {
+  color: #8b949e;
+  margin-bottom: 30px;
 }
 
-.player-card {
+/* BLOCOS */
+.bloco {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 700px;
+  margin-bottom: 20px;
+}
+
+/* TEXTAREA */
+textarea {
   width: 100%;
-  border-radius: 12px;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: all .25s;
+  height: 120px;
+  background: #0d1117;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 12px;
+  font-family: "Courier New", monospace;
 }
 
-.player-card:hover {
-  transform: scale(1.05);
-  border-color: #58a6ff;
-}
-
-.player-card.selecionado {
-  border-color: #3fb950;
-  box-shadow: 0 0 18px #3fb950;
-}
-
-/* BOTÃO */
+/* BOTÕES */
 button {
-  padding: 14px 30px;
+  padding: 14px 28px;
   border-radius: 10px;
   border: none;
   background: #238636;
   color: #fff;
   font-size: 1rem;
   cursor: pointer;
+  margin-top: 20px;
 }
 
-button:disabled {
-  background: #30363d;
-  cursor: not-allowed;
+/* PAYWALL */
+.oculto {
+  display: none;
 }
 
-/* VÓRTICE */
-#tela-vortice {
-  margin-top: 120px;
-}
-
-.vortice {
-  width: 180px;
-  height: 180px;
-  border: 6px solid #58a6ff;
-  border-top-color: transparent;
-  border-radius: 50%;
-  margin: 0 auto 20px;
-  animation: girar 1.2s linear infinite;
-}
-
-@keyframes girar {
-  to { transform: rotate(360deg); }
-}
-
-/* PERGAMINHO */
-.pergaminho {
-  background: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 12px;
-  padding: 32px;
-  max-width: 720px;
-  margin: 40px auto;
-  font-family: "Courier New", monospace;
-  text-align: left;
-  white-space: pre-wrap;
-  line-height: 1.5;
+.bloqueio {
+  color: #f85149;
+  font-weight: bold;
 }
