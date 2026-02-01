@@ -1,6 +1,6 @@
 /* =====================================================
    PROJETO RENASCER — PYTHON FREE
-   SCRIPT.JS — MÁQUINA DE ESTADOS CANÔNICA
+   SCRIPT.JS — MÁQUINA DE ESTADOS CANÔNICA (CORRIGIDA)
 ===================================================== */
 
 /* ===============================
@@ -21,16 +21,16 @@ const state = {
 };
 
 /* ===============================
-   MAPA DE TELAS
+   MAPA DE ESTADOS → IDS DO DOM
 ================================ */
-const SCREENS = [
-  "landing",
-  "character-select",
-  "journey",
-  "quality",
-  "certificate",
-  "paywall",
-];
+const SCREEN_MAP = {
+  LANDING: "landing",
+  CHARACTER_SELECT: "character-select",
+  JOURNEY: "journey",
+  QUALITY: "quality",
+  CERTIFICATE: "certificate",
+  PAYWALL: "paywall",
+};
 
 /* ===============================
    BOOT
@@ -51,45 +51,33 @@ function init() {
    CONTROLE DE TELAS
 ================================ */
 function goTo(target) {
-  if (!isValidState(target)) {
+  if (!SCREEN_MAP[target]) {
     console.warn("Estado inválido:", target);
     target = "LANDING";
   }
 
   state.screen = target;
 
-  SCREENS.forEach((id) => {
+  Object.values(SCREEN_MAP).forEach((id) => {
     const el = document.getElementById(id);
     if (!el) return;
     el.classList.remove("active");
     el.classList.add("hidden");
   });
 
-  const active = document.getElementById(target.toLowerCase());
-  if (active) {
-    active.classList.remove("hidden");
-    active.classList.add("active");
+  const activeId = SCREEN_MAP[target];
+  const activeEl = document.getElementById(activeId);
+
+  if (activeEl) {
+    activeEl.classList.remove("hidden");
+    activeEl.classList.add("active");
   }
 
   updateNav();
 }
 
 /* ===============================
-   VALIDAÇÃO DE ESTADO
-================================ */
-function isValidState(stateName) {
-  return [
-    "LANDING",
-    "CHARACTER_SELECT",
-    "JOURNEY",
-    "QUALITY",
-    "CERTIFICATE",
-    "PAYWALL",
-  ].includes(stateName);
-}
-
-/* ===============================
-   HEADER / NAV
+   NAV / HEADER
 ================================ */
 function bindGlobalUI() {
   document.querySelectorAll("#main-nav button").forEach((btn) => {
