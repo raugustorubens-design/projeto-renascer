@@ -1,60 +1,60 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Projeto Renascer</title>
-  <link rel="stylesheet" href="estilo.css" />
+  <title>Project Rebirth</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<section id="tela-avaliacao">
+<section id="evaluation-screen">
 
-  <h1>Avaliação do Sistema</h1>
-  <p class="subtitulo">
-    O conhecimento será testado. Não avance sem domínio.
+  <h1>System Evaluation</h1>
+  <p class="subtitle">
+    Knowledge will be tested. Do not proceed without mastery.
   </p>
 
-  <!-- QUESTÃO 1 -->
-  <div class="bloco">
-    <h3>1. Qual comando exibe algo na tela?</h3>
-    <label><input type="radio" name="q1" value="errado"> echo()</label><br>
-    <label><input type="radio" name="q1" value="certo"> print()</label><br>
-    <label><input type="radio" name="q1" value="errado"> show()</label>
+  <!-- QUESTION 1 -->
+  <div class="block">
+    <h3>1. Which command displays output on the screen?</h3>
+    <label><input type="radio" name="q1" value="wrong"> echo()</label><br>
+    <label><input type="radio" name="q1" value="correct"> print()</label><br>
+    <label><input type="radio" name="q1" value="wrong"> show()</label>
   </div>
 
-  <!-- QUESTÃO 2 -->
-  <div class="bloco">
-    <h3>2. Associe corretamente:</h3>
-    <p><b>print("Olá")</b> →</p>
+  <!-- QUESTION 2 -->
+  <div class="block">
+    <h3>2. Correctly associate:</h3>
+    <p><strong>print("Hello")</strong> →</p>
     <select id="q2">
-      <option value="">Selecione</option>
-      <option value="errado">Cria variável</option>
-      <option value="certo">Exibe texto</option>
-      <option value="errado">Lê entrada</option>
+      <option value="">Select</option>
+      <option value="wrong">Creates variable</option>
+      <option value="correct">Displays text</option>
+      <option value="wrong">Reads input</option>
     </select>
   </div>
 
-  <!-- QUESTÃO 3 -->
-  <div class="bloco">
-    <h3>3. Escreva um feitiço válido:</h3>
-    <textarea id="q3" spellcheck="false">print("Renascer")</textarea>
+  <!-- QUESTION 3 -->
+  <div class="block">
+    <h3>3. Write a valid spell:</h3>
+    <textarea id="q3" spellcheck="false">print("Rebirth")</textarea>
   </div>
 
-  <button id="validarBtn">Validar Conhecimento</button>
+  <button id="validateBtn">Validate Knowledge</button>
 
 </section>
 
-<section id="tela-paywall" class="oculto">
-  <h1>Acesso Restrito</h1>
-  <p class="bloqueio">
-    Você chegou ao limite do conhecimento gratuito.
+<section id="paywall-screen" class="hidden">
+  <h1>Restricted Access</h1>
+  <p class="warning">
+    You have reached the limit of free knowledge.
   </p>
   <p>
-    O próximo Sistema exige compromisso.
+    The next System requires commitment.
   </p>
 
-  <button onclick="alert('PREMIUM SIMULADO LIBERADO')">
-    Tornar-se Arquitet@ PREMIUM
+  <button onclick="alert('PREMIUM ACCESS SIMULATED')">
+    Become a PREMIUM Architect
   </button>
 </section>
 
