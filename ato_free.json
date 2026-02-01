@@ -1,62 +1,24 @@
-body {
-  background: #0d1117;
-  color: #e6edf3;
-  font-family: Arial, sans-serif;
-  padding: 32px;
-}
-
-h1, h2 {
-  color: #58a6ff;
-}
-
-.subtitle {
-  color: #8b949e;
-  margin-bottom: 32px;
-}
-
-.block {
-  background: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 20px;
-  max-width: 720px;
-}
-
-pre {
-  background: #0d1117;
-  padding: 12px;
-  border-radius: 6px;
-  overflow-x: auto;
-}
-
-textarea {
-  width: 100%;
-  height: 100px;
-  background: #0d1117;
-  color: #e6edf3;
-  border: 1px solid #30363d;
-  border-radius: 6px;
-  padding: 10px;
-}
-
-button {
-  display: block;
-  margin-top: 10px;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 6px;
-  background: #238636;
-  color: #fff;
-  cursor: pointer;
-}
-
-.hidden {
-  display: none;
-}
-
-.ethics {
-  margin-top: 20px;
-  font-style: italic;
-  color: #8b949e;
+{
+  "acts": [
+    {
+      "title": "Ato 1 — O Primeiro Comando",
+      "text": "Em Python, comandos são instruções diretas. O mais básico é o print.",
+      "steps": [
+        {
+          "type": "content",
+          "prompt": "O comando print() exibe informações na tela."
+        }
+      ]
+    },
+    {
+      "title": "Ato 2 — Variáveis",
+      "text": "Variáveis armazenam valores na memória.",
+      "steps": [
+        {
+          "type": "content",
+          "prompt": "Em Python, você cria variáveis sem declarar tipo."
+        }
+      ]
+    }
+  ]
 }
