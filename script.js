@@ -1,52 +1,52 @@
 /* ===============================
-   DOM
+   DOM ELEMENTS
 ================================ */
-const validarBtn = document.getElementById("validarBtn");
-const telaAvaliacao = document.getElementById("tela-avaliacao");
-const telaPaywall = document.getElementById("tela-paywall");
+const validateBtn = document.getElementById("validateBtn");
+const evaluationScreen = document.getElementById("evaluation-screen");
+const paywallScreen = document.getElementById("paywall-screen");
 
 /* ===============================
-   VALIDAÇÃO
+   VALIDATION LOGIC
 ================================ */
-validarBtn.onclick = () => {
+validateBtn.onclick = () => {
 
-  // Q1
+  // Question 1
   const q1 = document.querySelector('input[name="q1"]:checked');
-  if (!q1 || q1.value !== "certo") {
-    alert("Erro na questão 1");
+  if (!q1 || q1.value !== "correct") {
+    alert("Incorrect answer in Question 1");
     return;
   }
 
-  // Q2
+  // Question 2
   const q2 = document.getElementById("q2").value;
-  if (q2 !== "certo") {
-    alert("Erro na questão 2");
+  if (q2 !== "correct") {
+    alert("Incorrect answer in Question 2");
     return;
   }
 
-  // Q3
+  // Question 3
   const q3 = document.getElementById("q3").value.trim();
   if (!q3.startsWith("print")) {
-    alert("O feitiço não é válido");
+    alert("The spell is not valid");
     return;
   }
 
-  // APROVADO
-  liberarPaywall();
+  // APPROVED
+  unlockPaywall();
 };
 
 /* ===============================
    PAYWALL
 ================================ */
-function liberarPaywall() {
-  telaAvaliacao.classList.add("oculto");
-  telaPaywall.classList.remove("oculto");
+function unlockPaywall() {
+  evaluationScreen.classList.add("hidden");
+  paywallScreen.classList.remove("hidden");
 
   localStorage.setItem(
-    "renascer_acesso_premium",
+    "rebirth_premium_access",
     JSON.stringify({
-      status: "liberado",
-      data: new Date().toISOString()
+      status: "unlocked",
+      date: new Date().toISOString()
     })
   );
 }
