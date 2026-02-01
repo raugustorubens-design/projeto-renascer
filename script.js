@@ -1,121 +1,101 @@
 let acts = [];
-let currentActIndex = 0;
+let actIndex = 0;
 
 fetch("ato_free.json")
-  .then(res => res.json())
-  .then(data => {
-    acts = data.acts;
+  .then(r => r.json())
+  .then(d => {
+    acts = d.acts;
     loadProgress();
     renderAct();
   });
 
 function loadProgress() {
-  const saved = JSON.parse(localStorage.getItem("renascer_progress"));
-  if (saved && saved.actIndex !== undefined) {
-    currentActIndex = saved.actIndex;
-  }
+  const p = JSON.parse(localStorage.getItem("renascer_progress"));
+  if (p && Number.isInteger(p.actIndex)) actIndex = p.actIndex;
 }
 
 function saveProgress() {
   localStorage.setItem(
     "renascer_progress",
-    JSON.stringify({ actIndex: currentActIndex })
+    JSON.stringify({ actIndex })
   );
 }
 
 function renderAct() {
-  const container = document.getElementById("content");
-  container.innerHTML = "";
+  const c = document.getElementById("content");
+  c.innerHTML = "";
 
-  if (currentActIndex >= acts.length) {
-    loadCertificate();
+  if (actIndex >= acts.length) {
+    showCertificate();
+    showPaywall();
     return;
   }
 
-  const act = acts[currentActIndex];
-
-  const title = document.createElement("h2");
-  title.textContent = act.title;
-  container.appendChild(title);
+  const act = acts[actIndex];
+  const h = document.createElement("h2");
+  h.textContent = act.title;
+  c.appendChild(h);
 
   act.steps.forEach(step => {
-    if (step.type === "narrative" || step.type === "content") {
-      const block = document.createElement("div");
-      block.className = "block";
+    const b = document.createElement("div");
+    b.className = "block";
 
-      block.innerHTML = `
-        <h3>${step.title}</h3>
-        <p>${step.text}</p>
-        ${step.example ? `<pre>${step.example}</pre>` : ""}
-      `;
-      container.appendChild(block);
+    if (step.type === "content" || step.type === "narrative") {
+      b.innerHTML = `<h3>${step.title}</h3><p>${step.text}</p>${step.example ? `<pre>${step.example}</pre>` : ""}`;
     }
 
     if (step.type === "quiz") {
-      const block = document.createElement("div");
-      block.className = "block";
-
-      block.innerHTML = `<p><strong>${step.question}</strong></p>`;
-
-      step.options.forEach(opt => {
+      b.innerHTML = `<p><strong>${step.question}</strong></p>`;
+      step.options.forEach(o => {
         const btn = document.createElement("button");
-        btn.textContent = opt.text;
-        btn.onclick = () => {
-          if (opt.correct) {
-            btn.style.background = "#238636";
-          } else {
-            btn.style.background = "#da3633";
-          }
-        };
-        block.appendChild(btn);
+        btn.textContent = o.text;
+        btn.onclick = () => btn.style.background = o.correct ? "#238636" : "#da3633";
+        b.appendChild(btn);
       });
-
-      container.appendChild(block);
     }
 
     if (step.type === "spell") {
-      const block = document.createElement("div");
-      block.className = "block";
-
-      block.innerHTML = `
+      b.innerHTML = `
         <h3>${step.title}</h3>
         <p>${step.instruction}</p>
-        <textarea id="spellInput"></textarea>
-        <button onclick="validateSpell('${step.expected}')">
-          Validar Feitiço
-        </button>
+        <textarea id="spell"></textarea>
+        <button onclick="validateSpell('${step.expected}')">Validar</button>
       `;
-
-      container.appendChild(block);
     }
+
+    c.appendChild(b);
   });
 }
 
 function validateSpell(expected) {
-  const input = document.getElementById("spellInput").value.trim();
-
-  if (!input.includes("print")) {
-    alert("O feitiço não demonstra domínio do comando esperado.");
+  const v = document.getElementById("spell").value;
+  if (!v.includes(expected)) {
+    alert("Feitiço não demonstra domínio.");
     return;
   }
-
-  currentActIndex++;
+  actIndex++;
   saveProgress();
   renderAct();
 }
 
-function loadCertificate() {
+function showCertificate() {
   fetch("certification.json")
-    .then(res => res.json())
-    .then(data => {
-      const cert = data.certificate;
-
-      document.getElementById("cert-title").textContent = cert.title;
-      document.getElementById("cert-description").textContent = cert.description;
-      document.getElementById("cert-level").textContent = cert.level;
-      document.getElementById("cert-issued").textContent = cert.issued_by;
-      document.getElementById("cert-ethics").textContent = cert.ethics;
-
-      document.getElementById("certificate").classList.remove("hidden");
+    .then(r => r.json())
+    .then(d => {
+      const cert = d.certificate;
+      const el = document.getElementById("certificate");
+      el.innerHTML = `
+        <div class="diploma">
+          <h2>${cert.title}</h2>
+          <p>${cert.description}</p>
+          <p><strong>Nível:</strong> ${cert.level}</p>
+          <p class="ethics">${cert.ethics}</p>
+        </div>
+      `;
+      el.classList.remove("hidden");
     });
+}
+
+function showPaywall() {
+  document.getElementById("paywall").classList.remove("hidden");
 }
