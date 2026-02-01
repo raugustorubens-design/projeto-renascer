@@ -2,9 +2,10 @@ let acts = [];
 let actIndex = 0;
 let quizStatus = {};
 let spellValidated = false;
+
 let analytics = {
-  errors: 0,
-  attempts: 0
+  attempts: 0,
+  errors: 0
 };
 
 fetch("ato_free.json")
@@ -16,7 +17,7 @@ fetch("ato_free.json")
   });
 
 /* ===============================
-   PROGRESSO
+   PROGRESSO & ANALYTICS
 ================================ */
 function loadProgress() {
   const p = JSON.parse(localStorage.getItem("renascer_progress"));
@@ -38,7 +39,7 @@ function saveProgress() {
 }
 
 /* ===============================
-   RENDERIZAÇÃO
+   RENDERIZAÇÃO DO ATO
 ================================ */
 function renderAct() {
   const c = document.getElementById("content");
@@ -54,6 +55,7 @@ function renderAct() {
   }
 
   const act = acts[actIndex];
+
   const h = document.createElement("h2");
   h.textContent = act.title;
   c.appendChild(h);
@@ -62,7 +64,7 @@ function renderAct() {
     const b = document.createElement("div");
     b.className = "block";
 
-    /* CONTEÚDO */
+    /* CONTEÚDO / NARRATIVA */
     if (step.type === "content" || step.type === "narrative") {
       b.innerHTML = `
         <h3>${step.title}</h3>
@@ -71,14 +73,11 @@ function renderAct() {
       `;
     }
 
-    /* QUIZ */
+    /* QUIZ COM FEEDBACK */
     if (step.type === "quiz") {
       quizStatus[stepIndex] = { correct: false, attempts: 0 };
 
-      const q = document.createElement("p");
-      q.innerHTML = `<strong>${step.question}</strong>`;
-      b.appendChild(q);
-
+      b.innerHTML += `<p><strong>${step.question}</strong></p>`;
       const feedback = document.createElement("div");
 
       step.options.forEach((o, i) => {
@@ -93,7 +92,8 @@ function renderAct() {
           if (o.correct) {
             quizStatus[stepIndex].correct = true;
             btn.style.background = "#238636";
-            feedback.innerHTML = `<p style="color:#3fb950;">✔ Correto. ${o.feedback || ""}</p>`;
+            feedback.innerHTML =
+              `<p style="color:#3fb950;">✔ Correto. ${o.feedback || ""}</p>`;
             lockButtons(b);
             checkAutoAdvance();
           } else {
@@ -101,9 +101,11 @@ function renderAct() {
             btn.style.background = "#da3633";
 
             if (quizStatus[stepIndex].attempts === 1) {
-              feedback.innerHTML = `<p style="color:#f85149;">✖ Incorreto. Tente novamente.</p>`;
+              feedback.innerHTML =
+                `<p style="color:#f85149;">✖ Incorreto. Tente novamente.</p>`;
             } else {
-              feedback.innerHTML = `<p style="color:#f85149;">✖ Segunda tentativa incorreta. Revise o conteúdo.</p>`;
+              feedback.innerHTML =
+                `<p style="color:#f85149;">✖ Segunda tentativa incorreta. Revise o conteúdo.</p>`;
               lockButtons(b);
             }
           }
@@ -118,7 +120,7 @@ function renderAct() {
 
     /* FEITIÇO – VALIDAÇÃO SEMÂNTICA */
     if (step.type === "spell") {
-      b.innerHTML = `
+      b.innerHTML += `
         <h3>${step.title}</h3>
         <p>${step.instruction}</p>
         <textarea id="spell"></textarea>
@@ -126,7 +128,8 @@ function renderAct() {
         <div id="spellFeedback"></div>
       `;
 
-      b.querySelector("#spellBtn").onclick = () => validateSpell(step.validation);
+      b.querySelector("#spellBtn").onclick = () =>
+        validateSpell(step.validation);
     }
 
     c.appendChild(b);
@@ -145,7 +148,7 @@ function allQuizzesCorrect() {
 }
 
 /* ===============================
-   FEITIÇO – SEMÂNTICA
+   FEITIÇO
 ================================ */
 function validateSpell(validation) {
   const v = document.getElementById("spell").value.trim();
@@ -154,14 +157,16 @@ function validateSpell(validation) {
   const ok = validation.mustContain.every(t => v.includes(t));
 
   if (!ok) {
-    fb.innerHTML = `<p style="color:#f85149;">✖ O feitiço não atende à estrutura esperada.</p>`;
+    fb.innerHTML =
+      `<p style="color:#f85149;">✖ O feitiço não atende à estrutura esperada.</p>`;
     analytics.errors++;
     saveProgress();
     return;
   }
 
   spellValidated = true;
-  fb.innerHTML = `<p style="color:#3fb950;">✔ Feitiço validado com sucesso.</p>`;
+  fb.innerHTML =
+    `<p style="color:#3fb950;">✔ Feitiço validado com sucesso.</p>`;
   saveProgress();
   checkAutoAdvance();
 }
@@ -180,29 +185,30 @@ function checkAutoAdvance() {
 }
 
 /* ===============================
-   DASHBOARD DO ALUNO
+   DASHBOARD
 ================================ */
 function showDashboard() {
   const c = document.getElementById("content");
-  const d = document.createElement("div");
-  d.className = "block";
 
-  d.innerHTML = `
-    <h2>Resumo do Aprendizado</h2>
-    <p><strong>Tentativas:</strong> ${analytics.attempts}</p>
-    <p><strong>Erros:</strong> ${analytics.errors}</p>
-    <p><strong>Nível:</strong> ${
-      analytics.errors === 0 ? "Domínio Pleno" :
-      analytics.errors < analytics.attempts / 2 ? "Domínio Parcial" :
-      "Domínio Inicial"
-    }</p>
+  const level =
+    analytics.errors === 0
+      ? "Domínio Pleno"
+      : analytics.errors < analytics.attempts / 2
+      ? "Domínio Parcial"
+      : "Domínio Inicial";
+
+  c.innerHTML += `
+    <div class="block">
+      <h2>Resumo do Aprendizado</h2>
+      <p><strong>Tentativas:</strong> ${analytics.attempts}</p>
+      <p><strong>Erros:</strong> ${analytics.errors}</p>
+      <p><strong>Nível:</strong> ${level}</p>
+    </div>
   `;
-
-  c.appendChild(d);
 }
 
 /* ===============================
-   CERTIFICADO + PDF
+   CERTIFICADO
 ================================ */
 function showCertificate() {
   fetch("certification.json")
@@ -225,7 +231,7 @@ function showCertificate() {
 }
 
 /* ===============================
-   PREMIUM PARALELO
+   PREMIUM
 ================================ */
 function showPremium() {
   document.getElementById("paywall").classList.remove("hidden");
