@@ -41,15 +41,25 @@ function renderAct() {
     b.className = "block";
 
     if (step.type === "content" || step.type === "narrative") {
-      b.innerHTML = `<h3>${step.title}</h3><p>${step.text}</p>${step.example ? `<pre>${step.example}</pre>` : ""}`;
+      b.innerHTML = `
+        <h3>${step.title}</h3>
+        <p>${step.text}</p>
+        ${step.example ? `<pre>${step.example}</pre>` : ""}
+      `;
     }
 
     if (step.type === "quiz") {
       b.innerHTML = `<p><strong>${step.question}</strong></p>`;
-      step.options.forEach(o => {
+
+      step.options.forEach((o, i) => {
+        const letter = String.fromCharCode(65 + i); // A, B, C...
         const btn = document.createElement("button");
-        btn.textContent = o.text;
-        btn.onclick = () => btn.style.background = o.correct ? "#238636" : "#da3633";
+        btn.textContent = `${letter}) ${o.text}`;
+
+        btn.onclick = () => {
+          btn.style.background = o.correct ? "#238636" : "#da3633";
+        };
+
         b.appendChild(btn);
       });
     }
@@ -59,7 +69,9 @@ function renderAct() {
         <h3>${step.title}</h3>
         <p>${step.instruction}</p>
         <textarea id="spell"></textarea>
-        <button onclick="validateSpell('${step.expected}')">Validar</button>
+        <button onclick="validateSpell('${step.expected}')">
+          Validar Feitiço
+        </button>
       `;
     }
 
@@ -68,11 +80,13 @@ function renderAct() {
 }
 
 function validateSpell(expected) {
-  const v = document.getElementById("spell").value;
+  const v = document.getElementById("spell").value.trim();
+
   if (!v.includes(expected)) {
-    alert("Feitiço não demonstra domínio.");
+    alert("Feitiço não demonstra domínio do conceito esperado.");
     return;
   }
+
   actIndex++;
   saveProgress();
   renderAct();
@@ -84,6 +98,7 @@ function showCertificate() {
     .then(d => {
       const cert = d.certificate;
       const el = document.getElementById("certificate");
+
       el.innerHTML = `
         <div class="diploma">
           <h2>${cert.title}</h2>
@@ -92,6 +107,7 @@ function showCertificate() {
           <p class="ethics">${cert.ethics}</p>
         </div>
       `;
+
       el.classList.remove("hidden");
     });
 }
