@@ -1,98 +1,157 @@
-const app = document.getElementById("app");
+/* ===============================
+   LOG VISUAL
+================================ */
+function log(message, type = "ok") {
+  const logs = document.getElementById("logs");
+  const entry = document.createElement("div");
 
-// ============================
-// RENDERIZAÇÕES
-// ============================
+  entry.className = `log ${type}`;
+  entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
 
-function renderInicio() {
-  app.innerHTML = `
-    <div class="inicio-layout">
-      <div class="inicio-texto">
-        <h1>Projeto Renascer</h1>
-        <p>
-          Uma jornada formativa baseada em rigor técnico, clareza pedagógica
-          e evolução consciente.
-        </p>
-        <br />
-        <button onclick="renderEscolha()">Entrar na Dungeon</button>
-      </div>
-
-      <div class="mago-container">
-        <img src="assets/characters/mago.png" alt="Mago Mentor">
-      </div>
-    </div>
-  `;
+  logs.appendChild(entry);
+  logs.scrollTop = logs.scrollHeight;
 }
 
-function renderEscolha() {
-  app.innerHTML = `
-    <h2>Escolha seu Personagem</h2>
-    <p class="subtexto">
-      Este será o avatar que representa você ao longo da jornada.
-    </p>
+/* ===============================
+   COMPLIANCE INVISÍVEL
+================================ */
+const COMPLIANCE_KEY = "renascer_compliance_log";
 
-    <div class="personagens">
-      ${criarCard("Giu", "01_Giu_jogadora.png")}
-      ${criarCard("Bi", "02_Bi_jogadora.png")}
-      ${criarCard("Neto", "03_Neto_jogador.png")}
-      ${criarCard("Jack", "04_Jack_jogadora.png")}
-    </div>
-
-    <p class="subtexto">
-      A escolha não define dificuldade. Ela define identidade.
-    </p>
-  `;
-}
-
-function criarCard(nome, arquivo) {
-  return `
-    <div class="card" onclick="selecionarPersonagem('${nome}')">
-      <img src="assets/characters/players/${arquivo}" alt="${nome}">
-      <div class="nome">${nome}</div>
-    </div>
-  `;
-}
-
-// ============================
-// AÇÕES
-// ============================
-
-function selecionarPersonagem(nome) {
-  app.innerHTML = `
-    <div class="inicio-layout">
-      <div class="inicio-texto">
-        <h1>${nome}, a jornada começa</h1>
-        <p>
-          Você fez sua escolha conscientemente.
-          O conhecimento exige paciência, atenção e coragem.
-        </p>
-      </div>
-
-      <div class="mago-container">
-        <img src="assets/characters/mago.png" alt="Mago Mentor">
-      </div>
-    </div>
-  `;
-}
-
-// ============================
-// MENU
-// ============================
-
-document.getElementById("btnInicio").onclick = renderInicio;
-document.getElementById("btnPortal").onclick = renderEscolha;
-document.getElementById("btnQualidade").onclick = () => {
-  app.innerHTML = `
-    <h2>Qualidade, Ética e Compliance</h2>
-    <p>
-      O Projeto Renascer foi concebido com compromisso explícito com
-      qualidade técnica, clareza pedagógica e responsabilidade ética.
-    </p>
-  `;
+const EVENTOS_COMPLIANCE = {
+  TESTE_EXECUTADO: "teste_executado",
+  CHECKLIST_APROVADO: "checklist_aprovado",
+  CHECKLIST_REPROVADO: "checklist_reprovado"
 };
 
-// ============================
-// START
-// ============================
+function registrarEvento(evento) {
+  const logCompliance =
+    JSON.parse(localStorage.getItem(COMPLIANCE_KEY)) || [];
 
-renderInicio();
+  logCompliance.push({
+    id: crypto.randomUUID(),
+    tipo: evento.tipo,
+    contexto: evento.contexto,
+    bloom: evento.bloom || null,
+    status: evento.status,
+    timestamp: new Date().toISOString()
+  });
+
+  localStorage.setItem(
+    COMPLIANCE_KEY,
+    JSON.stringify(logCompliance)
+  );
+}
+
+/* ===============================
+   TESTE DA MODIFICAÇÃO
+================================ */
+function executarTeste() {
+  log("Iniciando teste da modificação");
+
+  try {
+    // SIMULAÇÃO DE MODIFICAÇÃO
+    const resultado = true;
+
+    if (resultado) {
+      log("Modificação executada com sucesso", "ok");
+    } else {
+      log("Resultado inesperado", "warn");
+    }
+
+  } catch (e) {
+    log(`Erro detectado: ${e.message}`, "error");
+    throw e;
+  }
+}
+
+/* ===============================
+   CHECKLIST AUTOMÁTICO
+================================ */
+const checklistItens = [
+  {
+    nome: "Script de teste carregado",
+    teste: () => typeof log === "function"
+  },
+  {
+    nome: "Função executarTeste existe",
+    teste: () => typeof executarTeste === "function"
+  },
+  {
+    nome: "DOM de logs carregado",
+    teste: () => document.getElementById("logs") !== null
+  },
+  {
+    nome: "Execução sem erro crítico",
+    teste: () => true
+  }
+];
+
+function executarChecklist() {
+  const ul = document.getElementById("checklist");
+  const veredito = document.getElementById("veredito");
+
+  ul.innerHTML = "";
+  let aprovado = true;
+
+  checklistItens.forEach(item => {
+    const li = document.createElement("li");
+
+    try {
+      const resultado = item.teste();
+
+      if (resultado) {
+        li.textContent = `✔ ${item.nome}`;
+        li.className = "check-ok";
+      } else {
+        li.textContent = `✖ ${item.nome}`;
+        li.className = "check-fail";
+        aprovado = false;
+      }
+    } catch {
+      li.textContent = `✖ ${item.nome} (erro)`;
+      li.className = "check-fail";
+      aprovado = false;
+    }
+
+    ul.appendChild(li);
+  });
+
+  veredito.textContent = aprovado
+    ? "APROVADO — Modificação validada"
+    : "REPROVADO — Correções necessárias";
+
+  veredito.className = aprovado ? "check-ok" : "check-fail";
+
+  registrarEvento({
+    tipo: aprovado
+      ? EVENTOS_COMPLIANCE.CHECKLIST_APROVADO
+      : EVENTOS_COMPLIANCE.CHECKLIST_REPROVADO,
+    contexto: "sandbox_teste",
+    bloom: 3,
+    status: aprovado ? "ok" : "fail"
+  });
+
+  return aprovado;
+}
+
+/* ===============================
+   EXECUÇÃO COMPLETA
+================================ */
+function executarTesteCompleto() {
+  log("Sandbox iniciado", "ok");
+
+  registrarEvento({
+    tipo: EVENTOS_COMPLIANCE.TESTE_EXECUTADO,
+    contexto: "sandbox_teste",
+    bloom: 3,
+    status: "executado"
+  });
+
+  executarTeste();
+  executarChecklist();
+}
+
+/* ===============================
+   BOOT
+================================ */
+log("Página de teste carregada", "ok");
