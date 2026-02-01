@@ -1,69 +1,62 @@
-{
-  "project": "Projeto Renascer",
-  "access": "FREE",
-  "language": "Python",
-  "acts": [
-    {
-      "act": 0,
-      "title": "Ato 0 — O Despertar do Código",
-      "objective": "Compreender o que são dados, informação e como o Python se comunica com o mundo.",
-      "steps": [
-        {
-          "type": "narrative",
-          "title": "O Despertar do Olhar",
-          "text": "Antes de qualquer código, o mundo já produz dados. Quem aprende a observar, aprende a decidir melhor."
-        },
-        {
-          "type": "content",
-          "title": "O que são dados",
-          "text": "Dados são registros brutos de fatos, medições ou eventos. Sozinhos, não explicam nada.",
-          "example": "Temperatura: 28\nVendas do dia: 150\nIdade: 30"
-        },
-        {
-          "type": "content",
-          "title": "O papel do Python",
-          "text": "Python é uma linguagem de programação usada para transformar dados em informação por meio de instruções claras e executáveis."
-        },
-        {
-          "type": "content",
-          "title": "Saída de dados",
-          "text": "O primeiro contato com o Python normalmente acontece pela exibição de informações na tela.",
-          "command": "print()",
-          "example": "print(\"Olá, mundo\")"
-        },
-        {
-          "type": "quiz",
-          "question": "Qual comando é usado em Python para exibir informações na tela?",
-          "options": [
-            { "text": "echo()", "correct": false },
-            { "text": "print()", "correct": true },
-            { "text": "show()", "correct": false }
-          ]
-        },
-        {
-          "type": "quiz",
-          "question": "Qual das opções representa apenas um dado?",
-          "options": [
-            { "text": "Temperatura: 28", "correct": true },
-            { "text": "Hoje está calor", "correct": false },
-            { "text": "As vendas aumentaram", "correct": false }
-          ]
-        },
-        {
-          "type": "spell",
-          "title": "Feitiço de Manifestação",
-          "instruction": "Escreva um comando válido em Python que exiba uma mensagem na tela.",
-          "expected": "print(\"Renascer\")",
-          "validation": {
-            "mustContain": ["print", "(" , ")"],
-            "language": "python"
-          }
-        },
-        {
-          "type": "checkpoint",
-          "rule": "Somente avance se demonstrar compreensão real do comando print e do conceito de dado."
-        }
-      ]
-    }
-  ]
+body {
+  background: #0d1117;
+  color: #e6edf3;
+  font-family: Arial, sans-serif;
+  padding: 32px;
+}
+
+h1, h2 {
+  color: #58a6ff;
+}
+
+.subtitle {
+  color: #8b949e;
+  margin-bottom: 32px;
+}
+
+.block {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  max-width: 720px;
+}
+
+pre {
+  background: #0d1117;
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  background: #0d1117;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+button {
+  display: block;
+  margin-top: 10px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #238636;
+  color: #fff;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.ethics {
+  margin-top: 20px;
+  font-style: italic;
+  color: #8b949e;
 }
