@@ -1,6 +1,7 @@
 let acts = [];
 let actIndex = 0;
-let quizStatus = {}; // controla acertos/erros por questão
+let quizStatus = {};
+let spellValidated = false;
 
 fetch("ato_free.json")
   .then(r => r.json())
@@ -26,12 +27,13 @@ function saveProgress() {
 }
 
 /* ===============================
-   RENDERIZAÇÃO
+   RENDERIZAÇÃO DO ATO
 ================================ */
 function renderAct() {
   const c = document.getElementById("content");
   c.innerHTML = "";
   quizStatus = {};
+  spellValidated = false;
 
   if (actIndex >= acts.length) {
     showCertificate();
@@ -58,7 +60,7 @@ function renderAct() {
       `;
     }
 
-    /* QUIZ COM FEEDBACK + CONTROLE */
+    /* QUIZ */
     if (step.type === "quiz") {
       quizStatus[stepIndex] = {
         correct: false,
@@ -92,7 +94,7 @@ function renderAct() {
             `;
 
             lockButtons(b);
-            updateMastery();
+            checkAutoAdvance();
           } else {
             btn.style.background = "#da3633";
 
@@ -127,26 +129,19 @@ function renderAct() {
         <h3>${step.title}</h3>
         <p>${step.instruction}</p>
         <textarea id="spell"></textarea>
-        <button onclick="validateSpell('${step.expected}')">
-          Validar Feitiço
-        </button>
+        <button id="spellBtn">Validar Feitiço</button>
       `;
+
+      const btn = b.querySelector("#spellBtn");
+      btn.onclick = () => validateSpell(step.expected);
     }
 
     c.appendChild(b);
   });
-
-  /* BOTÃO DE AVANÇO */
-  const advanceBtn = document.createElement("button");
-  advanceBtn.textContent = "Avançar para o próximo Ato";
-  advanceBtn.onclick = attemptAdvance;
-  advanceBtn.style.marginTop = "20px";
-
-  c.appendChild(advanceBtn);
 }
 
 /* ===============================
-   CONTROLE DE QUIZ
+   CONTROLES
 ================================ */
 function lockButtons(block) {
   const buttons = block.querySelectorAll("button");
@@ -155,39 +150,6 @@ function lockButtons(block) {
 
 function allQuizzesCorrect() {
   return Object.values(quizStatus).every(q => q.correct);
-}
-
-/* ===============================
-   DOMÍNIO
-================================ */
-function updateMastery() {
-  const total = Object.keys(quizStatus).length;
-  const correct = Object.values(quizStatus).filter(q => q.correct).length;
-
-  let level = "Iniciante";
-  if (correct === total) level = "Domínio Pleno";
-  else if (correct > total / 2) level = "Domínio Parcial";
-
-  localStorage.setItem(
-    "renascer_mastery",
-    JSON.stringify({ act: actIndex, level })
-  );
-}
-
-/* ===============================
-   AVANÇO
-================================ */
-function attemptAdvance() {
-  if (!allQuizzesCorrect()) {
-    alert(
-      "Você ainda não demonstrou domínio completo deste Ato. Revise as questões."
-    );
-    return;
-  }
-
-  actIndex++;
-  saveProgress();
-  renderAct();
 }
 
 /* ===============================
@@ -201,7 +163,22 @@ function validateSpell(expected) {
     return;
   }
 
+  spellValidated = true;
   alert("Feitiço validado com sucesso.");
+  checkAutoAdvance();
+}
+
+/* ===============================
+   AVANÇO AUTOMÁTICO
+================================ */
+function checkAutoAdvance() {
+  if (allQuizzesCorrect() && spellValidated) {
+    setTimeout(() => {
+      actIndex++;
+      saveProgress();
+      renderAct();
+    }, 800);
+  }
 }
 
 /* ===============================
