@@ -11,6 +11,12 @@ console.log("F01 — Dados salvos localmente");
 console.log(userData);
 
 
+localStorage.setItem("renascer_user", JSON.stringify(userData));
+
+console.log("F01 — Dados salvos localmente");
+console.log(userData);
+
+
   if (!inputNome || !btnContinuar) {
     console.warn("F01: elementos não encontrados no DOM.");
     return;
