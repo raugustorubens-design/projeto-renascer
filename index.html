@@ -1,138 +1,31 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <title>Projeto Renascer — Python FREE</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-</head>
+<!-- F01 — Login Narrativo -->
+<section id="f01-login" style="display:none;">
+  <h2>Identidade Narrativa</h2>
 
-<body>
+  <p>
+    Escolha um nome pelo qual você deseja ser reconhecido(a) ao longo da jornada.
+    Este nome não precisa ser seu nome real.
+  </p>
 
-<!-- ===============================
-     HEADER FIXO
-================================ -->
-<header id="header">
-  <div id="header-left">
-    <h1 id="project-title">Projeto Renascer</h1>
-    <span id="project-level">Python FREE</span>
-  </div>
-  <div id="header-right">
-    <span id="dev-indicator" class="hidden">DEV MODE</span>
-  </div>
-</header>
+  <form id="f01-form">
+    <label for="nomeNarrativo">
+      Nome narrativo
+    </label><br>
 
-<!-- ===============================
-     NAVEGAÇÃO (CONTROLADA PELO JS)
-================================ -->
-<nav id="main-nav">
-  <button data-target="journey">Jornada</button>
-  <button data-target="quality">Qualidade</button>
-  <button data-target="certificate">Certificação</button>
-</nav>
+    <input
+      type="text"
+      id="nomeNarrativo"
+      name="nomeNarrativo"
+      placeholder="Ex: Guardião do Código"
+      autocomplete="off"
+    /><br><br>
 
-<!-- ===============================
-     CONTAINER PRINCIPAL (STATE MACHINE)
-================================ -->
-<main id="app">
-
-  <!-- 🧙‍♂️ LANDING -->
-  <section id="landing" class="screen">
-    <div id="mage">🧙‍♂️</div>
-    <h2 id="landing-title">O Portal do Renascer</h2>
-    <p id="landing-text">
-      Aqui não se aprende por tentativa.  
-      Aqui só avança quem domina.
-    </p>
-    <button id="enter-portal-btn">Entrar no Portal</button>
-  </section>
-
-  <!-- 🧝 PERSONAGENS -->
-  <section id="character-select" class="screen">
-    <h2 id="character-title">Escolha seu Personagem</h2>
-    <p id="character-text">
-      Toda jornada começa com uma identidade.
-    </p>
-
-    <div id="character-grid">
-      <!-- Personagens renderizados via JS -->
-    </div>
-
-    <button id="confirm-character-btn" class="disabled">
-      Confirmar Personagem
-    </button>
-  </section>
-
-  <!-- 📘 JORNADA -->
-  <section id="journey" class="screen">
-    <h2 id="journey-title"></h2>
-
-    <div id="journey-content">
-      <!-- Conteúdo do ato -->
-    </div>
-
-    <div id="journey-steps">
-      <!-- Passos / desafios -->
-    </div>
-
-    <div id="journey-feedback">
-      <!-- Feedback pedagógico -->
-    </div>
-
-    <button id="journey-next-btn" class="disabled">
-      Avançar
-    </button>
-  </section>
-
-  <!-- 🧠 QUALIDADE -->
-  <section id="quality" class="screen">
-    <h2 id="quality-title">Modelo de Qualidade</h2>
-    <div id="quality-content">
-      <p>
-        O Projeto Renascer forma profissionais por domínio,
-        não por repetição mecânica.
-      </p>
-      <p>
-        Errar faz parte do processo. Persistir sem aprender, não.
-      </p>
-    </div>
-  </section>
-
-  <!-- 🎓 CERTIFICAÇÃO -->
-  <section id="certificate" class="screen">
-    <h2 id="certificate-title">Certificação</h2>
-
-    <div id="certificate-content">
-      <!-- Dados carregados via JS -->
-    </div>
-
-    <button id="certificate-continue-btn">
+    <button type="button" id="btnF01Continuar" disabled>
       Continuar
     </button>
-  </section>
+  </form>
 
-  <!-- 🔒 PAYWALL -->
-  <section id="paywall" class="screen">
-    <h2 id="paywall-title">Próximo Nível</h2>
-    <p id="paywall-text">
-      O Python FREE termina aqui.  
-      O próximo nível exige compromisso real.
-    </p>
-
-    <button id="paywall-cta-btn">
-      Tornar-se Arquiteto PREMIUM
-    </button>
-  </section>
-
-</main>
-
-<!-- ===============================
-     FOOTER FIXO
-================================ -->
-<footer id="footer">
-  <p>Projeto Renascer © 2026</p>
-</footer>
-
-<script src="script.js"></script>
-</body>
-</html>
+  <p class="info">
+    Seu progresso será organizado localmente neste dispositivo.
+  </p>
+</section>
