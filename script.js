@@ -1,67 +1,39 @@
-// F01 — Login Narrativo (validação mínima)
-const userData = {
-  nomeNarrativo: nomeNarrativo,
-  userToken: userToken,
-  createdAt: new Date().toISOString()
-};
-
-localStorage.setItem("renascer_user", JSON.stringify(userData));
-
-console.log("F01 — Dados salvos localmente");
-console.log(userData);
-
-
-localStorage.setItem("renascer_user", JSON.stringify(userData));
-
-console.log("F01 — Dados salvos localmente");
-console.log(userData);
-
+// F01 — Login Narrativo (Passos 1, 2 e 3)
+document.addEventListener("DOMContentLoaded", function () {
+  const inputNome = document.getElementById("nomeNarrativo");
+  const btnContinuar = document.getElementById("btnF01Continuar");
 
   if (!inputNome || !btnContinuar) {
     console.warn("F01: elementos não encontrados no DOM.");
     return;
   }
 
+  // Passo 1 — habilitar / desabilitar botão
   inputNome.addEventListener("input", function () {
-    const valor = inputNome.value.trim();
-
-    if (valor.length > 0) {
-      btnContinuar.disabled = false;
-    } else {
-      btnContinuar.disabled = true;
-    }
+    btnContinuar.disabled = inputNome.value.trim().length === 0;
   });
-});
 
-// F01 — Geração de UserToken (Passo 2)
-document.addEventListener("DOMContentLoaded", function () {
-  const inputNome = document.getElementById("nomeNarrativo");
-  const btnContinuar = document.getElementById("btnF01Continuar");
-
-  if (!inputNome || !btnContinuar) {
-    console.warn("F01 Passo 2: elementos não encontrados.");
-    return;
-  }
-
+  // Função de geração de token
   function gerarUserToken() {
-    return 'usr_' + Math.random().toString(36).substr(2, 9);
+    return "usr_" + Math.random().toString(36).substr(2, 9);
   }
 
+  // Passo 2 e 3 — clique, gerar token e salvar
   btnContinuar.addEventListener("click", function () {
-  if (btnContinuar.disabled) return;
+    if (btnContinuar.disabled) return;
 
-  const nomeNarrativo = inputNome.value.trim();
-  const userToken = gerarUserToken();
+    const nomeNarrativo = inputNome.value.trim();
+    const userToken = gerarUserToken();
 
-  // Persistência local (sem dados sensíveis)
-  const userData = {
-    nomeNarrativo: nomeNarrativo,
-    userToken: userToken,
-    createdAt: new Date().toISOString()
-  };
+    const userData = {
+      nomeNarrativo: nomeNarrativo,
+      userToken: userToken,
+      createdAt: new Date().toISOString()
+    };
 
-  localStorage.setItem("renascer_user", JSON.stringify(userData));
+    localStorage.setItem("renascer_user", JSON.stringify(userData));
 
-  console.log("F01 — Dados salvos localmente");
-  console.log(userData);
+    console.log("F01 — Dados salvos localmente");
+    console.log(userData);
+  });
 });
