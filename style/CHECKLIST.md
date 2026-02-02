@@ -1,5 +1,5 @@
 # Checklist de Etapas — Projeto Renascer
-## Pasta: /scripts
+## Pasta: /style
 
 ## Regras
 - Nenhuma etapa pode ser marcada como (OK) sem teste funcional da página.
