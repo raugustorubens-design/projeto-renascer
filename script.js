@@ -34,17 +34,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   btnContinuar.addEventListener("click", function () {
-    const nomeNarrativo = inputNome.value.trim();
+  if (btnContinuar.disabled) return;
 
-    if (nomeNarrativo.length === 0) {
-      console.warn("Nome narrativo vazio.");
-      return;
-    }
+  const nomeNarrativo = inputNome.value.trim();
+  const userToken = gerarUserToken();
 
-    const userToken = gerarUserToken();
+  // Persistência local (sem dados sensíveis)
+  const userData = {
+    nomeNarrativo: nomeNarrativo,
+    userToken: userToken,
+    createdAt: new Date().toISOString()
+  };
 
-    console.log("F01 — Login Narrativo");
-    console.log("Nome narrativo:", nomeNarrativo);
-    console.log("UserToken:", userToken);
-  });
+  localStorage.setItem("renascer_user", JSON.stringify(userData));
+
+  console.log("F01 — Dados salvos localmente");
+  console.log(userData);
 });
