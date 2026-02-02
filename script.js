@@ -11,22 +11,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const userSalvo = localStorage.getItem("renascer_user");
 
   if (userSalvo) {
-    const userData = JSON.parse(userSalvo);
+  const userData = JSON.parse(userSalvo);
 
-    console.log("Usuário já identificado");
-    console.log(userData);
+  console.log("Usuário já identificado");
+  console.log(userData);
 
-    // Esconde a F01 (controle lógico, sem UI nova)
-   const f01Section = document.getElementById("f01-login");
-if (f01Section) {
-  f01Section.style.display = "none";
-}
-
-    // Aqui, no próximo passo, entra a F02
-    return; // interrompe a F01
+  const f01Section = document.getElementById("f01-login");
+  if (f01Section) {
+    f01Section.style.display = "none";
   }
 
-  
+  const f02Section = document.getElementById("f02-player");
+  if (f02Section) {
+    f02Section.style.display = "block";
+  }
+
+  return;
+}
+    
   inputNome.addEventListener("input", function () {
     btnContinuar.disabled = inputNome.value.trim().length === 0;
   });
