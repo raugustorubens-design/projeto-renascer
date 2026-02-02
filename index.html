@@ -1,31 +1,44 @@
-<!-- F01 — Login Narrativo -->
-<section id="f01-login">
-  <h2>Identidade Narrativa</h2>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projeto Renascer</title>
 
-  <p>
-    Escolha um nome pelo qual você deseja ser reconhecido(a) ao longo da jornada.
-    Este nome não precisa ser seu nome real.
-  </p>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-  <form id="f01-form">
-    <label for="nomeNarrativo">
-      Nome narrativo
-    </label><br>
+  <h1>Projeto Renascer</h1>
+
+  <!-- F01 — Login Narrativo -->
+  <section id="f01-login">
+    <h2>Identidade Narrativa</h2>
+
+    <p>
+      Escolha um nome pelo qual você deseja ser reconhecido(a) ao longo da jornada.
+      Este nome não precisa ser seu nome real.
+    </p>
+
+    <label for="nomeNarrativo">Nome narrativo</label><br><br>
 
     <input
       type="text"
       id="nomeNarrativo"
-      name="nomeNarrativo"
       placeholder="Ex: Guardião do Código"
       autocomplete="off"
     /><br><br>
 
-    <button type="button" id="btnF01Continuar" disabled>
+    <button id="btnF01Continuar" disabled>
       Continuar
     </button>
-  </form>
 
-  <p class="info">
-    Seu progresso será organizado localmente neste dispositivo.
-  </p>
-</section>
+    <p>
+      Seu progresso será organizado localmente neste dispositivo.
+    </p>
+  </section>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>
