@@ -53,6 +53,9 @@ function renderCharacters() {
   for (let i = 1; i <= 10; i++) {
     const card = document.createElement("div");
     card.className = "player-card";
+     const img = document.createElement("img");
+img.src = `assets/characters/players/0${i}_jogador.png`;
+card.appendChild(img);
     card.textContent = `Jogador ${i}`;
     card.onclick = () => {
       document.querySelectorAll(".player-card").forEach((c) => c.classList.remove("selected"));
