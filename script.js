@@ -1,7 +1,15 @@
 // F01 — Login Narrativo (validação mínima)
-document.addEventListener("DOMContentLoaded", function () {
-  const inputNome = document.getElementById("nomeNarrativo");
-  const btnContinuar = document.getElementById("btnF01Continuar");
+const userData = {
+  nomeNarrativo: nomeNarrativo,
+  userToken: userToken,
+  createdAt: new Date().toISOString()
+};
+
+localStorage.setItem("renascer_user", JSON.stringify(userData));
+
+console.log("F01 — Dados salvos localmente");
+console.log(userData);
+
 
   if (!inputNome || !btnContinuar) {
     console.warn("F01: elementos não encontrados no DOM.");
