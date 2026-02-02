@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (!inputNome || !btnContinuar) {
     console.warn("F01: elementos não encontrados no DOM.");
-    return; // ✅ agora o return está dentro de uma função
+    return;
   }
 
   // Passo 1 — habilitar / desabilitar botão
