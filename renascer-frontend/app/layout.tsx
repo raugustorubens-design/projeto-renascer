@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Projeto Renascer",
+  description: "Formação humana, ética e evolução pessoal",
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -5,7 +10,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <body style={{ margin: 0, backgroundColor: "#081A3A" }}>
+        {children}
+      </body>
     </html>
   );
 }
