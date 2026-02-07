@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Projeto Renascer",
@@ -13,10 +16,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body style={{ margin: 0, backgroundColor: "#081A3A" }}>
+      <body
+        className={inter.className}
+        style={{ margin: 0, backgroundColor: "#081A3A" }}
+      >
         {children}
       </body>
     </html>
   );
 }
-
