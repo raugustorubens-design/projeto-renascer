@@ -6,7 +6,7 @@ export default function Apresentacao() {
     margin: "0 auto",
     padding: "80px 24px",
     lineHeight: 1.6,
-    color: "#6AA9FF",
+    color: "#E6ECFF",
   }}
 >
         <h1 style={{ fontSize: "2.5rem", marginBottom: 16 }}>
