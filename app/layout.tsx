@@ -1,4 +1,7 @@
-export const metadata = {
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+
+export const metadata: Metadata = {
   title: "Projeto Renascer",
   description: "Formação humana, ética e evolução pessoal",
 };
@@ -6,7 +9,7 @@ export const metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <html lang="pt-BR">
