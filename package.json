@@ -1,17 +1,15 @@
-// CHECK 1 — Importações
-import { PageTransition } from "@/components/layout/PageTransition";
-
-// CHECK 2 — Componente principal
-export default function HomePage() {
-  // CHECK 2.1 — Retorno visual
-  return (
-    <PageTransition>
-      {/* CHECK 2.2 — Estrutura da página */}
-      <section>
-        <div>
-          <h1>Renascer</h1>
-        </div>
-      </section>
-    </PageTransition>
-  );
+{
+  "name": "projeto-renascer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "14.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
 }
