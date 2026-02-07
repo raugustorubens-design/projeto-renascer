@@ -1,3 +1,5 @@
+#https://github.com/raugustorubens-design/projeto-renascer/blob/main/docs/PROMPT_CANONICO.md
+
 # PROMPT CANÔNICO — GAME EM PYTHON
 ## Revolução Francesa (1789–1799) | Programação Histórica Auditável
 
