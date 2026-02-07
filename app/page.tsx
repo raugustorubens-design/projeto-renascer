@@ -1,8 +1,8 @@
-export default function HomePage() {
+export default function Home() {
   return (
-    <section className="min-h-screen bg-[#081A3A] text-[#E9F4FC] flex items-center justify-center">
-      <h1>Projeto Renascer — Home OK</h1>
-    </section>
+    <main style={{ color: "white", padding: 40 }}>
+      <h1>Projeto Renascer</h1>
+      <p>Deploy funcionando corretamente.</p>
+    </main>
   );
 }
-
