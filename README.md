@@ -1,3 +1,5 @@
+<!-- trigger deploy -->
+
 # Projeto Renascer — Python FREE v1.0.0
 
 Este repositório contém a formação completa em Python (modo FREE)
