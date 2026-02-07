@@ -1,147 +1,121 @@
 # PROMPT CANÔNICO — PROJETO RENASCER
-## Game em Python + Interface de Travessia Auditável
+## Game em Python | Revolução Francesa (1789–1799)
+## Travessia Lógica, Histórica e Ética (Sem Viés)
 
 ---
 
 ## 1. PRINCÍPIO GERAL
 
 O Projeto Renascer não é um site tradicional nem um jogo narrativo.
-É um sistema de travessia lógica, histórica e simbólica, dividido em duas camadas inseparáveis:
+É um sistema educacional estruturado para ensinar programação em Python
+por meio de fatos históricos auditáveis da Revolução Francesa (1789–1799).
 
-1. **Camada de Interface (Travessia)**
-2. **Camada de Jogo (Python Histórico Auditável)**
+O sistema ensina **lógica, história e coerência** sem discurso moral,
+permitindo que valores éticos emerjam exclusivamente da estrutura.
 
-A interface prepara o estado mental.
-O jogo executa regras objetivas.
-
-Nenhuma camada explica a outra.
+Nada é ensinado por opinião.
+Tudo é aprendido por consequência lógica.
 
 ---
 
-## 2. CAMADA DE INTERFACE — TRAVESSIA
+## 2. PRINCÍPIO PEDAGÓGICO SILENCIOSO
 
-### 2.1 Princípios da Interface
+O sistema **não declara valores**.
+Ele exige **coerência estrutural constante**.
+
+Mudanças oportunistas de critério:
+- quebram a lógica
+- produzem falhas
+- impedem a execução
+
+A ética emerge do funcionamento do sistema,
+não de explicações, lições ou julgamentos.
+
+---
+
+## 3. CAMADA DE INTERFACE — TRAVESSIA
+
+### 3.1 Princípios
 - O usuário é denominado **viajante**
-- A emoção inicial é **curiosidade**
-- Não há explicações iniciais
-- Não há menus na entrada
+- Emoção inicial: **curiosidade**
+- Nenhuma explicação inicial
+- Nenhum menu no início
 - Silêncio e vazio são linguagem
 - Escolhas têm peso, não recompensa
 
-### 2.2 Portal Inicial
-A primeira tela contém apenas:
+### 3.2 Portal Inicial
+Contém apenas:
 - Nome do projeto
-- Frase canônica:
+- Frase:
   > **“Nem tudo que te trouxe até aqui foi escolha.”**
 - Botão:
   > **Continuar**
 
 Características:
 - Fundo escuro, quase vivo
-- Nenhum menu
-- Nenhuma explicação
-- Botão com contorno azul claro, fonte da mesma cor
-- Névoas e raios no padrão de portal (referência estética: Solo Leveling)
+- Botão com contorno azul claro
+- Fonte da mesma cor do contorno
+- Névoas e raios (portal energético)
+- Nenhum som automático
 
-### 2.3 Transições
-- Transições substituem completamente a tela anterior
-- Movimento de abertura do centro para cima e para baixo
+### 3.3 Transições
+- Substituem totalmente a tela anterior
+- Abertura do centro para cima e para baixo
 - Sensação de pergaminho tecnológico em 3D
 - Duração média: 600–800 ms
 - Sem loading explícito
-- Sem som automático
 
-### 2.4 Estrutura de Entrada
-A sequência obrigatória é:
-1. Portal (ruptura)
-2. Orientação (estabilização)
-   - Frase única: **“Você atravessou.”**
+### 3.4 Sequência de Entrada
+1. Portal
+2. Orientação
+   - Texto: **“Você atravessou.”**
    - Botão: **Prosseguir**
 3. Contexto mínimo
-   - Texto único: **“Este é um espaço de travessia e reconstrução.”**
+   - Texto: **“Este é um espaço de travessia e reconstrução.”**
 
 Nenhuma escolha real ocorre antes disso.
 
-### 2.5 Primeira Escolha Real
-- Exatamente **duas escolhas**
-- Representam **estados internos**, não ações
-- Estruturalmente simétricas
-- Sensorialmente distintas
-- Texto mínimo (uma palavra por caminho)
+---
 
-Após a escolha:
-- O caminho escolhido se estabiliza
-- O outro se rompe ou se apaga
-- Não há confirmação textual
-- O sistema registra a escolha silenciosamente
+## 4. NARRAÇÃO HISTÓRICA (OBRIGATÓRIA)
 
-### 2.6 Falha e Progresso (Interface)
-- Falha nunca pune, apenas reorienta
-- Progresso é **simbólico**, nunca numérico
-- Progresso visível só aparece após a primeira falha significativa
-- Falhas comuns não geram impacto pesado
-- Algumas falhas transformam o ambiente
+Antes de cada fase existe uma **narração histórica**:
+
+- Tom célere e empolgante (como abertura de filme)
+- Factual e objetiva
+- Baseada apenas em fatos documentados
+- Apresenta eventos, datas e personagens da fase
+- Não interpreta
+- Não julga
+- Não explica programação
+
+Após a narração ocorre um **corte seco** para a atividade.
 
 ---
 
-## 3. PRINCÍPIO DE ERRO (REGRA TRANSVERSAL)
+## 5. CAMADA DE JOGO — GAME EM PYTHON
 
-- Erros de forma (digitação, parênteses, aspas, sintaxe simples):
-  - Não paralisam a atividade
-  - Geram correção e orientação imediata
-  - Ocorrem na mesma fase
+### 5.1 Estrutura Geral
+- Jogo dividido em **24 fases sequenciais**
+- Cada fase:
+  - representa um evento histórico indispensável
+  - introduz **1 novo conceito de Python**
+  - reutiliza **todos os conceitos anteriores**
 
-- Erros de lógica:
-  - Interrompem o fluxo
-  - Exigem revisão conceitual
-  - Geram trabalho e reorientação
-
-**Forma se corrige.  
-Sentido se conquista.**
-
----
-
-## 4. CAMADA DE JOGO — GAME EM PYTHON
-### Revolução Francesa (1789–1799) | Programação Histórica Auditável
-
-### 4.1 Contexto
-Estamos desenvolvendo um jogo educacional em **Python**, baseado **exclusivamente em fatos históricos documentados da Revolução Francesa (1789–1799)**.
-
-O jogo é dividido em **24 fases sequenciais**.
-Cada fase representa:
-- um evento histórico indispensável
-- a introdução de **1 novo conceito de Python**
-- reutilização obrigatória de todos os conceitos anteriores
-
----
-
-## 5. REGRAS OBRIGATÓRIAS DO SISTEMA (GAME)
-
-- Não utilizar narrativas emocionais
-- Não utilizar metáforas
-- Não emitir julgamentos
-- Não oferecer lições, conclusões ou moralizações
-- Não antecipar respostas
-- O sistema apenas:
-  - registra estados
-  - executa regras
-  - valida transições
-- Feedback ocorre exclusivamente por:
-  - execução correta
-  - erro do Python
-- Nenhum texto explicativo ao jogador
+**Regra absoluta:**
+> Lição = lição anterior + 1
 
 ---
 
 ## 6. ESTRUTURA OBRIGATÓRIA DE CADA FASE
 
-Cada fase deve ser um **arquivo `.py` independente** contendo:
+Cada fase deve ser implementada como **um arquivo `.py` independente** contendo:
 
 ### 6.1 Dados Históricos (somente dados)
 - `data` → string `"YYYY-MM-DD"`
 - `evento` → string objetiva
 - `personagens` → lista de nomes históricos reais
-- `fontes` → lista de referências históricas auditáveis
+- `fontes` → referências auditáveis
 
 Fontes permitidas (exemplos):
 - Georges Lefebvre
@@ -152,49 +126,129 @@ Fontes permitidas (exemplos):
 
 ---
 
-### 6.2 Ação do Jogador
-Uma única ação objetiva:
-- atribuição
-- cálculo
-- chamada de função
-- execução de regra lógica
+### 6.2 Painel Técnico (Didático)
+- Aparece antes da atividade
+- Explica:
+  - comandos novos da fase
+  - formação de frases da linguagem Python
+- Linguagem direta
+- Exemplos mínimos
+- Sempre acessível (reabertura livre)
+- Cumulativo e contextual
+- Destaque explícito do **+1**
 
 ---
 
-### 6.3 Validação
-- Validação explícita usando `assert`
+### 6.3 Atividade
+- Uma única ação central
+- Integra **todos os comandos aprendidos até o momento**
+- Exige coerência lógica
+- Não permite solução parcial
 
 ---
 
-### 6.4 Continuidade
+### 6.4 Validação
+- Validação objetiva com `assert`
+- A fase só termina com execução bem-sucedida
+
+---
+
+### 6.5 Continuidade
 - Importação obrigatória do estado da fase anterior
 - Nenhuma fase existe isoladamente
 
 ---
 
-## 7. PROGRESSÃO HISTÓRICA OBRIGATÓRIA
+## 7. ERROS E FALHAS
 
-Devem aparecer como **dados**, nunca interpretação:
-- Luís XVI
-- Assembleia Nacional
-- Mirabeau
-- Robespierre
-- Danton
-- Marat
-- Comitê de Salvação Pública
-- Diretório
-- Napoleão Bonaparte
+### 7.1 Erros de Forma
+- Digitação
+- Parênteses
+- Aspas
+- Sintaxe simples
 
-Datas e eventos são registrados, não narrados.
+Não paralisam.
+Geram correção e orientação imediata.
 
 ---
 
-## 8. NOTA À IA / COLABORADORES
+### 7.2 Erros de Lógica
+- Interrompem o fluxo
+- Exigem revisão conceitual
+- Geram reorientação progressiva
 
-Qualquer IA, script ou colaborador deve:
-- respeitar o ritmo da travessia
-- não explicar antes da ação
-- manter separação absoluta entre interface simbólica e lógica histórica
-- tratar o silêncio como linguagem válida
+**Forma se corrige.  
+Sentido se conquista.**
 
-Se não estiver neste arquivo, **não é canônico**.
+---
+
+## 8. PROGRESSO E RESULTADO
+
+- Toda fase termina com **execução real**
+- O sentimento de “consegui” vem do código rodando
+- Não há elogios, badges ou gamificação
+- Celebração discreta:
+  - execução limpa
+  - avanço natural
+
+---
+
+## 9. FRUSTRAÇÃO E PAUSA
+
+- Feedback rápido
+- Tentativas ilimitadas
+- Nenhuma punição
+- Pausas preservam estado
+- Retorno ocorre no ponto exato de parada
+
+---
+
+## 10. GRIMÓRIO
+
+### 10.1 Função
+Registro de princípios lógicos e históricos já vividos.
+
+### 10.2 Características
+- Global
+- Fragmentado
+- Cronológico
+- Descritivo (não normativo)
+- Sem soluções
+- Sem instruções
+- Interface híbrida (grimório + arquivo)
+
+### 10.3 Acesso
+- Desbloqueado após a primeira falha lógica
+- Consultável apenas em pausas deliberadas
+- Nunca durante execução ativa
+
+---
+
+## 11. ESCOLHAS E MATURIDADE
+
+- O sistema não declara níveis
+- Reconhece maturidade por:
+  - consistência
+  - integração
+  - antecipação lógica
+- Quem sustenta coerência pode avançar mais rápido
+- Quem avança mais rápido recebe mais complexidade
+
+---
+
+## 12. ENCERRAMENTO DO CURSO
+
+- Narração histórica final factual
+- Última atividade integradora
+- Execução final
+- Nenhum discurso
+- Nenhuma moral explícita
+
+Sinal mínimo:
+- “Ciclo concluído.”
+
+---
+
+## 13. REGRA FINAL
+
+> **Se não estiver neste arquivo, não é canônico.**
