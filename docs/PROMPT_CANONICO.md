@@ -252,3 +252,96 @@ Sinal mínimo:
 ## 13. REGRA FINAL
 
 > **Se não estiver neste arquivo, não é canônico.**
+---
+
+## 14. POLÍTICA DO SISTEMA (USO E DADOS)
+
+O Projeto Renascer possui uma política de uso baseada em **mínima coleta, finalidade clara e ausência de interpretação subjetiva**.
+
+### 14.1 Princípios
+- O sistema é exclusivamente educacional.
+- Não há avaliação psicológica, moral ou comportamental do usuário.
+- Não há inferência de perfil, intenção ou caráter.
+- Não há discurso ideológico, político ou moral explícito.
+
+### 14.2 Dados
+O sistema pode registrar apenas:
+- estado técnico da fase
+- progresso lógico (fases concluídas)
+- execuções realizadas
+- identificadores técnicos mínimos para continuidade
+
+O sistema **não coleta**:
+- nome real
+- e-mail
+- documentos
+- dados sensíveis
+- dados de navegação para fins externos
+
+### 14.3 Finalidade
+Os dados servem exclusivamente para:
+- permitir pausa e retorno
+- manter coerência do percurso
+- viabilizar a experiência educacional
+
+Nenhum dado é utilizado para julgamento, classificação ou monetização oculta.
+
+---
+
+## 15. IDENTIFICAÇÃO DO USUÁRIO — SISTEMA FREE
+
+No modo **FREE**, a identificação do usuário é **mínima, funcional e não invasiva**.
+
+### 15.1 Regras
+- Não existe cadastro obrigatório.
+- Não existe login tradicional.
+- Não é exigido e-mail ou nome real.
+
+O viajante é identificado apenas por:
+- um identificador técnico anônimo
+- persistido localmente ou por token simples
+- suficiente para manter o estado do percurso
+
+### 15.2 Limites
+O identificador FREE:
+- não representa identidade pessoal
+- não é compartilhado
+- não é correlacionado a perfis externos
+- não é utilizado para análise comportamental
+
+O foco do sistema FREE é o **processo**, não a pessoa.
+
+---
+
+## 16. MODO DE TESTE E ACESSO DO DESENVOLVEDOR
+
+O sistema possui um **modo de teste interno**, destinado exclusivamente ao desenvolvimento e validação.
+
+### 16.1 Características
+O modo de teste permite:
+- acesso direto a páginas internas
+- navegação entre fases sem travessia completa
+- visualização de estados intermediários
+- teste de transições, fluxos e validações
+
+### 16.2 Restrições
+- O modo de teste não altera regras do sistema.
+- Não gera progresso permanente.
+- Não interfere na experiência do usuário final.
+- Não é acessível ao público.
+
+### 16.3 Princípio
+O modo de teste existe para:
+> observar o sistema sem corromper sua verdade
+
+---
+
+## 17. REGRA DE FECHAMENTO OPERACIONAL
+
+- O modo FREE preserva anonimato funcional.
+- O modo de teste preserva integridade do sistema.
+- A política preserva neutralidade e rigor.
+
+Qualquer funcionalidade futura deve respeitar estas três camadas.
+
+Se não estiver definido neste documento, **não deve ser implementado**.
