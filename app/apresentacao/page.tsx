@@ -1,14 +1,15 @@
 export default function Apresentacao() {
   return (
     <main
-      style={{
-        maxWidth: 900,
-        margin: "0 auto",
-        padding: "80px 24px",
-        lineHeight: 1.6,
-      }}
-    >
-      <h1 style={{ fontSize: "2.5rem", marginBottom: 16 }}>
+  style={{
+    maxWidth: 900,
+    margin: "0 auto",
+    padding: "80px 24px",
+    lineHeight: 1.6,
+    color: "#6AA9FF",
+  }}
+>
+        <h1 style={{ fontSize: "2.5rem", marginBottom: 16 }}>
         Projeto Renascer
       </h1>
 
