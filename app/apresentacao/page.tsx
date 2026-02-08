@@ -98,14 +98,15 @@ export default function Apresentacao() {
         testado e, quando necessário, questionado.
       </p>
 
-      <footer
-        style={{
-          marginTop: 96,
-          paddingTop: 24,
-          borderTop: "1px solid rgba(255,255,255,0.15)",
-          fontSize: "0.85rem",
-          opacity: 0.75,
-        }}
+     <footer
+  style={{
+    marginTop: 96,
+    paddingTop: 32,
+    borderTop: "1px solid rgba(255,255,255,0.2)",
+    fontSize: "0.85rem",
+    opacity: 0.85,
+    color: "#DCE6FF",
+  }}
       >
         <p>Projeto em desenvolvimento.</p>
         <p>Não são coletados dados pessoais.</p>
