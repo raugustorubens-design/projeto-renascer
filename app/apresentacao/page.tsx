@@ -9,7 +9,7 @@ export default function Apresentacao() {
     color: "#E6ECFF",
   }}
 >
-        <h1 style={{ fontSize: "2.5rem", marginBottom: 16 }}>
+        <h1 style={{ fontSize: "2.5rem", marginBottom: 16, color: "#F0F4FF" }}>
         Projeto Renascer
       </h1>
 
@@ -18,7 +18,7 @@ export default function Apresentacao() {
       </p>
 
       <section style={{ marginBottom: 48 }}>
-        <h2 style={{ fontSize: "1.5rem", marginBottom: 12 }}>
+        <h2 style={{ fontSize: "1.5rem", marginBottom: 12, color: "#DCE6FF" }}>
           O que é o Projeto Renascer
         </h2>
         <p>
@@ -34,7 +34,7 @@ export default function Apresentacao() {
       </section>
 
       <section style={{ marginBottom: 48 }}>
-        <h2 style={{ fontSize: "1.5rem", marginBottom: 12 }}>
+        <h2 style={{ fontSize: "1.5rem", marginBottom: 12, color: "#DCE6FF" }}>
           Como o projeto funciona
         </h2>
         <p>
@@ -49,7 +49,7 @@ export default function Apresentacao() {
       </section>
 
       <section style={{ marginBottom: 48 }}>
-        <h2 style={{ fontSize: "1.5rem", marginBottom: 12 }}>
+       <h2 style={{ fontSize: "1.5rem", marginBottom: 12, color: "#DCE6FF" }}>
           O que este projeto não é
         </h2>
         <ul style={{ paddingLeft: 20 }}>
@@ -63,7 +63,7 @@ export default function Apresentacao() {
       </section>
 
       <section style={{ marginBottom: 64 }}>
-        <h2 style={{ fontSize: "1.5rem", marginBottom: 12 }}>
+        <h2 style={{ fontSize: "1.5rem", marginBottom: 12, color: "#DCE6FF" }}>
           Estado atual
         </h2>
         <p>
