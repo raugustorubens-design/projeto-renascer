@@ -345,3 +345,23 @@ O modo de teste existe para:
 Qualquer funcionalidade futura deve respeitar estas três camadas.
 
 Se não estiver definido neste documento, **não deve ser implementado**.
+
+---
+
+## 18. REGRA DE ACESSO EXTERNO CONTROLADO AO PROMPT CANÔNICO
+
+Este documento é canônico, versionado e auditável.
+
+O acesso externo ao Prompt Canônico pode ser concedido **de forma individual e controlada**, exclusivamente para **leitura e avaliação conceitual**, a critério do mantenedor do Projeto Renascer.
+
+Regras obrigatórias de acesso externo:
+
+- O acesso ao Prompt Canônico **não é público**.
+- O acesso é concedido **somente ao visitante explicitamente autorizado**.
+- O acesso externo é **somente leitura**, sem permissão de edição, versionamento ou alteração.
+- O visitante autorizado tem acesso sempre à **última versão vigente** do documento.
+- Sugestões, críticas ou observações devem ser encaminhadas **exclusivamente por canal externo de sugestões**.
+- Nenhuma contribuição externa implica alteração automática deste documento.
+- O conteúdo do Prompt Canônico permanece como **fonte única da verdade** do Projeto Renascer.
+
+Esta regra assegura a integridade conceitual, pedagógica e operacional do projeto, preservando a governança do sistema e evitando modificações não auditadas.
