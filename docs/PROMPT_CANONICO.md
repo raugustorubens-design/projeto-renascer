@@ -428,7 +428,7 @@ Ao final, quando o portal retorna, não há redenção nem conclusão.
 
 Há apenas um viajante que sai diferente do que entrou —
 não porque venceu,
-mas porque aprendeu a sustentar critérios sem depender do resultado.
+mas porque aprendeu a sustentar critérios com coerência ética.
 
 O passado permanece intacto.
 O presente também.
