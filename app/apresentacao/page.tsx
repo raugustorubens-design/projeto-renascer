@@ -93,11 +93,24 @@ export default function Apresentacao() {
       >
         Enviar sugestão
       </a>
-
-      <p style={{ marginTop: 48, fontSize: "0.9rem", opacity: 0.6 }}>
+            <p style={{ marginTop: 48, fontSize: "0.9rem", opacity: 0.6 }}>
         Este projeto não busca convencimento. Ele existe para ser observado,
         testado e, quando necessário, questionado.
       </p>
+
+      <footer
+        style={{
+          marginTop: 96,
+          paddingTop: 24,
+          borderTop: "1px solid rgba(255,255,255,0.15)",
+          fontSize: "0.85rem",
+          opacity: 0.75,
+        }}
+      >
+        <p>Projeto em desenvolvimento.</p>
+        <p>Não são coletados dados pessoais.</p>
+        <p>Contribuições são avaliadas como sugestões conceituais.</p>
+      </footer>
     </main>
   );
 }
