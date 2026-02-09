@@ -414,4 +414,42 @@ Arquivos de fase **apenas declaram**:
 - regras objetivas de validação
 - estado de saída
 
+projeto-renascer/
+│
+├─ docs/
+│   ├─ PROMPT_CANONICO.md
+│   └─ README.md
+│
+├─ engine/
+│   ├─ __init__.py
+│   ├─ engine.py
+│   ├─ executor.py
+│   ├─ state.py
+│   └─ errors.py
+│
+├─ fases/
+│   ├─ __init__.py
+│   ├─ fase_01.py
+│   ├─ fase_02.py
+│   └─ ...
+│
+├─ assets/
+│   ├─ audio/
+│   │   ├─ ambiente/
+│   │   ├─ narrador/
+│   │   └─ efeitos/
+│   ├─ imagens/
+│   └─ fontes/
+│
+├─ ui/
+│   ├─ __init__.py
+│   └─ portal.py
+│
+├─ tests/
+│   └─ test_engine.py
+│
+├─ main.py
+└─ requirements.txt
+
+
 Essa separação é obrigatória e canônica.
