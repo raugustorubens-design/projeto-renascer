@@ -1,9 +1,12 @@
 # PROMPT CANÔNICO — PROJETO RENASCER
+
 ## Game em Python | Revolução Francesa (1789–1799)
+
 ## Travessia Lógica, Histórica e Ética
 
-> **Versão:** Cânone v1.0  
-> **Status:** Estável — base conceitual consolidada
+> **Versão:** Cânone v1.1 (integrado)
+> **Status:** Ativo — fonte única da verdade
+> **Base operacional:** 15 horas semanais sustentáveis
 
 ---
 
@@ -11,76 +14,74 @@
 
 ### 1. PRINCÍPIO GERAL
 
-O Projeto Renascer não é um site tradicional nem um jogo narrativo.  
-É um sistema educacional estruturado para ensinar programação em Python  
-por meio de fatos históricos auditáveis da Revolução Francesa (1789–1799).
+O Projeto Renascer não é um site tradicional nem um curso disfarçado.
+É um **jogo** que ensina programação em **Python** por meio de fatos históricos auditáveis da **Revolução Francesa (1789–1799)**.
 
-O sistema ensina **lógica, história e coerência** sem discurso moral,  
-permitindo que valores éticos emerjam exclusivamente da estrutura.
+O sistema ensina **lógica executável**, **leitura de contexto** e **sustentação de critérios**.
+Nenhum conteúdo existe por si só.
+Tudo existe para pressionar decisões que precisam ser **executadas em código**.
 
-Nada é ensinado por opinião.  
+Nada é ensinado por opinião.
 Tudo é aprendido por consequência lógica.
 
 ---
 
 ### 2. PRINCÍPIO PEDAGÓGICO SILENCIOSO
 
-O sistema **não declara valores**.  
+O sistema **não declara valores**.
 Ele exige **coerência estrutural constante**.
 
 Mudanças oportunistas de critério:
-- quebram a lógica
-- produzem falhas
-- impedem a execução
 
-A ética emerge do funcionamento do sistema,  
+* quebram a lógica
+* produzem instabilidade
+* fecham opções futuras
+
+A ética emerge do funcionamento do sistema,
 não de explicações, lições ou julgamentos.
 
 ---
 
-## BLOCO II — EXPERIÊNCIA DO VIAJANTE (INTERFACE E TRAVESSIA)
+## BLOCO II — EXPERIÊNCIA DO VIAJANTE (JOGO)
 
 ### 3. CAMADA DE INTERFACE — TRAVESSIA
 
 #### 3.1 Princípios
-- O usuário é denominado **viajante**
-- Emoção inicial: **curiosidade**
-- Nenhuma explicação inicial
-- Nenhum menu no início
-- Silêncio e vazio são linguagem
-- Escolhas têm peso, não recompensa
+
+* O usuário é denominado **viajante**
+* Emoção inicial: **curiosidade**
+* Nenhuma explicação inicial
+* Nenhum menu no início
+* Silêncio e vazio são linguagem
+* Escolhas têm peso, não recompensa
 
 #### 3.2 Portal Inicial
+
 Contém apenas:
-- Nome do projeto
-- Frase:
+
+* Nome do projeto
+* Frase:
+
   > **“Nem tudo que te trouxe até aqui foi escolha.”**
-- Botão:
+* Botão:
+
   > **Continuar**
 
 Características:
-- Fundo escuro, quase vivo
-- Botão com contorno azul claro
-- Fonte da mesma cor do contorno
-- Névoas e raios (portal energético)
-- Nenhum som automático
+
+* Fundo escuro, quase vivo
+* Contorno azul claro
+* Tipografia contida
+* Névoas e energia visual
+* Nenhum som automático
 
 #### 3.3 Transições
-- Substituem totalmente a tela anterior
-- Abertura do centro para cima e para baixo
-- Sensação de pergaminho tecnológico em 3D
-- Duração média: 600–800 ms
-- Sem loading explícito
 
-#### 3.4 Sequência de Entrada
-1. Portal
-2. Orientação  
-   - Texto: **“Você atravessou.”**  
-   - Botão: **Prosseguir**
-3. Contexto mínimo  
-   - Texto: **“Este é um espaço de travessia e reconstrução.”**
-
-Nenhuma escolha real ocorre antes disso.
+* Substituem totalmente a tela anterior
+* Abertura do centro para cima e para baixo
+* Sensação de travessia
+* Duração média: 600–800 ms
+* Sem loading explícito
 
 ---
 
@@ -88,351 +89,193 @@ Nenhuma escolha real ocorre antes disso.
 
 ### 4. NARRAÇÃO HISTÓRICA (OBRIGATÓRIA)
 
-Antes de cada fase existe uma **narração histórica**:
+Antes de cada fase existe uma **narração histórica factual**:
 
-- Tom célere e empolgante (como abertura de filme)
-- Factual e objetiva
-- Baseada apenas em fatos documentados
-- Apresenta eventos, datas e personagens da fase
-- Não interpreta
-- Não julga
-- Não explica programação
+* Tom célere e direto
+* Baseada apenas em fatos documentados
+* Apresenta eventos, datas e personagens reais
+* Não interpreta
+* Não julga
+* Não ensina programação
 
-Após a narração ocorre um **corte seco** para a atividade.
+A história é apresentada como **presente vivo**.
+Após a narração ocorre **corte seco** para a missão.
 
 ---
 
-## BLOCO IV — JOGO EM PYTHON (ESTRUTURA PEDAGÓGICA)
+## BLOCO IV — LÍNGUA PORTUGUESA (MECÂNICA)
 
-### 5. CAMADA DE JOGO — GAME EM PYTHON
+### 5. LÍNGUA COMO ORIGEM DO ERRO
 
-#### 5.1 Estrutura Geral
-- Jogo dividido em **24 fases sequenciais**
-- Cada fase:
-  - representa um evento histórico indispensável
-  - introduz **1 novo conceito de Python**
-  - reutiliza **todos os conceitos anteriores**
+A língua portuguesa **não é disciplina**.
+É **mecânica central e auxiliar**, com hierarquia explícita.
 
-**Regra absoluta:**  
+* **Central:** interpretação de missão, identificação de critérios, leitura de ambiguidade e risco.
+* **Auxiliar:** formulação das regras que serão executadas em Python.
+
+Ambiguidade textual gera erro lógico.
+O sistema não ensina língua.
+Ele **usa a língua para pressionar a lógica**.
+
+---
+
+## BLOCO V — JOGO EM PYTHON
+
+### 6. ESTRUTURA GERAL
+
+* Jogo dividido em **fases sequenciais**
+* Cada fase:
+
+  * representa um evento histórico indispensável
+  * introduz **1 novo conceito de Python**
+  * reutiliza **todos os conceitos anteriores**
+
+**Regra absoluta:**
+
 > Lição = lição anterior + 1
 
 ---
 
-### 6. ESTRUTURA OBRIGATÓRIA DE CADA FASE
+### 7. ESTRUTURA OBRIGATÓRIA DE CADA FASE
 
-Cada fase deve ser implementada como **um arquivo `.py` independente** contendo:
+Cada fase é um arquivo `.py` independente contendo:
 
-#### 6.1 Dados Históricos (somente dados)
-- `data` → string `"YYYY-MM-DD"`
-- `evento` → string objetiva
-- `personagens` → lista de nomes históricos reais
-- `fontes` → referências auditáveis
+#### 7.1 Dados Históricos
 
-Fontes permitidas (exemplos):
-- Georges Lefebvre
-- François Furet
-- Eric Hobsbawm
-- Encyclopaedia Britannica
-- Archives Nationales (France)
+* data
+* evento
+* personagens
+* fontes auditáveis
 
----
+#### 7.2 Missão (Texto)
 
-#### 6.2 Painel Técnico (Didático)
-- Aparece antes da atividade
-- Explica:
-  - comandos novos da fase
-  - formação de frases da linguagem Python
-- Linguagem direta
-- Exemplos mínimos
-- Sempre acessível (reabertura livre)
-- Cumulativo e contextual
-- Destaque explícito do **+1**
+* Descrição factual
+* Pode conter ambiguidade estratégica
+* Exige interpretação correta
 
----
+#### 7.3 Atividade em Python
 
-#### 6.3 Atividade
-- Uma única ação central
-- Integra **todos os comandos aprendidos até o momento**
-- Exige coerência lógica
-- Não permite solução parcial
+* Uma ação central
+* Integra todo o aprendizado anterior
+* Exige coerência lógica
+
+#### 7.4 Validação
+
+* Execução real
+* Uso de `assert`
+* Sem solução parcial
+
+#### 7.5 Continuidade
+
+* Estado importado da fase anterior
 
 ---
 
-#### 6.4 Validação
-- Validação objetiva com `assert`
-- A fase só termina com execução bem-sucedida
+## BLOCO VI — PADRÕES DE DECISÃO
+
+### 8. PADRÕES RECORRENTES
+
+Determinadas escolhas revelam **padrões recorrentes de decisão**:
+
+* atalhos funcionais
+* exceções oportunistas
+* adiamento estratégico excessivo
+
+Esses padrões **não são nomeados no jogo**.
+Os autores que os fundamentam aparecem **apenas na bibliografia**.
 
 ---
 
-#### 6.5 Continuidade
-- Importação obrigatória do estado da fase anterior
-- Nenhuma fase existe isoladamente
+## BLOCO VII — ADAPTAÇÃO
+
+### 9. ADAPTAÇÃO POR COMPORTAMENTO
+
+O sistema adapta o desafio por:
+
+* padrões de leitura
+* padrões de decisão
+* padrões de execução
+
+Não existe adaptação por nível acadêmico declarado.
+Define-se o **princípio**, não a mecânica detalhada.
 
 ---
 
-### 7. ERROS E FALHAS
+## BLOCO VIII — PROGRESSO E FRUSTRAÇÃO
 
-#### 7.1 Erros de Forma
-- Digitação
-- Parênteses
-- Aspas
-- Sintaxe simples
+### 10. PROGRESSO
 
-Não paralisam.  
-Geram correção e orientação imediata.
+* Avanço ocorre por execução bem-sucedida
+* Não há pontuação, ranking ou badges
 
----
+### 11. FRUSTRAÇÃO
 
-#### 7.2 Erros de Lógica
-- Interrompem o fluxo
-- Exigem revisão conceitual
-- Geram reorientação progressiva
-
-**Forma se corrige.  
-Sentido se conquista.**
+* Tentativas ilimitadas
+* Erros de forma orientam
+* Erros de lógica exigem revisão
 
 ---
 
-### 8. PROGRESSO E RESULTADO
+## BLOCO IX — MODOS DE ACESSO
 
-- Toda fase termina com **execução real**
-- O sentimento de “consegui” vem do código rodando
-- Não há elogios, badges ou gamificação
-- Celebração discreta:
-  - execução limpa
-  - avanço natural
+### 12. MODO FREE
 
----
+* Caminho fundamental
+* Inicia do básico real
+* Simula ambiente, instalação e bibliotecas
+* Não é demo
 
-### 9. FRUSTRAÇÃO E PAUSA
+### 13. MODO PREMIUM
 
-- Feedback rápido
-- Tentativas ilimitadas
-- Nenhuma punição
-- Pausas preservam estado
-- Retorno ocorre no ponto exato de parada
+* Acesso direto possível
+* Salto de complexidade
+* Não invalida o FREE
 
 ---
 
-### 10. GRIMÓRIO
+## BLOCO X — MEDIDAS EXTERNAS
 
-#### 10.1 Função
-Registro de princípios lógicos e históricos já vividos.
+### 14. FINALIDADE
 
-#### 10.2 Características
-- Global
-- Fragmentado
-- Cronológico
-- Descritivo (não normativo)
-- Sem soluções
-- Sem instruções
-- Interface híbrida (grimório + arquivo)
+As medidas externas existem para:
 
-#### 10.3 Acesso
-- Desbloqueado após a primeira falha lógica
-- Consultável apenas em pausas deliberadas
-- Nunca durante execução ativa
+* verificar **aprendizado prático**
+* observar **evolução de clareza e decisão**
+
+Sem julgamento moral.
+Sem métricas psicológicas.
 
 ---
 
-### 11. ESCOLHAS E MATURIDADE
+## BLOCO XI — CRONOGRAMA
 
-- O sistema não declara níveis
-- Reconhece maturidade por:
-  - consistência
-  - integração
-  - antecipação lógica
-- Quem sustenta coerência pode avançar mais rápido
-- Quem avança mais rápido recebe mais complexidade
+Base: **15 horas semanais**
+
+* Definição da cara do site: 2–3 semanas
+* Programação base: 3–4 semanas
+* Primeiro estado jogável (FREE): 2 semanas
 
 ---
 
-### 12. ENCERRAMENTO DO CURSO
+## BLOCO XII — GOVERNANÇA
 
-- Narração histórica final factual
-- Última atividade integradora
-- Execução final
-- Nenhum discurso
-- Nenhuma moral explícita
+### 15. ROADMAP
 
-Sinal mínimo:
-- **“Ciclo concluído.”**
+O sistema é **evolutivo e revisável**.
+Não há lista de etapas futuras.
 
----
+### 16. REGRA DE CANONICIDADE
 
-## BLOCO V — GOVERNANÇA E SISTEMA
-
-### 13. REGRA DE CANONICIDADE
-
-> **Se não estiver neste arquivo, não é canônico.**
+> **Se não estiver neste documento, não é canônico.**
 
 ---
 
-### 14. POLÍTICA DO SISTEMA (USO E DADOS)
+## BLOCO XIII — BIBLIOGRAFIA
 
-O Projeto Renascer possui uma política de uso baseada em  
-**mínima coleta, finalidade clara e ausência de interpretação subjetiva**.
-
-#### 14.1 Princípios
-- O sistema é exclusivamente educacional.
-- Não há avaliação psicológica, moral ou comportamental do usuário.
-- Não há inferência de perfil, intenção ou caráter.
-- Não há discurso ideológico, político ou moral explícito.
-
-#### 14.2 Dados
-O sistema pode registrar apenas:
-- estado técnico da fase
-- progresso lógico (fases concluídas)
-- execuções realizadas
-- identificadores técnicos mínimos para continuidade
-
-O sistema **não coleta**:
-- nome real
-- e-mail
-- documentos
-- dados sensíveis
-- dados de navegação para fins externos
-
-#### 14.3 Finalidade
-Os dados servem exclusivamente para:
-- permitir pausa e retorno
-- manter coerência do percurso
-- viabilizar a experiência educacional
-
-Nenhum dado é utilizado para julgamento, classificação ou monetização oculta.
-
----
-
-### 15. IDENTIFICAÇÃO DO USUÁRIO — SISTEMA FREE
-
-No modo **FREE**, a identificação do usuário é **mínima, funcional e não invasiva**.
-
-#### 15.1 Regras
-- Não existe cadastro obrigatório.
-- Não existe login tradicional.
-- Não é exigido e-mail ou nome real.
-
-O viajante é identificado apenas por:
-- um identificador técnico anônimo
-- persistido localmente ou por token simples
-- suficiente para manter o estado do percurso
-
-#### 15.2 Limites
-O identificador FREE:
-- não representa identidade pessoal
-- não é compartilhado
-- não é correlacionado a perfis externos
-- não é utilizado para análise comportamental
-
-O foco do sistema FREE é o **processo**, não a pessoa.
-
----
-
-### 16. MODO DE TESTE E ACESSO DO DESENVOLVEDOR
-
-O sistema possui um **modo de teste interno**, destinado exclusivamente ao desenvolvimento e validação.
-
-#### 16.1 Características
-O modo de teste permite:
-- acesso direto a páginas internas
-- navegação entre fases sem travessia completa
-- visualização de estados intermediários
-- teste de transições, fluxos e validações
-
-#### 16.2 Restrições
-- O modo de teste não altera regras do sistema.
-- Não gera progresso permanente.
-- Não interfere na experiência do usuário final.
-- Não é acessível ao público.
-
-#### 16.3 Princípio
-O modo de teste existe para:
-> observar o sistema sem corromper sua verdade
-
----
-
-### 17. REGRA DE FECHAMENTO OPERACIONAL
-
-- O modo FREE preserva anonimato funcional.
-- O modo de teste preserva integridade do sistema.
-- A política preserva neutralidade e rigor.
-
-Qualquer funcionalidade futura deve respeitar estas três camadas.
-
-Se não estiver definido neste documento, **não deve ser implementado**.
-
----
-
-### 18. REGRA DE ACESSO EXTERNO CONTROLADO AO PROMPT CANÔNICO
-
-Este documento é canônico, versionado e auditável.
-
-O acesso externo ao Prompt Canônico pode ser concedido **de forma individual e controlada**, exclusivamente para **leitura e avaliação conceitual**, a critério do mantenedor do Projeto Renascer.
-
-Regras obrigatórias de acesso externo:
-- O acesso ao Prompt Canônico **não é público**.
-- O acesso é concedido **somente ao visitante explicitamente autorizado**.
-- O acesso externo é **somente leitura**, sem permissão de edição, versionamento ou alteração.
-- O visitante autorizado tem acesso sempre à **última versão vigente** do documento.
-- Sugestões, críticas ou observações devem ser encaminhadas **exclusivamente por canal externo de sugestões**.
-- Nenhuma contribuição externa implica alteração automática deste documento.
-- O conteúdo do Prompt Canônico permanece como **fonte única da verdade** do Projeto Renascer.
-
-Esta regra assegura a integridade conceitual, pedagógica e operacional do projeto,  
-preservando a governança do sistema e evitando modificações não auditadas.
-
-## A HISTÓRIA
-
-Ele acreditava que voltava para observar a história.
-Mas isso era apenas a forma que encontrou de se enganar no início.
-
-O viajante não retorna ao passado para mudá-lo.
-Retorna porque o passado expõe com clareza aquilo que o presente esconde.
-
-Ao acompanhar os eventos enquanto acontecem — decisões tomadas sem saber o fim, promessas feitas sem garantia de vitória, regras sustentadas sob pressão real — ele percebe algo que não era visível em sua própria época:
-
-não são os acontecimentos que moldam as pessoas,
-são os critérios que elas escolhem manter quando os acontecimentos apertam.
-
-Cada fase atravessada não ensina história.
-Ela remove desculpas.
-
-Não há retrospectiva.
-Não há “se soubéssemos”.
-Há apenas escolhas feitas no escuro, exatamente como no presente.
-
-O viajante começa a reconhecer padrões que não pertencem à Revolução Francesa.
-Pertencem a ele.
-
-Sempre que uma regra pareceu flexível demais.
-Sempre que um princípio foi ajustado “só dessa vez”.
-Sempre que a vantagem justificou a exceção.
-
-A história deixa de ser um objeto externo.
-Ela se torna um espelho sem moldura.
-
-O grande mal não aparece como vilania.
-Aparece como racionalização.
-
-E o viajante entende, sem que ninguém precise dizer,
-que não voltou no tempo para aprender sobre o passado —
-voltou para treinar a si mesmo em um ambiente onde não pode mentir sobre coerência.
-
-O sistema não o corrige.
-Não o orienta.
-Não o elogia.
-
-Ele apenas exige que cada regra escolhida continue válida quando o custo aumenta.
-
-Ao final, quando o portal retorna, não há redenção nem conclusão.
-
-Há apenas um viajante que sai diferente do que entrou —
-não porque venceu,
-mas porque aprendeu a sustentar critérios com coerência ética.
-
-O passado permanece intacto.
-O presente também.
-
-Quem mudou foi o único elemento possível.
-
-O viajante.
+* Georges Lefebvre
+* François Furet
+* Eric Hobsbawm
+* Encyclopaedia Britannica
+* Archives Nationales (France)
+* Nicolau Maquiavel — *O Príncipe*
+* Sun Tzu — *A Arte da Guerra*
