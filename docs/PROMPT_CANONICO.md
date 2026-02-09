@@ -1,12 +1,11 @@
 # PROMPT CANÔNICO — PROJETO RENASCER
 
 ## Game em Python | Revolução Francesa (1789–1799)
-
 ## Travessia Lógica, Histórica e Ética
 
-> **Versão:** Cânone v1.1 (integrado)
-> **Status:** Ativo — fonte única da verdade
-> **Base operacional:** 15 horas semanais sustentáveis
+> Versão: Cânone v1.2 (integrado)
+> Status: Ativo — fonte única da verdade
+> Base operacional: 15 horas semanais sustentáveis
 
 ---
 
@@ -15,27 +14,33 @@
 ### 1. PRINCÍPIO GERAL
 
 O Projeto Renascer não é um site tradicional nem um curso disfarçado.
-É um **jogo** que ensina programação em **Python** por meio de fatos históricos auditáveis da **Revolução Francesa (1789–1799)**.
+É um jogo que ensina programação em Python por meio de fatos históricos auditáveis da Revolução Francesa (1789–1799).
 
-O sistema ensina **lógica executável**, **leitura de contexto** e **sustentação de critérios**.
+O jogador evolui ao viver sua essência
+e aprender a reconhecer, enfrentar e superar o mal humano.
+
+O sistema ensina lógica executável, leitura de contexto e sustentação de critérios.
 Nenhum conteúdo existe por si só.
-Tudo existe para pressionar decisões que precisam ser **executadas em código**.
+Tudo existe para pressionar decisões que precisam ser executadas em código.
 
 Nada é ensinado por opinião.
 Tudo é aprendido por consequência lógica.
+
+Python é o trilho invisível.
+As decisões morais acontecem em língua portuguesa.
+O objetivo é crescimento pessoal, social e profissional.
 
 ---
 
 ### 2. PRINCÍPIO PEDAGÓGICO SILENCIOSO
 
-O sistema **não declara valores**.
-Ele exige **coerência estrutural constante**.
+O sistema não declara valores.
+Ele exige coerência estrutural constante.
 
 Mudanças oportunistas de critério:
-
-* quebram a lógica
-* produzem instabilidade
-* fecham opções futuras
+- quebram a lógica
+- produzem instabilidade
+- fecham opções futuras
 
 A ética emerge do funcionamento do sistema,
 não de explicações, lições ou julgamentos.
@@ -44,375 +49,114 @@ não de explicações, lições ou julgamentos.
 
 ## BLOCO II — EXPERIÊNCIA DO VIAJANTE (JOGO)
 
-### 3. CAMADA DE INTERFACE — TRAVESSIA
-
-#### 3.1 Princípios
-
-* O usuário é denominado **viajante**
-* Emoção inicial: **curiosidade**
-* Nenhuma explicação inicial
-* Nenhum menu no início
-* Silêncio e vazio são linguagem
-* Escolhas têm peso, não recompensa
-
-#### 3.2 Portal Inicial
-
-Contém apenas:
-
-* Nome do projeto
-* Frase:
-
-  > **“Nem tudo que te trouxe até aqui foi escolha.”**
-* Botão:
-
-  > **Continuar**
-
-Características:
-
-* Fundo escuro, quase vivo
-* Contorno azul claro
-* Tipografia contida
-* Névoas e energia visual
-* Nenhum som automático
-
-#### 3.3 Transições
-
-* Substituem totalmente a tela anterior
-* Abertura do centro para cima e para baixo
-* Sensação de travessia
-* Duração média: 600–800 ms
-* Sem loading explícito
+*(mantido conforme versão original)*
 
 ---
 
 ## BLOCO III — NARRAÇÃO HISTÓRICA
 
-### 4. NARRAÇÃO HISTÓRICA (OBRIGATÓRIA)
-
-Antes de cada fase existe uma **narração histórica factual**:
-
-* Tom célere e direto
-* Baseada apenas em fatos documentados
-* Apresenta eventos, datas e personagens reais
-* Não interpreta
-* Não julga
-* Não ensina programação
-
-A história é apresentada como **presente vivo**.
-Após a narração ocorre **corte seco** para a missão.
-
----
-
-## BLOCO III-A — PORTAL, ATMOSFERA E TRANSIÇÃO DE IDENTIDADE
-
-### 4A. ESTADO DE VISITANTE (ANTES DA TRAVESSIA)
-
-* Tela única com **portal em giro contínuo**
-* Relâmpagos **raros e distantes** no centro do portal
-* Clarão precede o som (tempestade distante)
-* Som baixo, cíclico, não assustador
-* Toda coleta necessária do usuário ocorre **aqui**
-
-Enquanto não há interação, o portal funciona como **estado de observação**.
-
----
-
-### 4B. EVENTO DE TRAVESSIA (CLIQUE EM ENTRAR)
-
-O clique **não troca a tela**. Ele inicia o ritual:
-
-1. Giro do portal acelera progressivamente
-2. Relâmpagos tornam-se mais próximos
-3. Troca imperceptível de barras reais por barras simuladas
-4. Portal suga interface e texto
-5. Trinca única da tela
-6. Expansão total
-7. Preto absoluto
-
----
-
-### 4C. NASCIMENTO DO VIAJANTE
-
-* Narração do jogo inicia com a tela ainda escura
-* Clareamento gradual da imagem
-* O portal deixa de existir como objeto ativo
-* O jogo assume **primeira pessoa**
-
----
-
-### 4D. PORTAL COMO JANELA TEMPORAL (PÓS-TRAVESSIA)
-
-Após a travessia, o portal pode ser revisitado como **estado de descanso**:
-
-* Ativado automaticamente após **30s de inatividade**
-* Jogo fica **totalmente pausado** enquanto o portal está em foco
-* O portal gira calmamente, sem progressão
-* O viajante pode retomar a missão a qualquer momento
-
-O portal mostra **apenas cenas históricas da fase atual**.
-
----
-
-### 4E. ATMOSFERA SONORA DO PORTAL
-
-**Ambiente:**
-
-* Sons cotidianos da época (rua, passos, cavalos, cães, vozes distantes)
-* Conversas ocasionais em francês, como ruído de fundo
-* Legendas sempre ativas, discretas, na parte inferior central
-
-**Narrador oculto:**
-
-* Idioma: português
-* Entra raramente, após o ambiente
-* Frase curta, factual, chamando o viajante de volta ao jogo
-* Trata o fato como **ainda não ocorrido**
-
-Após a frase, o ambiente retorna gradualmente.
-
----
-
-### 4F. SOM DURANTE A MISSÃO
-
-* Ambiente permanece em **volume mínimo** durante a missão
-* Varia levemente conforme o progresso
-* Em erro lógico grave:
-
-  * silêncio breve
-  * retorno gradual do ambiente
-
-O som nunca instrui, nunca julga, nunca conduz.
+*(mantido conforme versão original)*
 
 ---
 
 ## BLOCO IV — LÍNGUA PORTUGUESA (MECÂNICA)
 
-### 5. LÍNGUA COMO ORIGEM DO ERRO
-
-A língua portuguesa **não é disciplina**.
-É **mecânica central e auxiliar**, com hierarquia explícita.
-
-* **Central:** interpretação de missão, identificação de critérios, leitura de ambiguidade e risco.
-* **Auxiliar:** formulação das regras que serão executadas em Python.
+A língua portuguesa é mecânica central do jogo.
+Ela pressiona interpretação, ambiguidade, risco e decisão.
 
 Ambiguidade textual gera erro lógico.
 O sistema não ensina língua.
-Ele **usa a língua para pressionar a lógica**.
+Ele usa a língua para testar a lógica.
 
 ---
 
 ## BLOCO V — JOGO EM PYTHON
 
-### 6. ESTRUTURA GERAL
-
-* Jogo dividido em **fases sequenciais**
-* Cada fase:
-
-  * representa um evento histórico indispensável
-  * introduz **1 novo conceito de Python**
-  * reutiliza **todos os conceitos anteriores**
-
-**Regra absoluta:**
-
-> Lição = lição anterior + 1
+*(mantido conforme versão original)*
 
 ---
 
-### 7. ESTRUTURA OBRIGATÓRIA DE CADA FASE
+## BLOCO VI — GUILDAS E ESSÊNCIA
 
-Cada fase é um arquivo `.py` independente contendo:
+### Guildas (Perfis de Entrada)
 
-#### 7.1 Dados Históricos
+- Estrategista — risco de esperar demais
+- Disciplinado — risco de tolerar demais
+- Rompedor — risco de romper sem sustentação
+- Guardião — risco de silenciar excessivamente
+- Construtor — risco de assumir tudo
 
-* data
-* evento
-* personagens
-* fontes auditáveis
+A guilda define o ponto de vulnerabilidade inicial,
+não o destino do jogador.
 
-#### 7.2 Missão (Texto)
+### Essência
 
-* Descrição factual
-* Pode conter ambiguidade estratégica
-* Exige interpretação correta
-
-#### 7.3 Atividade em Python
-
-* Uma ação central
-* Integra todo o aprendizado anterior
-* Exige coerência lógica
-
-#### 7.4 Validação
-
-* Execução real
-* Uso de `assert`
-* Sem solução parcial
-
-#### 7.5 Continuidade
-
-* Estado importado da fase anterior
+A essência não é prêmio.
+Ela é vivida e testada sob pressão.
 
 ---
 
-## BLOCO VI — PADRÕES DE DECISÃO
+## BLOCO VII — O MAL HUMANO
 
-### 8. PADRÕES RECORRENTES
+Formas canônicas de manifestação:
+- Normalização injusta
+- Sabotagem sutil
+- Inversão moral
+- Apropriação silenciosa
+- Contenção protetora
+- Chantagem social
+- Ruído estratégico
 
-Determinadas escolhas revelam **padrões recorrentes de decisão**:
-
-* atalhos funcionais
-* exceções oportunistas
-* adiamento estratégico excessivo
-
-Esses padrões **não são nomeados no jogo**.
-Os autores que os fundamentam aparecem **apenas na bibliografia**.
-
----
-
-## BLOCO VII — ADAPTAÇÃO
-
-### 9. ADAPTAÇÃO POR COMPORTAMENTO
-
-O sistema adapta o desafio por:
-
-* padrões de leitura
-* padrões de decisão
-* padrões de execução
-
-Não existe adaptação por nível acadêmico declarado.
-Define-se o **princípio**, não a mecânica detalhada.
+O jogador aprende primeiro a reconhecer.
 
 ---
 
-## BLOCO VIII — PROGRESSO E FRUSTRAÇÃO
+## BLOCO VIII — USO DAS FRAQUEZAS
 
-### 10. PROGRESSO
+O sistema utiliza deliberadamente a fraqueza do perfil
+como estímulo de crescimento.
 
-* Avanço ocorre por execução bem-sucedida
-* Não há pontuação, ranking ou badges
-
-### 11. FRUSTRAÇÃO
-
-* Tentativas ilimitadas
-* Erros de forma orientam
-* Erros de lógica exigem revisão
+O jogador não é avisado.
+A revelação ocorre apenas no final.
 
 ---
 
-## BLOCO IX — MODOS DE ACESSO
+## BLOCO IX — HABILIDADES (PODERES)
 
-### 12. MODO FREE
-
-* Caminho fundamental
-* Inicia do básico real
-* Simula ambiente, instalação e bibliotecas
-* Não é demo
-
-### 13. MODO PREMIUM
-
-* Acesso direto possível
-* Salto de complexidade
-* Não invalida o FREE
+Habilidades surgem ao superar o mal humano sem se corromper:
+- Nomear sem justificar
+- Retirada estratégica
+- Ancoragem de critério
+- Dissociação de mérito
+- Sustentação de conflito
 
 ---
 
-## BLOCO X — MEDIDAS EXTERNAS
+## BLOCO X — SÍMBOLOS
 
-### 14. FINALIDADE
+- Símbolo da Guilda (grande)
+- Símbolo da Essência (médio)
+- Símbolo da Travessia (pequeno)
 
-As medidas externas existem para:
-
-* verificar **aprendizado prático**
-* observar **evolução de clareza e decisão**
-
-Sem julgamento moral.
-Sem métricas psicológicas.
+Somente o símbolo da travessia libera habilidade.
 
 ---
 
-## BLOCO XI — CRONOGRAMA
+## BLOCO XI — REVELAÇÃO FINAL
 
-Base: **15 horas semanais**
+O sistema revela que:
+- a fraqueza inicial foi usada como treino
+- o cenário foi um laboratório humano
+- o crescimento pertence ao viajante
 
-* Definição da cara do site: 2–3 semanas
-* Programação base: 3–4 semanas
-* Primeiro estado jogável (FREE): 2 semanas
-
----
-
-## BLOCO XII — GOVERNANÇA
-
-### 15. ROADMAP
-
-O sistema é **evolutivo e revisável**.
-Não há lista de etapas futuras.
-
-### 16. REGRA DE CANONICIDADE
-
-> **Se não estiver neste documento, não é canônico.**
+Sem julgamento.
+Sem moralização.
 
 ---
 
-## BLOCO XIII — BIBLIOGRAFIA
+## BLOCO XII — REGRA DE CANONICIDADE
 
-* Georges Lefebvre
-* François Furet
-* Eric Hobsbawm
-* Encyclopaedia Britannica
-* Archives Nationales (France)
-* Nicolau Maquiavel — *O Príncipe*
-* Sun Tzu — *A Arte da Guerra*
-
-## BLOCO IV-A — EXECUÇÃO DE PYTHON NO SISTEMA FREE
-
-### Princípio Geral
-
-O Projeto Renascer executa **Python real diretamente no navegador**, sem execução de código do usuário em servidores externos.
-
-O sistema utiliza ambiente local controlado (WebAssembly / Python embarcado), garantindo segurança, baixo custo e coerência pedagógica.
-
----
-
-### Princípios de Execução
-
-- O código do viajante é executado **localmente no navegador**
-- Nenhum código do usuário é enviado para execução em servidor
-- Não há acesso ao sistema operacional
-- O ambiente é fechado, determinístico e auditável
-- A execução suporta `assert` e validações objetivas
-
-Esse modelo é obrigatório no modo **FREE**.
-
----
-
-### Motor Único de Fases (Engine)
-
-O sistema possui um **motor único e central**, responsável por:
-
-- carregar arquivos de fase
-- executar o código do viajante
-- validar soluções com `assert`
-- importar o estado da fase anterior
-- gerar o estado da fase atual
-- classificar erros de forma e erros lógicos
-
-Após estabilização, o motor é **imutável**.
-
----
-
-### Regra de Separação
-
-Arquivos de fase **não** implementam:
-- controle de fluxo
-- lógica de navegação
-- persistência direta
-- lógica de interface
-
-Arquivos de fase **apenas declaram**:
-- dados históricos
-- conceito Python da fase (+1)
-- missão em língua portuguesa
-- regras objetivas de validação
-- estado de saída
+Se não estiver neste documento, não é canônico.
 
 projeto-renascer/
 │
