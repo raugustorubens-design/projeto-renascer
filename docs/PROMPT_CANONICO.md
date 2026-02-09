@@ -103,6 +103,88 @@ Após a narração ocorre **corte seco** para a missão.
 
 ---
 
+## BLOCO III-A — PORTAL, ATMOSFERA E TRANSIÇÃO DE IDENTIDADE
+
+### 4A. ESTADO DE VISITANTE (ANTES DA TRAVESSIA)
+
+* Tela única com **portal em giro contínuo**
+* Relâmpagos **raros e distantes** no centro do portal
+* Clarão precede o som (tempestade distante)
+* Som baixo, cíclico, não assustador
+* Toda coleta necessária do usuário ocorre **aqui**
+
+Enquanto não há interação, o portal funciona como **estado de observação**.
+
+---
+
+### 4B. EVENTO DE TRAVESSIA (CLIQUE EM ENTRAR)
+
+O clique **não troca a tela**. Ele inicia o ritual:
+
+1. Giro do portal acelera progressivamente
+2. Relâmpagos tornam-se mais próximos
+3. Troca imperceptível de barras reais por barras simuladas
+4. Portal suga interface e texto
+5. Trinca única da tela
+6. Expansão total
+7. Preto absoluto
+
+---
+
+### 4C. NASCIMENTO DO VIAJANTE
+
+* Narração do jogo inicia com a tela ainda escura
+* Clareamento gradual da imagem
+* O portal deixa de existir como objeto ativo
+* O jogo assume **primeira pessoa**
+
+---
+
+### 4D. PORTAL COMO JANELA TEMPORAL (PÓS-TRAVESSIA)
+
+Após a travessia, o portal pode ser revisitado como **estado de descanso**:
+
+* Ativado automaticamente após **30s de inatividade**
+* Jogo fica **totalmente pausado** enquanto o portal está em foco
+* O portal gira calmamente, sem progressão
+* O viajante pode retomar a missão a qualquer momento
+
+O portal mostra **apenas cenas históricas da fase atual**.
+
+---
+
+### 4E. ATMOSFERA SONORA DO PORTAL
+
+**Ambiente:**
+
+* Sons cotidianos da época (rua, passos, cavalos, cães, vozes distantes)
+* Conversas ocasionais em francês, como ruído de fundo
+* Legendas sempre ativas, discretas, na parte inferior central
+
+**Narrador oculto:**
+
+* Idioma: português
+* Entra raramente, após o ambiente
+* Frase curta, factual, chamando o viajante de volta ao jogo
+* Trata o fato como **ainda não ocorrido**
+
+Após a frase, o ambiente retorna gradualmente.
+
+---
+
+### 4F. SOM DURANTE A MISSÃO
+
+* Ambiente permanece em **volume mínimo** durante a missão
+* Varia levemente conforme o progresso
+* Em erro lógico grave:
+
+  * silêncio breve
+  * retorno gradual do ambiente
+
+O som nunca instrui, nunca julga, nunca conduz.
+
+---
+
 ## BLOCO IV — LÍNGUA PORTUGUESA (MECÂNICA)
 
 ### 5. LÍNGUA COMO ORIGEM DO ERRO
